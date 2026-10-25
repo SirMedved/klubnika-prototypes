@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ПРОТОТИП · Корзина и заказ</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="proto-bar">
+  <span class="proto-badge">ПРОТОТИП</span>
+  <a href="index.html">Главная</a> · <a href="catalog.html">Каталог</a> · <a href="about.html">О нас</a> · <a href="order.html">Как заказать</a> · <a href="cart.html">Корзина</a> · <a href="faq.html">Вопросы</a> · <a href="sort.html">Карточка сорта</a>
+  <button id="qaToggle">Что обсуждаем</button>
+</div>
+<div class="qa" id="qa"></div>
+
+<div class="nav">
+  <div class="wrap">
+    <a class="logo" href="index.html">Питомник клубники</a>
+    <nav>
+      <a href="catalog.html">Каталог</a>
+      <a href="about.html">О нас</a>
+      <a href="order.html">Как заказать</a>
+      <a href="faq.html">Вопросы</a>
+    </nav>
+    <div class="right">
+      <a class="cartlink" href="cart.html">Корзина <span class="cnt zero" data-cart-count>0</span></a>
+      <a class="msgbtn tg" href="#">Telegram</a>
+      <a class="msgbtn vb" href="#">Viber</a>
+      <a class="tel" href="#">+375 29 000-00-00</a>
+    </div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="wrap" style="max-width:860px;">
+    <h2 style="font-size:26px;">Корзина</h2>
+    <p class="note" style="margin-bottom:18px;">Корзина живёт, пока открыта вкладка: можно походить по каталогу и вернуться. Сайт не интернет-магазин: заказ бронируется, детали согласуем в переписке.</p>
+
+    <div class="chead"><span>Сорт</span><span class="hprice">Цена</span><span>Кол-во</span><span>Сумма</span><span></span></div>
+    <div id="cart-items"></div>
+    <div class="ctotal"><span>Итого</span><span id="cart-total">0,00 руб</span></div>
+    <button class="btn btn-ghost btn-sm" id="cart-clear" style="margin-top:10px;">Очистить корзину</button>
+
+    <!-- Форма заказа -->
+    <div id="order-form" style="margin-top:34px;">
+      <h2 style="font-size:20px;">Оформление</h2>
+
+      <h3 style="font-size:15px;margin:16px 0 8px;">Куда получить</h3>
+      <div class="deliv">
+        <label id="d-minsk-label"><input type="radio" name="delivery" id="d-minsk" value="minsk" checked><b>Минск, Каменная Горка</b><span>пн и чт, 18:00-19:00, у метро</span></label>
+        <label id="d-market-label"><input type="radio" name="delivery" id="d-market" value="market"><b>Рынок в Дзержинске</b><span>пт-вс, консультация на месте</span></label>
+        <label id="d-post-label"><input type="radio" name="delivery" id="d-post" value="post"><b>Почта по Беларуси</b><span>фирменная коробка, минимум 75 руб</span></label>
+      </div>
+      <div class="minwarn hidden" id="min-warn">Для отправки почтой минимальная сумма заказа: 75 руб.</div>
+
+      <h3 style="font-size:15px;margin:16px 0 8px;">Ваши данные</h3>
+      <div class="field"><label>Имя</label><input id="f-name" placeholder="Как к вам обращаться"></div>
+      <div class="field"><label>Телефон (номер заказа: последние 4 цифры)</label><input id="f-phone" placeholder="+375 29 123-45-67"></div>
+      <p class="note hidden" id="phone-note" style="color:var(--red);">Введите телефон: из него получится номер заказа.</p>
+
+      <div data-delivery="minsk">
+        <div class="field"><label>Удобный день выдачи</label><select id="f-day-minsk"><option>понедельник</option><option>четверг</option></select></div>
+      </div>
+      <div data-delivery="market" class="hidden">
+        <div class="field"><label>Удобный день рынка</label><select id="f-day-market"><option>пятница</option><option>суббота</option><option>воскресенье</option></select></div>
+      </div>
+      <div data-delivery="post" class="hidden">
+        <div class="field"><label>Индекс</label><input id="f-index" placeholder="220000"></div>
+        <div class="field"><label>Город / посёлок</label><input id="f-city" placeholder="Минск"></div>
+        <div class="field"><label>Адрес</label><input id="f-address" placeholder="ул. Ленина 1, кв. 2"></div>
+        <div class="field"><label>ФИО получателя</label><input id="f-receiver" placeholder="Иванов Иван Иванович"></div>
+      </div>
+
+      <div class="consult">
+        <label><input type="checkbox" id="f-consult"> Нужна консультация (выбор сорта, посадка, уход)</label>
+        <div class="field hidden" id="consult-wrap" style="margin-top:10px;"><label>Что подсказать?</label><textarea id="f-consult-text" rows="2" placeholder="Например: какой сорт для новичка на песчаной почве"></textarea></div>
+      </div>
+
+      <button class="btn btn-primary" id="gen-order">Сформировать текст заказа</button>
+
+      <!-- Результат -->
+      <div id="order-result" class="hidden">
+        <div class="ordernum" id="order-num">Ваш номер заказа</div>
+        <textarea id="order-text" readonly></textarea>
+        <div class="copyhint">Скопируйте текст и отправьте нам в Telegram или Viber: мы ответим и согласуем время получения.</div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <button class="btn btn-ghost btn-sm" id="copy-order">Скопировать текст</button>
+          <a class="msgbtn tg" href="#">Открыть Telegram</a>
+          <a class="msgbtn vb" href="#">Открыть Viber</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Контакты -->
+<div class="contacts paper2">
+  <div class="wrap">
+    <div><h3>Связаться с нами</h3><p>+375 29 000-00-00 (приём заказов) · +375 29 000-00-00 (консультации)<br>klubnika.minsk.v@gmail.com · Telegram / Viber</p></div>
+    <div><h3>Выдача заказов</h3><p>Минск, метро Каменная Горка: понедельник и четверг, 18:00-19:00<br>Рынок в Дзержинске: пятница-воскресенье</p></div>
+  </div>
+</div>
+<div class="footer">© Питомник клубники, Минск · klubnika-minsk.by</div>
+
+<script src="app.js"></script>
+</body>
+</html>
