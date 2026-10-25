@@ -31,7 +31,7 @@
     <a class="logo" href="index.html">Питомник клубники</a>
     <nav>
       <a href="catalog.html">Каталог</a>
-      <a href="catalog.html?view=table">Прайс</a>
+      
       <a href="about.html">О нас</a>
       <a href="order.html">Как заказать</a>
     </nav>
@@ -47,7 +47,7 @@
   <div class="wrap">
     <h2 style="font-size:26px;">Каталог сортов</h2>
     <div class="cats">
-      <span class="cat on">Все</span><span class="cat">Ультраранние</span><span class="cat">Ранние</span><span class="cat">Средние</span><span class="cat">Поздние</span><span class="cat">Ремонтантные</span>
+      <span class="cat on" data-cat="all">Все</span><span class="cat" data-cat="ultra">Ультраранние</span><span class="cat" data-cat="early">Ранние</span><span class="cat" data-cat="mid">Средние</span><span class="cat" data-cat="late">Поздние</span><span class="cat" data-cat="rem">Ремонтантные</span>
     </div>
     <div class="viewswitch">
       <button data-view="tiles" class="on">Плитки с фото</button>
@@ -57,14 +57,14 @@
     <!-- Вид: плитки -->
     <div class="tileview on" id="view-tiles">
       <div class="sortgrid">
-        <a class="sortcard" href="sort.html"><div class="photo"><img src="img/sort-san.jpg" alt=""></div><div class="in"><b>Сан-Андреас</b><div class="row"><span class="badge">ремонтантный</span><span class="price">3,00 руб</span></div><div class="row"><span class="badge st-season">сезонный: авг-окт</span><span class="badge new">новинка</span></div></div></a>
-        <a class="sortcard" href="sort.html"><div class="photo"><img src="img/sort-alb.jpg" alt=""></div><div class="in"><b>Альбион</b><div class="row"><span class="badge">ремонтантный</span><span class="price">3,00 руб</span></div><div class="row"><span class="badge st-yes">есть</span></div></div></a>
-        <a class="sortcard" href="sort.html"><div class="photo"><img src="img/sort-tray.jpg" alt=""></div><div class="in"><b>Хоней</b><div class="row"><span class="badge">ультраранний</span><span class="price">2,50 руб</span></div><div class="row"><span class="badge st-yes">есть</span></div></div></a>
-        <a class="sortcard" href="sort.html"><div class="photo"><img src="img/sort-alb.jpg" alt=""></div><div class="in"><b>Клери</b><div class="row"><span class="badge">ранний</span><span class="price">2,50 руб</span></div><div class="row"><span class="badge st-yes">есть</span></div></div></a>
-        <a class="sortcard" href="sort.html"><div class="photo"><img src="img/sort-tray.jpg" alt=""></div><div class="in"><b>Азия</b><div class="row"><span class="badge">средний</span><span class="price">2,50 руб</span></div><div class="row"><span class="badge st-yes">есть</span></div></div></a>
-        <a class="sortcard" href="sort.html"><div class="photo"><img src="img/sort-san.jpg" alt=""></div><div class="in"><b>Флёр</b><div class="row"><span class="badge">средний</span><span class="price">2,50 руб</span></div><div class="row"><span class="badge st-trial">на испытании</span></div></div></a>
-        <a class="sortcard" href="sort.html"><div class="photo"><img src="img/sort-tray.jpg" alt=""></div><div class="in"><b>Мальвина</b><div class="row"><span class="badge">поздний</span><span class="price">2,50 руб</span></div><div class="row"><span class="badge st-no">нет</span></div></div></a>
-        <a class="sortcard" href="sort.html"><div class="photo"><img src="img/sort-alb.jpg" alt=""></div><div class="in"><b>Полка</b><div class="row"><span class="badge">средний</span><span class="price">2,50 руб</span></div><div class="row"><span class="badge st-yes">есть</span><span class="badge new">новинка</span></div></div></a>
+        <a class="sortcard" href="sort.html" data-cat-item="rem"><div class="photo"><img src="img/sort-san.jpg" alt=""></div><div class="in"><b>Сан-Андреас</b><div class="row"><span class="badge">ремонтантный</span><span class="price">3,00 руб</span></div><div class="row"><span class="badge st-season">сезонный: авг-окт</span><span class="badge new">новинка</span></div></div></a>
+        <a class="sortcard" href="sort.html" data-cat-item="rem"><div class="photo"><img src="img/sort-alb.jpg" alt=""></div><div class="in"><b>Альбион</b><div class="row"><span class="badge">ремонтантный</span><span class="price">3,00 руб</span></div><div class="row"><span class="badge st-yes">есть</span></div></div></a>
+        <a class="sortcard" href="sort.html" data-cat-item="ultra"><div class="photo"><img src="img/sort-tray.jpg" alt=""></div><div class="in"><b>Хоней</b><div class="row"><span class="badge">ультраранний</span><span class="price">2,50 руб</span></div><div class="row"><span class="badge st-yes">есть</span></div></div></a>
+        <a class="sortcard" href="sort.html" data-cat-item="early"><div class="photo"><img src="img/sort-alb.jpg" alt=""></div><div class="in"><b>Клери</b><div class="row"><span class="badge">ранний</span><span class="price">2,50 руб</span></div><div class="row"><span class="badge st-yes">есть</span></div></div></a>
+        <a class="sortcard" href="sort.html" data-cat-item="mid"><div class="photo"><img src="img/sort-tray.jpg" alt=""></div><div class="in"><b>Азия</b><div class="row"><span class="badge">средний</span><span class="price">2,50 руб</span></div><div class="row"><span class="badge st-yes">есть</span></div></div></a>
+        <a class="sortcard" href="sort.html" data-cat-item="mid"><div class="photo"><img src="img/sort-san.jpg" alt=""></div><div class="in"><b>Флёр</b><div class="row"><span class="badge">средний</span><span class="price">2,50 руб</span></div><div class="row"><span class="badge st-trial">на испытании</span></div></div></a>
+        <a class="sortcard" href="sort.html" data-cat-item="late"><div class="photo"><img src="img/sort-tray.jpg" alt=""></div><div class="in"><b>Мальвина</b><div class="row"><span class="badge">поздний</span><span class="price">2,50 руб</span></div><div class="row"><span class="badge st-no">нет</span></div></div></a>
+        <a class="sortcard" href="sort.html" data-cat-item="mid"><div class="photo"><img src="img/sort-alb.jpg" alt=""></div><div class="in"><b>Полка</b><div class="row"><span class="badge">средний</span><span class="price">2,50 руб</span></div><div class="row"><span class="badge st-yes">есть</span><span class="badge new">новинка</span></div></div></a>
       </div>
       <div class="note">В полном каталоге около 100 сортов. Фото в плитках: заглушки-повторы, у каждого сорта будет своё фото.</div>
     </div>
@@ -73,14 +73,14 @@
     <div class="tableview" id="view-table">
       <table class="ptable">
         <tr><th>Сорт</th><th>Категория</th><th class="hide-m">Тип</th><th>Цена</th><th>Статус</th><th></th></tr>
-        <tr><td class="name">Хоней</td><td>ультраранний</td><td class="hide-m">КСД</td><td class="price">2,50</td><td><span class="badge st-yes">есть</span></td><td><a href="sort.html">открыть</a></td></tr>
-        <tr><td class="name">Клери</td><td>ранний</td><td class="hide-m">КСД</td><td class="price">2,50</td><td><span class="badge st-yes">есть</span></td><td><a href="sort.html">открыть</a></td></tr>
-        <tr><td class="name">Азия</td><td>средний</td><td class="hide-m">КСД</td><td class="price">2,50</td><td><span class="badge st-yes">есть</span></td><td><a href="sort.html">открыть</a></td></tr>
-        <tr><td class="name">Полка</td><td>средний</td><td class="hide-m">КСД</td><td class="price">2,50</td><td><span class="badge st-yes">есть</span> <span class="badge new">новинка</span></td><td><a href="sort.html">открыть</a></td></tr>
-        <tr><td class="name">Флёр</td><td>средний</td><td class="hide-m">КСД</td><td class="price">2,50</td><td><span class="badge st-trial">на испытании</span></td><td><a href="sort.html">открыть</a></td></tr>
-        <tr><td class="name">Мальвина</td><td>поздний</td><td class="hide-m">КСД</td><td class="price">2,50</td><td><span class="badge st-no">нет</span></td><td><a href="sort.html">открыть</a></td></tr>
-        <tr><td class="name">Сан-Андреас</td><td>ремонтантный</td><td class="hide-m">НСД</td><td class="price">3,00</td><td><span class="badge st-season">сезонный: авг-окт</span> <span class="badge new">новинка</span></td><td><a href="sort.html">открыть</a></td></tr>
-        <tr><td class="name">Альбион</td><td>ремонтантный</td><td class="hide-m">НСД</td><td class="price">3,00</td><td><span class="badge st-yes">есть</span></td><td><a href="sort.html">открыть</a></td></tr>
+        <tr data-cat-item="ultra"><td class="name">Хоней</td><td>ультраранний</td><td class="hide-m">КСД</td><td class="price">2,50</td><td><span class="badge st-yes">есть</span></td><td><a href="sort.html">открыть</a></td></tr>
+        <tr data-cat-item="early"><td class="name">Клери</td><td>ранний</td><td class="hide-m">КСД</td><td class="price">2,50</td><td><span class="badge st-yes">есть</span></td><td><a href="sort.html">открыть</a></td></tr>
+        <tr data-cat-item="mid"><td class="name">Азия</td><td>средний</td><td class="hide-m">КСД</td><td class="price">2,50</td><td><span class="badge st-yes">есть</span></td><td><a href="sort.html">открыть</a></td></tr>
+        <tr data-cat-item="mid"><td class="name">Полка</td><td>средний</td><td class="hide-m">КСД</td><td class="price">2,50</td><td><span class="badge st-yes">есть</span> <span class="badge new">новинка</span></td><td><a href="sort.html">открыть</a></td></tr>
+        <tr data-cat-item="mid"><td class="name">Флёр</td><td>средний</td><td class="hide-m">КСД</td><td class="price">2,50</td><td><span class="badge st-trial">на испытании</span></td><td><a href="sort.html">открыть</a></td></tr>
+        <tr data-cat-item="late"><td class="name">Мальвина</td><td>поздний</td><td class="hide-m">КСД</td><td class="price">2,50</td><td><span class="badge st-no">нет</span></td><td><a href="sort.html">открыть</a></td></tr>
+        <tr data-cat-item="rem"><td class="name">Сан-Андреас</td><td>ремонтантный</td><td class="hide-m">НСД</td><td class="price">3,00</td><td><span class="badge st-season">сезонный: авг-окт</span> <span class="badge new">новинка</span></td><td><a href="sort.html">открыть</a></td></tr>
+        <tr data-cat-item="rem"><td class="name">Альбион</td><td>ремонтантный</td><td class="hide-m">НСД</td><td class="price">3,00</td><td><span class="badge st-yes">есть</span></td><td><a href="sort.html">открыть</a></td></tr>
       </table>
       <div class="note">Полный прайс откроется из выгрузки с Тильды: около 100 сортов в пяти категориях.</div>
     </div>

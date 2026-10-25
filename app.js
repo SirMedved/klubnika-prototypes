@@ -24,11 +24,15 @@
     document.querySelectorAll('[data-view]').forEach(function(b){b.addEventListener('click',function(){setView(b.getAttribute('data-view'));});});
     setView(view);
   }
-  // Категории-заглушки: только визуально
+  // Категории: реальный фильтр по data-cat
   document.querySelectorAll('.cats .cat').forEach(function(c){
     c.addEventListener('click',function(){
       document.querySelectorAll('.cats .cat').forEach(function(x){x.classList.remove('on');});
       c.classList.add('on');
+      var v=c.getAttribute('data-cat')||'all';
+      document.querySelectorAll('[data-cat-item]').forEach(function(el){
+        el.classList.toggle('hidden', v!=='all' && el.getAttribute('data-cat-item')!==v);
+      });
     });
   });
 })();

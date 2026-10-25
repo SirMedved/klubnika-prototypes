@@ -207,3 +207,12 @@ img{max-width:100%;}
   .sortgrid{grid-template-columns:1fr;}
   .trust .wrap{grid-template-columns:1fr;}
 }
+/* Фильтр категорий */
+.sortcard.hidden{display:none;}
+tr.hidden{display:none;}
+
+/* Компактный тизер ЗКС на главной */
+.zks-teaser{display:flex;gap:16px;align-items:center;flex-wrap:wrap;border:1px solid var(--ui2);border-radius:12px;padding:14px 18px;background:var(--paper);}
+.zks-teaser .txt b{display:block;font-size:15.5px;}
+.zks-teaser .txt span{font-size:13.5px;color:var(--tx2);}
+.zks-teaser .btn{margin-left:auto;}
