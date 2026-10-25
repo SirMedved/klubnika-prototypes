@@ -4,7 +4,7 @@
     '<li><b>Главная:</b> листай сверху вниз: шаги для новичков, популярные сорта, сезонная полоса, счётчики, тизеры. Что зашло, что лишнее, чего не хватает?</li>'+
     '<li><b>Каталог:</b> переключатель «Плитки с фото» и «Прайс-таблица», потыкай оба. Какой вид главный? Категории и фильтр «в наличии» сверху удобны? Хватает ли колонок прайса?</li>'+
     '<li><b>Корзина и заказ:</b> потыкай весь путь: добавить сорта, выбрать где получить (Минск Каменка / рынок Дзержинск / почта), поля, галка консультации, текст заявки. Понятно ли? Что в тексте заявки лишнее или не хватает?</li>'+
-    '<li><b>Минимум 75 руб:</b> касается только почты или и Минска, и рынка? Покажем это везде, где человек оформляет заказ.</li>'+
+    '<li><b>Минимум 75 руб:</b> подтверждаем правило для Минска и почты. Как с рынком в Дзержинске? Показано в корзине и на странице заказа.</li>'+
     '<li><b>Карточка сорта:</b> каких характеристик не хватает? Что покупатели чаще всего спрашивают про сорт по телефону?</li>'+
     '<li><b>Вопросы (ЗКС):</b> понятно ли объяснение про стаканчик? Какие ещё вопросы покупатели задают постоянно? Формулировки ответов согласуем с папой.</li>'+
     '<li><b>О нас:</b> что дополнить своими снимками? Дожинки: нужны фото и видео.</li>'+
@@ -23,29 +23,32 @@
   });
 
   // ---------- Корзина (персистентна на сессию, sessionStorage) ----------
-  var CART_KEY='km-cart';
-  function getCart(){try{return JSON.parse(sessionStorage.getItem(CART_KEY))||[];}catch(e){return[];}}
-  function setCart(c){sessionStorage.setItem(CART_KEY,JSON.stringify(c));updateCartCount();}
+  var CART_KEY='km-cart'; // localStorage: переживает закрытие вкладки
+  function getCart(){try{return JSON.parse(localStorage.getItem(CART_KEY))||[];}catch(e){return[];}}
+  function setCart(c){localStorage.setItem(CART_KEY,JSON.stringify(c));updateCartCount();renderQtyBadges();}
   function cartCount(){return getCart().reduce(function(s,i){return s+i.qty;},0);}
   function updateCartCount(){
     var n=cartCount();
     document.querySelectorAll('[data-cart-count]').forEach(function(el){el.textContent=n;});
+  }
+  function renderQtyBadges(){
+    var cart=getCart();
+    document.querySelectorAll('[data-qty-for]').forEach(function(el){
+      var it=null;for(var i=0;i<cart.length;i++){if(cart[i].name===el.getAttribute('data-qty-for')){it=cart[i];break;}}
+      el.textContent=it?('в корзине: '+it.qty+' шт'):'';
+    });
   }
   function addToCart(name,type,price,btn){
     var c=getCart();
     var it=null;for(var i=0;i<c.length;i++){if(c[i].name===name){it=c[i];break;}}
     if(it){it.qty++;}else{c.push({name:name,type:type,price:price,qty:1});}
     setCart(c);
-    if(btn){
-      var old=btn.textContent;btn.textContent='Добавлено ✓';btn.disabled=true;
-      setTimeout(function(){btn.textContent=old;btn.disabled=false;},900);
-    }
   }
   document.addEventListener('click',function(e){
     var b=e.target.closest('[data-add]');
     if(b){addToCart(b.getAttribute('data-add'),b.getAttribute('data-type'),parseFloat(b.getAttribute('data-price')),b);}
   });
-  updateCartCount();
+  updateCartCount();renderQtyBadges();
 
   // ---------- Каталог: вид (плитки/прайс) ----------
   var params=new URLSearchParams(location.search);
@@ -65,14 +68,18 @@
   }
 
   // ---------- Каталог: фильтры (категория + только в наличии) ----------
-  var catFilter='all', availOnly=false;
+  var catFilter='all', availOnly=false, query='';
   function applyFilters(){
+    var q=query.trim().toLowerCase();
     document.querySelectorAll('[data-cat-item]').forEach(function(el){
       var okCat=catFilter==='all'||el.getAttribute('data-cat-item')===catFilter;
       var okAvail=!availOnly||el.getAttribute('data-avail')==='yes';
-      el.classList.toggle('hidden',!(okCat&&okAvail));
+      var okQuery=q.length<2||((el.getAttribute('data-name')||'').toLowerCase().indexOf(q)!==-1);
+      el.classList.toggle('hidden',!(okCat&&okAvail&&okQuery));
     });
   }
+  var search=document.getElementById('sortSearch');
+  if(search){search.addEventListener('input',function(){query=search.value;applyFilters();});}
   document.querySelectorAll('.cats .cat[data-cat]').forEach(function(c){
     c.addEventListener('click',function(){
       document.querySelectorAll('.cats .cat[data-cat]').forEach(function(x){x.classList.remove('on');});
@@ -96,6 +103,13 @@
   function renderCart(){
     var cart=getCart();
     var total=0;cart.forEach(function(i){total+=i.price*i.qty;});
+    var warn=document.getElementById('min-warn');
+    if(warn){
+      var dv='minsk';
+      del.forEach(function(r){if(r.checked){dv=r.value;}});
+      var needMin=(dv==='post'||dv==='minsk');
+      warn.classList.toggle('hidden',!(needMin&&total<75));
+    }
     var totalEl=document.getElementById('cart-total');
     if(totalEl){totalEl.textContent=fmt(total)+' руб';}
     if(!cart.length){
@@ -126,7 +140,9 @@
     if(del){c.splice(+del.getAttribute('data-del'),1);setCart(c);renderCart();}
   });
   var clearBtn=document.getElementById('cart-clear');
-  if(clearBtn){clearBtn.addEventListener('click',function(){setCart([]);renderCart();});}
+  if(clearBtn){clearBtn.addEventListener('click',function(){
+    if(confirm('Убрать все сорта из корзины?')){setCart([]);renderCart();}
+  });}
 
   // ---------- Способ получения: разные поля ----------
   var del=document.querySelectorAll('input[name="delivery"]');
@@ -141,7 +157,12 @@
       l.classList.toggle('on',r&&r.checked);
     });
     var warn=document.getElementById('min-warn');
-    if(warn){warn.classList.toggle('hidden',v!=='post');}
+    if(warn){
+      var needMin=(v==='post'||v==='minsk');
+      var tot=document.getElementById('cart-total');
+      var total=parseFloat((tot?tot.textContent:'0').replace(',','.'))||0;
+      warn.classList.toggle('hidden',!(needMin&&total<75));
+    }
   }
   del.forEach(function(r){r.addEventListener('change',syncDelivery);});
   if(del.length){syncDelivery();}

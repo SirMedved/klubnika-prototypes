@@ -41,7 +41,7 @@
     <div class="chead"><span>Сорт</span><span class="hprice">Цена</span><span>Кол-во</span><span>Сумма</span><span></span></div>
     <div id="cart-items"></div>
     <div class="ctotal"><span>Итого</span><span id="cart-total">0,00 руб</span></div>
-    <button class="btn btn-ghost btn-sm" id="cart-clear" style="margin-top:10px;">Очистить корзину</button>
+    <button class="btn btn-danger btn-sm" id="cart-clear" style="margin-top:10px;">Очистить корзину</button>
 
     <!-- Форма заказа -->
     <div id="order-form" style="margin-top:34px;">
@@ -49,11 +49,11 @@
 
       <h3 style="font-size:15px;margin:16px 0 8px;">Куда получить</h3>
       <div class="deliv">
-        <label id="d-minsk-label"><input type="radio" name="delivery" id="d-minsk" value="minsk" checked><b>Минск, Каменная Горка</b><span>пн и чт, 18:00-19:00, у метро</span></label>
+        <label id="d-minsk-label"><input type="radio" name="delivery" id="d-minsk" value="minsk" checked><b>Минск, Каменная Горка</b><span>пн и чт, 18:00-19:00, минимум 75 руб</span></label>
         <label id="d-market-label"><input type="radio" name="delivery" id="d-market" value="market"><b>Рынок в Дзержинске</b><span>пт-вс, консультация на месте</span></label>
         <label id="d-post-label"><input type="radio" name="delivery" id="d-post" value="post"><b>Почта по Беларуси</b><span>фирменная коробка, минимум 75 руб</span></label>
       </div>
-      <div class="minwarn hidden" id="min-warn">Для отправки почтой минимальная сумма заказа: 75 руб.</div>
+      <div class="minwarn hidden" id="min-warn">Минимальная сумма заказа: 75 руб. Правило действует для получения в Минске и отправки почтой.</div>
 
       <h3 style="font-size:15px;margin:16px 0 8px;">Ваши данные</h3>
       <div class="field"><label>Имя</label><input id="f-name" placeholder="Как к вам обращаться"></div>

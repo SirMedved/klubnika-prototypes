@@ -277,3 +277,22 @@ tr.hidden{display:none;}
   .chead .hprice{display:none;}
   .deliv{grid-template-columns:1fr;}
 }
+
+/* Поиск по сортам */
+.searchfield{margin-bottom:14px;}
+.searchfield input{width:100%;max-width:420px;padding:10px 14px;border:1.5px solid var(--ui2);border-radius:8px;font:inherit;font-size:15px;background:var(--paper);}
+
+/* Количество в корзине рядом с сортом */
+.inqty{display:inline-block;font-size:12px;font-weight:600;color:var(--green);margin-left:6px;white-space:nowrap;}
+.tileview .inqty{display:block;margin-top:2px;margin-left:0;}
+
+/* Опасная кнопка очистки */
+.btn-danger{background:transparent;color:var(--red);border:1.5px solid var(--red);}
+.btn-danger:hover{background:#FBF1F0;}
+
+/* Таблица прайса: компактнее, название кликабельно */
+.ptable td{padding:10px 8px;}
+.ptable .name a{color:var(--tx);text-decoration:none;font-weight:600;font-size:15.5px;border-bottom:1px dashed var(--tx3);}
+.ptable .name a:hover{color:var(--blue);border-color:var(--blue);}
+.ptable .cartbtn .btn{white-space:nowrap;padding:6px 12px;font-size:13px;}
+.ptable .cartbtn{margin:0;}
