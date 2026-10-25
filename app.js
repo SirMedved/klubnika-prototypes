@@ -46,7 +46,11 @@
   }
   document.addEventListener('click',function(e){
     var b=e.target.closest('[data-add]');
-    if(b){addToCart(b.getAttribute('data-add'),b.getAttribute('data-type'),parseFloat(b.getAttribute('data-price')),b);}
+    if(b){
+      e.preventDefault();
+      e.stopPropagation();
+      addToCart(b.getAttribute('data-add'),b.getAttribute('data-type'),parseFloat(b.getAttribute('data-price')),b);
+    }
   });
   updateCartCount();renderQtyBadges();
 
@@ -104,7 +108,7 @@
     var cart=getCart();
     var total=0;cart.forEach(function(i){total+=i.price*i.qty;});
     var warn=document.getElementById('min-warn');
-    if(warn){
+    if(warn&&del&&del.length){
       var dv='minsk';
       del.forEach(function(r){if(r.checked){dv=r.value;}});
       var needMin=(dv==='post'||dv==='minsk');
