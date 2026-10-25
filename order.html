@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ПРОТОТИП · Как заказать</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="proto-bar">
+  <span class="proto-badge">ПРОТОТИП</span>
+  <a href="index.html">Главная</a> · <a href="catalog.html">Каталог</a> · <a href="about.html">О нас</a> · <a href="order.html">Как заказать</a> · <a href="sort.html">Карточка сорта</a>
+  <button id="qaToggle">Что обсуждаем</button>
+</div>
+<div class="qa" id="qa">
+  <div class="wrap">
+    <h2>Что обсуждаем</h2>
+    <ol>
+      <li><b>Схема заказа:</b> корзина даёт текст заявки (имя, телефон, список сортов) и номер заказа (последние 4 цифры телефона). Понятно ли, что дальше с ним делать?</li>
+      <li><b>Способы получения:</b> выдача, почта, рынок. Всё ли важно упомянуть?</li>
+      <li><b>Что покажем в тексте заявки:</b> сколько полей просить у клиента?</li>
+    </ol>
+  </div>
+</div>
+
+<div class="nav">
+  <div class="wrap">
+    <a class="logo" href="index.html">Питомник клубники</a>
+    <nav>
+      <a href="catalog.html">Каталог</a>
+      <a href="catalog.html?view=table">Прайс</a>
+      <a href="about.html">О нас</a>
+      <a href="order.html">Как заказать</a>
+    </nav>
+    <div class="right">
+      <a class="msgbtn tg" href="#">Telegram</a>
+      <a class="msgbtn vb" href="#">Viber</a>
+      <a class="tel" href="#">+375 29 000-00-00</a>
+    </div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="wrap" style="max-width:820px;">
+    <h2 style="font-size:26px;">Как заказать</h2>
+    <div class="lead" style="color:var(--tx2);margin-bottom:20px;">Через корзину на сайте: без 20-кратных звонков, всё в одном сообщении</div>
+
+    <div class="ordersteps">
+      <div class="o"><div class="num">1</div><div><b>Соберите заказ в корзине</b><p>Открывайте сорта, добавляйте нужное количество. Цена и наличие видны сразу.</p></div></div>
+      <div class="o"><div class="num">2</div><div><b>Получите текст заявки и номер заказа</b><p>Корзина соберёт готовое сообщение: ваше имя, телефон и список сортов. Номер заказа: последние 4 цифры вашего телефона, произносить его не нужно.</p></div></div>
+      <div class="o"><div class="num">3</div><div><b>Отправьте нам в Telegram или Viber</b><p>Скопируйте текст и отправьте одним сообщением. Мы ответим и согласуем время получения.</p></div></div>
+      <div class="o"><div class="num">4</div><div><b>Заберите или получите почтой</b><p>Минск, м. Каменная Горка, пн/чт 18:00-19:00, или отправка почтой по всей Беларуси от 75 руб.</p></div></div>
+    </div>
+
+    <div class="photo" style="max-width:420px;"><img src="img/main-box.jpg" alt="Фирменная коробка с рассадой"></div>
+    <p class="note" style="margin-top:8px;">Так выглядит наша отправочная коробка: ячейки, каждый стаканчик зафиксирован.</p>
+  </div>
+</div>
+
+<!-- Способы получения -->
+<div class="sec paper2">
+  <div class="wrap">
+    <h2>Способы получения</h2>
+    <div class="get3">
+      <div class="g"><div class="photo"><img src="img/pickup.jpg" alt="Коробки в пункте выдачи"></div><div class="in"><b>Минск, Каменная Горка</b><span>пн и чт, 18:00-19:00, у метро. Подходит для Минска и окрестностей</span></div></div>
+      <div class="g"><div class="photo"><img src="img/boxes.jpg" alt="Коробки для отправки почтой"></div><div class="in"><b>Почта по Беларуси</b><span>от 75 руб. Фирменная упаковка, доезжает: ячейки и фиксация каждого стаканчика</span></div></div>
+      <div class="g"><div class="photo"><img src="img/market.jpg" alt="Наш прилавок на рынке"></div><div class="in"><b>Рынок в Дзержинске</b><span>пт-вс. Заберите заказ сами или выберите на месте, консультация бесплатно</span></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- Контакты -->
+<div class="contacts">
+  <div class="wrap">
+    <div><h3>Связаться с нами</h3><p>+375 29 000-00-00 (приём заказов) · +375 29 000-00-00 (консультации)<br>klubnika.minsk.v@gmail.com · Telegram / Viber</p></div>
+    <div><h3>Оплата</h3><p>Сайт не интернет-магазин: заказ вы бронируете на сайте, детали и оплату согласуем в переписке при подтверждении.</p></div>
+  </div>
+</div>
+<div class="footer">© Питомник клубники, Минск · klubnika-minsk.by</div>
+
+<script src="app.js"></script>
+</body>
+</html>

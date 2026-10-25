@@ -1,0 +1,209 @@
+/* Onest, локально */
+@font-face{font-family:'Onest';src:url('fonts/onest-cyrillic-400.woff2') format('woff2');font-weight:400;font-style:normal;unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;}
+@font-face{font-family:'Onest';src:url('fonts/onest-latin-400.woff2') format('woff2');font-weight:400;font-style:normal;unicode-range:U+0000-00FF,U+0131,U+2013-2014,U+2018-201A,U+201C-201E,U+2026;}
+@font-face{font-family:'Onest';src:url('fonts/onest-cyrillic-500.woff2') format('woff2');font-weight:500;font-style:normal;unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;}
+@font-face{font-family:'Onest';src:url('fonts/onest-latin-500.woff2') format('woff2');font-weight:500;font-style:normal;unicode-range:U+0000-00FF,U+0131,U+2013-2014,U+2018-201A,U+201C-201E,U+2026;}
+@font-face{font-family:'Onest';src:url('fonts/onest-cyrillic-600.woff2') format('woff2');font-weight:600;font-style:normal;unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;}
+@font-face{font-family:'Onest';src:url('fonts/onest-latin-600.woff2') format('woff2');font-weight:600;font-style:normal;unicode-range:U+0000-00FF,U+0131,U+2013-2014,U+2018-201A,U+201C-201E,U+2026;}
+
+/* Flexoki light */
+:root{
+  --paper:#FFFCF0;--paper2:#F2F0E5;--ui:#E6E4D9;--ui2:#DAD8CE;--ui3:#CECDC3;
+  --tx:#100F0F;--tx2:#6F6E69;--tx3:#B6B2AC;
+  --red:#AF3029;--orange:#BC5215;--green:#66800B;--green-b:#3D9A50;--cyan:#24837B;--blue:#205E73;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--paper);color:var(--tx);font-family:'Onest',system-ui,sans-serif;font-size:16px;line-height:1.55;}
+a{color:var(--blue);}
+img{max-width:100%;}
+
+/* Панель прототипа */
+.proto-bar{background:var(--tx);color:var(--paper);padding:7px 12px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;font-size:13px;}
+.proto-badge{background:var(--orange);color:#fff;font-weight:600;font-size:11px;padding:2px 8px;border-radius:4px;letter-spacing:.5px;}
+.proto-bar a{color:#fff;}
+#qaToggle{background:none;border:1px solid var(--ui2);color:var(--paper);border-radius:6px;padding:3px 10px;font:inherit;font-size:12px;cursor:pointer;margin-left:auto;}
+
+/* Блок «Что обсуждаем» */
+.qa{background:var(--paper2);border-bottom:1px solid var(--ui2);padding:18px 16px;}
+.qa.hidden{display:none;}
+.qa .wrap{max-width:1080px;margin:0 auto;}
+.qa h2{font-size:18px;font-weight:600;margin-bottom:10px;}
+.qa ol{margin-left:20px;}
+.qa li{margin-bottom:6px;font-size:14.5px;}
+.qa .hint{margin-top:10px;font-size:12.5px;color:var(--tx2);}
+
+/* Навигация сайта */
+.nav{border-bottom:1.5px solid var(--ui2);background:var(--paper);}
+.nav .wrap{max-width:1080px;margin:0 auto;padding:12px 16px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+.nav .logo{font-weight:600;font-size:17px;text-decoration:none;color:var(--tx);margin-right:8px;}
+.nav nav{display:flex;gap:14px;flex-wrap:wrap;}
+.nav nav a{text-decoration:none;color:var(--tx2);font-size:14.5px;font-weight:500;padding:4px 2px;}
+.nav nav a.on{color:var(--tx);border-bottom:2px solid var(--red);}
+.nav .right{margin-left:auto;display:flex;gap:8px;align-items:center;flex-wrap:wrap;}
+.nav .tel{font-weight:600;text-decoration:none;color:var(--tx);font-size:15px;}
+.msgbtn{display:inline-flex;align-items:center;gap:5px;padding:6px 12px;border-radius:7px;font-size:13px;font-weight:600;text-decoration:none;color:#fff;}
+.msgbtn.tg{background:#2A7DA5;}
+.msgbtn.vb{background:#6C7BA8;}
+
+/* Общие */
+.wrap{max-width:1080px;margin:0 auto;padding:0 16px;}
+.sec{padding:34px 0;}
+.sec h2{font-size:24px;font-weight:600;margin-bottom:16px;}
+.sec .lead{color:var(--tx2);margin-bottom:18px;}
+.paper2{background:var(--paper2);border-top:1px solid var(--ui2);border-bottom:1px solid var(--ui2);}
+.btn{display:inline-block;padding:12px 22px;border-radius:8px;font-weight:600;font-size:15px;text-decoration:none;border:none;cursor:pointer;}
+.btn-primary{background:var(--red);color:#fff;}
+.btn-ghost{background:transparent;color:var(--tx);border:1.5px solid var(--tx);}
+.btn-sm{padding:8px 14px;font-size:13.5px;border-radius:6px;}
+.badge{display:inline-block;font-size:12px;font-weight:600;padding:2px 8px;border-radius:10px;border:1px solid var(--ui2);background:var(--paper2);color:var(--tx2);}
+.badge.st-yes{background:#E7F0D9;border-color:var(--green);color:var(--green);}
+.badge.st-no{background:#F5DDD9;border-color:var(--red);color:var(--red);}
+.badge.st-trial{background:#FAE9D8;border-color:var(--orange);color:var(--orange);}
+.badge.st-season{background:#D9E7EE;border-color:var(--cyan);color:var(--cyan);}
+.badge.new{background:#FBE3E1;border-color:var(--red);color:var(--red);}
+.photo{border-radius:10px;overflow:hidden;}
+.photo img{width:100%;height:100%;object-fit:cover;display:block;}
+
+/* Hero главной */
+.hero{padding:36px 0;}
+.hero .wrap{display:grid;grid-template-columns:1.15fr 1fr;gap:30px;align-items:center;}
+.hero .photo{min-height:320px;}
+.hero h1{font-size:33px;line-height:1.2;font-weight:600;margin-bottom:12px;}
+.hero .sub{color:var(--tx2);font-size:17px;margin-bottom:20px;}
+.hero .cta{display:flex;gap:12px;flex-wrap:wrap;}
+
+/* Счётчики */
+.counters .wrap{display:flex;gap:14px;flex-wrap:wrap;}
+.counters .c{flex:1;min-width:160px;background:var(--paper2);border:1px solid var(--ui2);border-radius:10px;padding:16px 18px;text-align:center;}
+.counters .c b{display:block;font-size:26px;font-weight:600;color:var(--red);}
+.counters .c span{font-size:13.5px;color:var(--tx2);}
+
+/* Сезонный индикатор */
+.season{background:#E7F0D9;border:1px solid var(--green);border-radius:12px;padding:16px 20px;display:flex;gap:14px;align-items:center;flex-wrap:wrap;}
+.season .dot{width:10px;height:10px;border-radius:50%;background:var(--green-b);box-shadow:0 0 0 4px #E7F0D9;}
+.season b{font-size:16px;}
+.season span{font-size:14px;color:var(--tx2);}
+
+/* Шаги */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.step{border:1px solid var(--ui2);border-radius:10px;padding:16px;background:var(--paper);}
+.step .n{color:var(--orange);font-weight:600;font-size:13px;}
+.step b{display:block;margin:4px 0;}
+.step span{font-size:14px;color:var(--tx2);}
+
+/* Сорта */
+.sortgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+.sortcard{border:1px solid var(--ui2);border-radius:10px;overflow:hidden;background:var(--paper);text-decoration:none;color:var(--tx);display:block;}
+.sortcard .photo{height:150px;border-radius:0;}
+.sortcard .in{padding:12px;}
+.sortcard b{font-size:15.5px;}
+.sortcard .row{display:flex;justify-content:space-between;align-items:center;margin-top:7px;font-size:14px;gap:6px;flex-wrap:wrap;}
+.sortcard .price{font-weight:600;}
+.sortcard.all .in{padding:16px;}
+.sortcard.all b{font-size:16px;display:block;margin-bottom:4px;}
+.sortcard.all span{font-size:13.5px;color:var(--tx2);}
+
+/* ЗКС */
+.zks{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.zks .z{border:1px solid var(--ui2);border-radius:12px;padding:18px;background:var(--paper);}
+.zks .z.good{background:#F4F8EA;border-color:var(--green);}
+.zks .z .ic{font-size:30px;margin-bottom:6px;}
+.zks .z b{display:block;margin-bottom:4px;font-size:16px;}
+.zks .z p{font-size:14px;color:var(--tx2);}
+.zks .z.good b{color:var(--green);}
+
+/* Траст */
+.trust .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;padding:26px 16px;}
+.trust .t{font-size:14px;}
+.trust .t b{display:block;font-size:15px;margin-bottom:3px;}
+.trust .t .dot{width:8px;height:8px;border-radius:50%;background:var(--green);display:inline-block;margin-right:6px;}
+
+/* Каталог */
+.cats{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;}
+.cat{padding:8px 14px;border-radius:20px;border:1.5px solid var(--ui2);font-size:14px;font-weight:500;cursor:default;background:var(--paper);}
+.cat.on{background:var(--green);color:#fff;border-color:var(--green);}
+.viewswitch{display:inline-flex;border:1.5px solid var(--tx);border-radius:8px;overflow:hidden;margin-bottom:18px;}
+.viewswitch button{border:none;background:var(--paper);color:var(--tx);padding:9px 18px;font:inherit;font-size:14.5px;font-weight:600;cursor:pointer;}
+.viewswitch button.on{background:var(--tx);color:var(--paper);}
+.tableview{display:none;}
+.tableview.on{display:block;}
+.tileview.on{display:block;}
+.tileview{display:none;}
+.ptable{width:100%;border-collapse:collapse;font-size:15px;}
+.ptable th{text-align:left;font-size:12px;text-transform:uppercase;letter-spacing:.5px;color:var(--tx2);padding:8px 10px;border-bottom:2px solid var(--tx);}
+.ptable td{padding:12px 10px;border-bottom:1px solid var(--ui2);}
+.ptable .name{font-weight:600;font-size:16px;}
+.ptable .price{font-weight:600;white-space:nowrap;}
+.note{font-size:13px;color:var(--tx2);margin-top:10px;}
+
+/* Отзыв */
+.quote{border-left:4px solid var(--green);padding:6px 0 6px 18px;color:var(--tx2);font-size:18px;font-style:italic;max-width:720px;}
+.quote .who{font-size:13px;font-style:normal;color:var(--tx3);margin-top:6px;}
+
+/* Как получить */
+.get3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.get3 .g{border:1px solid var(--ui2);border-radius:10px;overflow:hidden;background:var(--paper);}
+.get3 .photo{height:140px;border-radius:0;}
+.get3 .in{padding:14px;}
+.get3 b{display:block;margin-bottom:3px;}
+.get3 span{font-size:13.5px;color:var(--tx2);}
+
+/* FAQ тизер */
+.faq3 details{border:1px solid var(--ui2);border-radius:8px;padding:12px 16px;margin-bottom:10px;background:var(--paper);}
+.faq3 summary{font-weight:600;font-size:15px;cursor:pointer;}
+.faq3 p{font-size:14.5px;color:var(--tx2);margin-top:8px;}
+
+/* О нас */
+.story{max-width:760px;margin:0 auto;}
+.story .block{padding:22px 0;}
+.story .block h2{font-size:25px;font-weight:600;margin-bottom:10px;}
+.story .block p{font-size:16.5px;margin-bottom:10px;}
+.story .photo{margin:14px 0;min-height:240px;}
+.await{border:1.5px dashed var(--tx3);border-radius:10px;padding:14px 16px;font-size:14px;color:var(--tx2);margin:14px 0;}
+
+/* Карточка сорта */
+.k-bc{font-size:13.5px;color:var(--tx2);margin-bottom:14px;}
+.k-bc a{text-decoration:none;}
+.k1{display:grid;grid-template-columns:1.1fr 1fr;gap:26px;}
+.k1 .photo{min-height:320px;}
+.k1 h1{font-size:32px;font-weight:600;margin-bottom:10px;}
+.k1 .meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;}
+.k1 .buy{display:flex;gap:10px;align-items:center;margin:16px 0;flex-wrap:wrap;}
+.k1 .buy .price{font-size:26px;font-weight:600;}
+.k1 .buy .note{font-size:12.5px;color:var(--tx2);width:100%;}
+.k1 .specs{width:100%;border-collapse:collapse;font-size:14.5px;margin-top:6px;}
+.k1 .specs td{padding:8px 10px;border-bottom:1px solid var(--ui2);}
+.k1 .specs td:first-child{color:var(--tx2);width:45%;}
+.k1 .desc{margin-top:14px;font-size:15px;}
+
+/* Как заказать */
+.ordersteps{counter-reset:os;}
+.ordersteps .o{display:flex;gap:14px;margin-bottom:18px;align-items:flex-start;}
+.ordersteps .o .num{flex:0 0 34px;height:34px;border-radius:50%;background:var(--red);color:#fff;font-weight:600;display:flex;align-items:center;justify-content:center;}
+.ordersteps .o b{display:block;margin-bottom:2px;}
+.ordersteps .o p{font-size:14.5px;color:var(--tx2);}
+.orderways .photo{height:170px;}
+
+/* Контакты/футер */
+.contacts{padding:28px 0;}
+.contacts .wrap{display:grid;grid-template-columns:1fr 1fr;gap:24px;font-size:15px;}
+.contacts h3{font-size:16px;margin-bottom:8px;}
+.contacts p{color:var(--tx2);}
+.footer{border-top:1px solid var(--ui2);padding:16px;font-size:13px;color:var(--tx3);}
+
+@media(max-width:860px){
+  .hero .wrap{grid-template-columns:1fr;}
+  .hero h1{font-size:26px;}
+  .steps,.zks{grid-template-columns:1fr;}
+  .sortgrid{grid-template-columns:1fr 1fr;}
+  .trust .wrap{grid-template-columns:1fr 1fr;}
+  .get3{grid-template-columns:1fr;}
+  .contacts .wrap{grid-template-columns:1fr;}
+  .k1{grid-template-columns:1fr;}
+  .counters .c{min-width:130px;}
+  .hide-m{display:none;}
+}
+@media(max-width:520px){
+  .sortgrid{grid-template-columns:1fr;}
+  .trust .wrap{grid-template-columns:1fr;}
+}

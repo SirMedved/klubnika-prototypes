@@ -1,545 +1,168 @@
 <!DOCTYPE html>
-<html lang="ru" class="f-golos">
+<html lang="ru">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ПРОТОТИП: сайт питомника клубники — выбор дизайна</title>
-<style>
-/* ============ Шрифты (локально, без CDN) ============ */
-@font-face{font-family:'Golos Text';src:url('fonts/golos-text-cyrillic-400.woff2') format('woff2');font-weight:400;font-style:normal;unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;}
-@font-face{font-family:'Golos Text';src:url('fonts/golos-text-latin-400.woff2') format('woff2');font-weight:400;font-style:normal;unicode-range:U+0000-00FF,U+0131,U+2013-2014,U+2018-201A,U+201C-201E,U+2026;}
-@font-face{font-family:'Golos Text';src:url('fonts/golos-text-cyrillic-500.woff2') format('woff2');font-weight:500;font-style:normal;unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;}
-@font-face{font-family:'Golos Text';src:url('fonts/golos-text-latin-500.woff2') format('woff2');font-weight:500;font-style:normal;unicode-range:U+0000-00FF,U+0131,U+2013-2014,U+2018-201A,U+201C-201E,U+2026;}
-@font-face{font-family:'Golos Text';src:url('fonts/golos-text-cyrillic-600.woff2') format('woff2');font-weight:600;font-style:normal;unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;}
-@font-face{font-family:'Golos Text';src:url('fonts/golos-text-latin-600.woff2') format('woff2');font-weight:600;font-style:normal;unicode-range:U+0000-00FF,U+0131,U+2013-2014,U+2018-201A,U+201C-201E,U+2026;}
-@font-face{font-family:'Onest';src:url('fonts/onest-cyrillic-400.woff2') format('woff2');font-weight:400;font-style:normal;unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;}
-@font-face{font-family:'Onest';src:url('fonts/onest-latin-400.woff2') format('woff2');font-weight:400;font-style:normal;unicode-range:U+0000-00FF,U+0131,U+2013-2014,U+2018-201A,U+201C-201E,U+2026;}
-@font-face{font-family:'Onest';src:url('fonts/onest-cyrillic-500.woff2') format('woff2');font-weight:500;font-style:normal;unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;}
-@font-face{font-family:'Onest';src:url('fonts/onest-latin-500.woff2') format('woff2');font-weight:500;font-style:normal;unicode-range:U+0000-00FF,U+0131,U+2013-2014,U+2018-201A,U+201C-201E,U+2026;}
-@font-face{font-family:'Onest';src:url('fonts/onest-cyrillic-600.woff2') format('woff2');font-weight:600;font-style:normal;unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;}
-@font-face{font-family:'Onest';src:url('fonts/onest-latin-600.woff2') format('woff2');font-weight:600;font-style:normal;unicode-range:U+0000-00FF,U+0131,U+2013-2014,U+2018-201A,U+201C-201E,U+2026;}
-
-/* ============ Flexoki light ============ */
-:root{
-  --paper:#FFFCF0;--paper2:#F2F0E5;--ui:#E6E4D9;--ui2:#DAD8CE;--ui3:#CECDC3;
-  --tx:#100F0F;--tx2:#6F6E69;--tx3:#B6B2AC;
-  --red:#AF3029;--orange:#BC5215;--green:#66800B;--green-b:#3D9A50;--cyan:#24837B;--blue:#205E73;
-}
-html.f-golos body{font-family:'Golos Text',system-ui,sans-serif;}
-html.f-onest body{font-family:'Onest',system-ui,sans-serif;}
-*{margin:0;padding:0;box-sizing:border-box;}
-body{background:var(--paper);color:var(--tx);font-size:16px;line-height:1.55;}
-a{color:var(--blue);}
-
-/* ============ Панель прототипа ============ */
-.proto-bar{position:sticky;top:0;z-index:100;background:var(--paper2);border-bottom:2px solid var(--tx);padding:8px 12px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;}
-.proto-badge{background:var(--orange);color:#fff;font-weight:600;font-size:12px;padding:3px 8px;border-radius:4px;letter-spacing:.5px;}
-.proto-group{display:flex;gap:4px;align-items:center;flex-wrap:wrap;}
-.proto-label{font-size:11px;color:var(--tx2);font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-right:2px;}
-.pbtn{border:1.5px solid var(--ui2);background:var(--paper);color:var(--tx);padding:6px 12px;border-radius:6px;font:inherit;font-size:14px;font-weight:500;cursor:pointer;}
-.pbtn:hover{border-color:var(--tx2);}
-.pbtn.on{background:var(--tx);color:var(--paper);border-color:var(--tx);}
-.proto-note{font-size:12px;color:var(--tx2);}
-#qaToggle{margin-left:auto;}
-
-/* ============ Блок «Что обсуждаем» ============ */
-.qa{background:var(--paper2);border-bottom:1px solid var(--ui2);padding:20px 16px;}
-.qa.hidden{display:none;}
-.qa h2{font-size:20px;font-weight:600;margin-bottom:12px;}
-.qa ol{margin-left:20px;max-width:760px;}
-.qa li{margin-bottom:8px;font-size:15px;}
-.qa .hint{margin-top:12px;font-size:13px;color:var(--tx2);}
-
-/* ============ Общее для вариантов ============ */
-.variant{display:none;}
-.variant.on{display:block;}
-section.proto-section{border-top:3px dashed var(--ui2);}
-.sec-head{max-width:1080px;margin:0 auto;padding:24px 16px 8px;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;}
-.sec-head h2{font-size:22px;font-weight:600;}
-.sec-head .variants-name{color:var(--tx2);font-size:14px;}
-.ph{background:linear-gradient(135deg,var(--ui) 0%,var(--ui2) 100%);border:1.5px dashed var(--tx3);border-radius:10px;display:flex;align-items:center;justify-content:center;text-align:center;color:var(--tx2);font-size:13px;padding:12px;min-height:60px;}
-.ph.photo{border:none;background:none;padding:0;overflow:hidden;}
-.ph.photo img{width:100%;height:100%;object-fit:cover;display:block;border-radius:10px;}
-.badge{display:inline-block;font-size:12px;font-weight:600;padding:2px 8px;border-radius:10px;border:1px solid var(--ui2);background:var(--paper2);color:var(--tx2);}
-.badge.st-yes{background:#E7F0D9;border-color:var(--green);color:var(--green);}
-.badge.st-no{background:#F5DDD9;border-color:var(--red);color:var(--red);}
-.badge.st-trial{background:#FAE9D8;border-color:var(--orange);color:var(--orange);}
-.badge.st-season{background:#D9E7EE;border-color:var(--cyan);color:var(--cyan);}
-.btn{display:inline-block;padding:12px 22px;border-radius:8px;font-weight:600;font-size:15px;text-decoration:none;border:none;cursor:pointer;}
-.btn-primary{background:var(--red);color:#fff;}
-.btn-ghost{background:transparent;color:var(--tx);border:1.5px solid var(--tx);}
-.btn-sm{padding:8px 14px;font-size:13px;border-radius:6px;}
-.wrap{max-width:1080px;margin:0 auto;padding:0 16px;}
-
-/* ============ Вариант A: Визитка ============ */
-.a-top{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;max-width:1080px;margin:0 auto;gap:12px;flex-wrap:wrap;}
-.a-logo{font-weight:600;font-size:18px;}
-.a-top nav{display:flex;gap:16px;font-size:14px;}
-.a-top nav a{text-decoration:none;color:var(--tx2);}
-.a-top .tel{font-weight:600;text-decoration:none;}
-.a-hero{max-width:1080px;margin:0 auto;padding:0 16px;display:grid;grid-template-columns:1.2fr 1fr;gap:28px;align-items:center;padding-bottom:36px;}
-.a-hero .ph{min-height:300px;font-size:14px;}
-.a-hero h1{font-size:34px;line-height:1.2;font-weight:600;margin-bottom:14px;}
-.a-hero .sub{color:var(--tx2);font-size:17px;margin-bottom:22px;}
-.a-hero .cta{display:flex;gap:12px;flex-wrap:wrap;}
-.a-trust{background:var(--paper2);border-top:1px solid var(--ui2);border-bottom:1px solid var(--ui2);}
-.a-trust .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;padding:26px 16px;}
-.a-trust .t{font-size:14px;}
-.a-trust .t b{display:block;font-size:15px;margin-bottom:3px;}
-.a-trust .t .dot{width:8px;height:8px;border-radius:50%;background:var(--green);display:inline-block;margin-right:6px;}
-.a-newbies{max-width:1080px;margin:0 auto;padding:36px 16px;}
-.a-newbies h2{font-size:24px;font-weight:600;margin-bottom:6px;}
-.a-newbies .lead{color:var(--tx2);margin-bottom:20px;}
-.a-newbies .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
-.a-newbies .step{border:1px solid var(--ui2);border-radius:10px;padding:16px;background:var(--paper);}
-.a-newbies .step .n{color:var(--orange);font-weight:600;font-size:13px;}
-.a-newbies .step b{display:block;margin:4px 0;}
-.a-newbies .step span{font-size:14px;color:var(--tx2);}
-.a-hits{max-width:1080px;margin:0 auto;padding:0 16px 36px;}
-.a-hits h2{font-size:24px;font-weight:600;margin-bottom:16px;}
-.a-hits .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
-.a-hits .card{border:1px solid var(--ui2);border-radius:10px;overflow:hidden;background:var(--paper);}
-.a-hits .card .ph{min-height:110px;border-radius:0;border:none;border-bottom:1px solid var(--ui2);}
-.a-hits .card .in{padding:12px;}
-.a-hits .card b{font-size:15px;}
-.a-hits .card .row{display:flex;justify-content:space-between;align-items:center;margin-top:8px;font-size:14px;}
-.a-hits .card .price{font-weight:600;}
-.a-contacts{background:var(--paper2);border-top:1px solid var(--ui2);}
-.a-contacts .wrap{display:grid;grid-template-columns:1fr 1fr;gap:24px;padding:28px 16px;font-size:15px;}
-.a-contacts h3{font-size:16px;margin-bottom:8px;}
-.a-contacts p{color:var(--tx2);}
-.a-footer{max-width:1080px;margin:0 auto;padding:16px;font-size:13px;color:var(--tx3);}
-
-/* ============ Вариант B: Каталог-первым ============ */
-.b-top{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;max-width:1080px;margin:0 auto;gap:10px;flex-wrap:wrap;border-bottom:2px solid var(--tx);}
-.b-trustline{background:var(--paper2);border-bottom:1px solid var(--ui2);padding:10px 16px;font-size:13.5px;color:var(--tx2);text-align:center;}
-.b-trustline b{color:var(--tx);}
-.b-cats{max-width:1080px;margin:0 auto;padding:18px 16px 6px;display:flex;gap:8px;flex-wrap:wrap;}
-.b-cats .cat{padding:8px 14px;border-radius:20px;border:1.5px solid var(--ui2);font-size:14px;font-weight:500;cursor:default;}
-.b-cats .cat.on{background:var(--green);color:#fff;border-color:var(--green);}
-.b-table{max-width:1080px;margin:0 auto;padding:8px 16px 30px;}
-.b-table table{width:100%;border-collapse:collapse;font-size:15px;}
-.b-table th{text-align:left;font-size:12px;text-transform:uppercase;letter-spacing:.5px;color:var(--tx2);padding:8px 10px;border-bottom:2px solid var(--tx);}
-.b-table td{padding:12px 10px;border-bottom:1px solid var(--ui2);}
-.b-table .name{font-weight:600;font-size:16px;}
-.b-table .price{font-weight:600;white-space:nowrap;}
-.b-table .go{color:var(--blue);text-decoration:none;font-weight:500;}
-.b-newbie{max-width:1080px;margin:0 auto;padding:0 16px 28px;}
-.b-newbie .box{background:var(--paper2);border:1px solid var(--ui2);border-radius:10px;padding:18px;font-size:15px;}
-.b-newbie .box b{display:block;margin-bottom:4px;}
-.b-contacts{max-width:1080px;margin:0 auto;padding:0 16px 30px;display:grid;grid-template-columns:1fr 1fr;gap:20px;font-size:14.5px;}
-.b-contacts h3{font-size:15px;margin-bottom:6px;}
-.b-contacts p{color:var(--tx2);}
-
-/* ============ Вариант C: История ============ */
-.c-hero{max-width:900px;margin:0 auto;padding:44px 16px 20px;text-align:center;}
-.c-hero h1{font-size:40px;line-height:1.15;font-weight:600;margin-bottom:12px;}
-.c-hero p{color:var(--tx2);font-size:18px;}
-.c-hero .ph{margin-top:24px;min-height:280px;}
-.c-block{max-width:760px;margin:0 auto;padding:26px 16px;}
-.c-block h2{font-size:26px;font-weight:600;margin-bottom:10px;}
-.c-block p{font-size:16.5px;margin-bottom:10px;}
-.c-block .ph{margin:14px 0;min-height:240px;}
-.c-quote{border-left:4px solid var(--green);padding:6px 0 6px 16px;color:var(--tx2);font-size:17px;font-style:italic;margin:22px 0;}
-.c-cta{background:var(--paper2);border-top:1px solid var(--ui2);}
-.c-cta .wrap{max-width:760px;margin:0 auto;padding:32px 16px;text-align:center;}
-.c-cta h2{font-size:24px;font-weight:600;margin-bottom:14px;}
-.c-cta .cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:14px;}
-.c-cta .small{font-size:13.5px;color:var(--tx2);}
-
-/* ============ Вариант D: Прайс-лист ============ */
-.d-top{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;max-width:1080px;margin:0 auto;border-bottom:1.5px solid var(--ui2);gap:10px;flex-wrap:wrap;}
-.d-filters{max-width:1080px;margin:0 auto;padding:14px 16px;display:flex;gap:8px;flex-wrap:wrap;font-size:13.5px;}
-.d-filters .f{padding:6px 12px;border:1px solid var(--ui2);border-radius:6px;color:var(--tx2);cursor:default;}
-.d-filters .f.on{background:var(--tx);color:var(--paper);border-color:var(--tx);}
-.d-table{max-width:1080px;margin:0 auto;padding:0 16px 24px;}
-.d-table table{width:100%;border-collapse:collapse;font-size:14.5px;}
-.d-table th{text-align:left;font-size:11.5px;text-transform:uppercase;letter-spacing:.5px;color:var(--tx2);padding:7px 8px;border-bottom:2px solid var(--tx);}
-.d-table td{padding:9px 8px;border-bottom:1px solid var(--ui2);}
-.d-table .name{font-weight:600;font-size:15px;}
-.d-table .price{font-weight:600;white-space:nowrap;}
-.d-conditions{max-width:1080px;margin:0 auto;padding:0 16px 30px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;font-size:14px;}
-.d-conditions .c{border:1px solid var(--ui2);border-radius:8px;padding:14px;}
-.d-conditions b{display:block;margin-bottom:4px;font-size:14.5px;}
-.d-conditions span{color:var(--tx2);}
-
-/* ============ Карточки сорта ============ */
-.k-bc{max-width:1080px;margin:0 auto;padding:16px 16px 0;font-size:13.5px;color:var(--tx2);}
-.k-bc a{text-decoration:none;}
-.k1{max-width:1080px;margin:0 auto;padding:16px;display:grid;grid-template-columns:1.1fr 1fr;gap:26px;}
-.k1 .ph{min-height:320px;}
-.k1 h1{font-size:32px;font-weight:600;margin-bottom:10px;}
-.k1 .meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;}
-.k1 .buy{display:flex;gap:10px;align-items:center;margin:16px 0;flex-wrap:wrap;}
-.k1 .buy .price{font-size:26px;font-weight:600;}
-.k1 .buy .note{font-size:12.5px;color:var(--tx2);}
-.k1 .specs{width:100%;border-collapse:collapse;font-size:14.5px;margin-top:6px;}
-.k1 .specs td{padding:8px 10px;border-bottom:1px solid var(--ui2);}
-.k1 .specs td:first-child{color:var(--tx2);width:45%;}
-.k1 .desc{margin-top:14px;font-size:15px;color:var(--tx);}
-.k2{max-width:820px;margin:0 auto;padding:20px 16px 34px;}
-.k2 h1{font-size:30px;font-weight:600;margin-bottom:10px;}
-.k2 .meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px;}
-.k2 p{font-size:16px;margin-bottom:12px;}
-.k2 .phs{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0;}
-.k2 .ph{min-height:140px;}
-.k2 .specs{columns:2;column-gap:24px;font-size:14.5px;margin:14px 0 20px;}
-.k2 .specs div{break-inside:avoid;padding:7px 0;border-bottom:1px solid var(--ui2);}
-.k2 .specs b{font-weight:500;color:var(--tx2);display:block;font-size:12.5px;}
-.k2 .cta{display:flex;gap:12px;align-items:center;flex-wrap:wrap;}
-.k2 .cta .price{font-size:24px;font-weight:600;}
-.k3{max-width:760px;margin:0 auto;padding:20px 16px 34px;}
-.k3 .head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;margin-bottom:12px;}
-.k3 h1{font-size:26px;font-weight:600;}
-.k3 .price{font-size:22px;font-weight:600;white-space:nowrap;}
-.k3 .ph{min-height:170px;margin-bottom:12px;}
-.k3 table{width:100%;border-collapse:collapse;font-size:14.5px;margin-bottom:12px;}
-.k3 td{padding:7px 8px;border-bottom:1px solid var(--ui2);}
-.k3 td:first-child{color:var(--tx2);width:50%;}
-.k3 p{font-size:15px;margin-bottom:14px;}
-.k3 .cta{display:flex;gap:10px;flex-wrap:wrap;}
-.cardnote{max-width:1080px;margin:0 auto;padding:6px 16px 30px;font-size:13px;color:var(--tx2);}
-
-/* ============ Адаптив ============ */
-@media(max-width:860px){
-  .a-hero{grid-template-columns:1fr;}
-  .a-trust .wrap{grid-template-columns:1fr 1fr;}
-  .a-newbies .steps{grid-template-columns:1fr;}
-  .a-hits .grid{grid-template-columns:1fr 1fr;}
-  .a-contacts .wrap{grid-template-columns:1fr;}
-  .b-contacts{grid-template-columns:1fr;}
-  .d-conditions{grid-template-columns:1fr;}
-  .k1{grid-template-columns:1fr;}
-  .k2 .specs{columns:1;}
-  .k2 .phs{grid-template-columns:1fr 1fr;}
-  .a-hero h1{font-size:27px;}
-  .c-hero h1{font-size:30px;}
-  .b-table .hide-m,.d-table .hide-m{display:none;}
-}
-@media(max-width:520px){
-  .a-hits .grid{grid-template-columns:1fr;}
-  .a-trust .wrap{grid-template-columns:1fr;}
-  .k2 .phs{grid-template-columns:1fr;}
-}
-</style>
+<title>ПРОТОТИП · Питомник клубники — главная</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- Панель прототипа: не часть дизайна сайта -->
 <div class="proto-bar">
   <span class="proto-badge">ПРОТОТИП</span>
-  <span class="proto-note">выбор дизайна, выбранный вариант попадёт в ТЗ</span>
-  <div class="proto-group">
-    <span class="proto-label">Главная:</span>
-    <button class="pbtn on" data-home="a">A Визитка</button>
-    <button class="pbtn" data-home="b">B Каталог</button>
-    <button class="pbtn" data-home="c">C История</button>
-    <button class="pbtn" data-home="d">D Прайс</button>
-  </div>
-  <div class="proto-group">
-    <span class="proto-label">Карточка:</span>
-    <button class="pbtn on" data-card="1">1 Досье</button>
-    <button class="pbtn" data-card="2">2 Биография</button>
-    <button class="pbtn" data-card="3">3 Паспорт</button>
-  </div>
-  <div class="proto-group">
-    <span class="proto-label">Шрифт:</span>
-    <button class="pbtn on" data-font="f-golos">Golos</button>
-    <button class="pbtn" data-font="f-onest">Onest</button>
-  </div>
-  <button class="pbtn" id="qaToggle">Что обсуждаем</button>
+  <a href="index.html">Главная</a> · <a href="catalog.html">Каталог</a> · <a href="about.html">О нас</a> · <a href="order.html">Как заказать</a> · <a href="sort.html">Карточка сорта</a>
+  <button id="qaToggle">Что обсуждаем</button>
 </div>
-
-<!-- Что обсуждаем -->
 <div class="qa" id="qa">
-  <h2>Что обсуждаем (список для родителей)</h2>
-  <ol>
-    <li><b>Какая главная заходит больше?</b> A Визитка (крупное фото, кнопки), B Каталог (сорта сразу), C История (рассказ о питомнике), D Прайс (таблица как сейчас, но красивее).</li>
-    <li><b>Какая карточка сорта понятнее?</b> 1 Досье (фото + таблица характеристик), 2 Биография (текст + фото в ряд), 3 Паспорт (всё компактно в одной таблице).</li>
-    <li><b>Шрифт.</b> Кнопка «Шрифт» в панели: Golos против Onest. Каким текст читается приятнее?</li>
-    <li><b>Что из доверия цепляет сильнее всего?</b> Фото плантации, коробки при отправке, Дожинки, объяснение ЗКС простыми словами?</li>
-    <li><b>Чего не хватает и что убрать?</b></li>
-  </ol>
-  <p class="hint">Два фото уже настоящие, с текущего сайта: фирменная коробка с рассадой (визитка) и ягоды Сан-Андреас. Остальные фото и списки сортов пока заглушки: реальные снимки и каталог приедут от родителей и с Тильды. Цены реальные: 2,5 руб КСД / 3 руб НСД.</p>
+  <div class="wrap">
+    <h2>Что обсуждаем</h2>
+    <ol>
+      <li><b>Главная:</b> блоки и их порядок: шаги новичка, популярные сорта, сезонная полоса, схема ЗКС, отзыв, счётчики. Что зашло, что лишнее?</li>
+      <li><b>Каталог:</b> плитки или прайс-таблица? Переключатель стоит прямо на странице каталога, потыкайте оба вида.</li>
+      <li><b>О нас и Как заказать:</b> понятна ли схема заказа (корзина даёт текст заявки и номер, отправляете нам в Telegram/Viber)?</li>
+      <li><b>Навигация:</b> понятно ли, где что искать?</li>
+      <li><b>Чего не хватает и что убрать?</b></li>
+    </ol>
+    <p class="hint">Все фото настоящие, с текущего сайта. Сорта и характеристики: заглушки, реальный список приедет с Тильды. Цены реальные: 2,5 руб КСД / 3 руб НСД.</p>
+  </div>
 </div>
 
-<!-- ================= ГЛАВНАЯ ================= -->
-<section class="proto-section" id="home">
-  <div class="sec-head"><h2>Главная страница</h2><span class="variants-name" id="homeName">вариант A «Визитка»</span></div>
-
-  <!-- ===== A ВИЗИТКА ===== -->
-  <div class="variant on" id="home-a">
-    <div class="a-top">
-      <div class="a-logo">Питомник клубники · klubnika-minsk.by</div>
-      <nav><a href="#">Каталог</a><a href="#">Как заказать</a><a href="#">О нас</a><a href="#">Контакты</a></nav>
+<div class="nav">
+  <div class="wrap">
+    <a class="logo" href="index.html">Питомник клубники</a>
+    <nav>
+      <a href="catalog.html">Каталог</a>
+      <a href="catalog.html?view=table">Прайс</a>
+      <a href="about.html">О нас</a>
+      <a href="order.html">Как заказать</a>
+    </nav>
+    <div class="right">
+      <a class="msgbtn tg" href="#">Telegram</a>
+      <a class="msgbtn vb" href="#">Viber</a>
       <a class="tel" href="#">+375 29 000-00-00</a>
     </div>
-    <div class="a-hero">
-      <div>
-        <h1>Рассада клубники ЗКС, выращенная на нашей плантации</h1>
-        <div class="sub">Сами выращиваем, сами отправляем. Минск и вся Беларусь. Закрытая корневая система в стаканчиках 0,4 л.</div>
-        <div class="cta"><a class="btn btn-primary" href="#">Смотреть каталог</a><a class="btn btn-ghost" href="#">Как заказать</a></div>
-      </div>
-      <div class="ph photo"><img src="img/photo-main.jpg" alt="Рассада клубники ЗКС в фирменной коробке"></div>
-    </div>
-    <div class="a-trust">
-      <div class="wrap">
-        <div class="t"><b><span class="dot"></span>Сами выращиваем</b>Своя плантация, свой посадочный материал, никакой перепродажи</div>
-        <div class="t"><b><span class="dot"></span>ЗКС в стаканчиках</b>Объяснение: что такое закрытая корневая и почему она лучше открытой</div>
-        <div class="t"><b><span class="dot"></span>Участники «Дожинок»</b>Фото и видео с республиканского фестиваля-ярмарки</div>
-        <div class="t"><b><span class="dot"></span>Отправка по РБ</b>Почтой от 75 руб, аккуратная упаковка, коробка, которую не спутаешь</div>
-      </div>
-    </div>
-    <div class="a-newbies">
-      <h2>Впервые сажаете клубнику?</h2>
-      <div class="lead">Мы подскажем на каждом шаге: от выбора сорта до первого урожая</div>
-      <div class="steps">
-        <div class="step"><span class="n">Шаг 1</span><b>Выберите сорт</b><span>Расскажем, что взять новичку: неприхотливое, ароматное, устойчивое</span></div>
-        <div class="step"><span class="n">Шаг 2</span><b>Оформите заказ</b><span>Корзина на сайте соберёт список, вам останется отправить его нам в Telegram или Viber</span></div>
-        <div class="step"><span class="n">Шаг 3</span><b>Заберите или получите</b><span>Минск, м. Каменная Горка, пн/чт 18:00-19:00, или почта по всей Беларуси</span></div>
-      </div>
-    </div>
-    <div class="a-hits">
-      <h2>Популярные сорта</h2>
-      <div class="grid">
-        <div class="card"><div class="ph photo"><img src="img/photo-sort.jpg" alt="Ягоды на грядке"></div><div class="in"><b>Хоней</b><div class="row"><span class="badge">ультраранний</span><span class="price">2,50 руб</span></div><div class="row"><span class="badge st-yes">есть</span><a href="#">подробнее</a></div></div></div>
-        <div class="card"><div class="ph photo"><img src="img/photo-sort.jpg" alt="Ягоды на грядке"></div><div class="in"><b>Альбион</b><div class="row"><span class="badge">ремонтантный</span><span class="price">3,00 руб</span></div><div class="row"><span class="badge st-yes">есть</span><a href="#">подробнее</a></div></div></div>
-        <div class="card"><div class="ph photo"><img src="img/photo-sort.jpg" alt="Ягоды на грядке"></div><div class="in"><b>Мальвина</b><div class="row"><span class="badge">поздний</span><span class="price">2,50 руб</span></div><div class="row"><span class="badge st-no">нет</span><a href="#">подробнее</a></div></div></div>
-        <div class="card"><div class="ph photo"><img src="img/photo-sort.jpg" alt="Ягоды на грядке"></div><div class="in"><b>Флёр</b><div class="row"><span class="badge">средний</span><span class="price">2,50 руб</span></div><div class="row"><span class="badge st-trial">на испытании</span><a href="#">подробнее</a></div></div></div>
-      </div>
-    </div>
-    <div class="a-contacts">
-      <div class="wrap">
-        <div><h3>Выдача заказов</h3><p>Минск, метро Каменная Горка: понедельник и четверг, 18:00-19:00. Рынок в Дзержинске: пятница-воскресенье. Почта по РБ от 75 руб.</p></div>
-        <div><h3>Связаться с нами</h3><p>+375 29 000-00-00 (приём заказов) · +375 29 000-00-00 (консультации) · klubnika.minsk.v@gmail.com · Telegram / Viber</p></div>
-      </div>
-    </div>
-    <div class="a-footer">© Питомник клубники, Минск</div>
   </div>
+</div>
 
-  <!-- ===== B КАТАЛОГ-ПЕРВЫМ ===== -->
-  <div class="variant" id="home-b">
-    <div class="b-top">
-      <div class="a-logo">Питомник клубники · klubnika-minsk.by</div>
-      <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
-        <a class="tel" href="#" style="font-weight:600;text-decoration:none;">+375 29 000-00-00</a>
-        <a class="btn btn-primary btn-sm" href="#">Как заказать</a>
-      </div>
+<!-- Hero: визитка -->
+<div class="hero">
+  <div class="wrap">
+    <div>
+      <h1>Рассада клубники ЗКС, выращенная на нашей плантации</h1>
+      <div class="sub">Сами выращиваем, сами отправляем. Минск и вся Беларусь. Закрытая корневая система в стаканчиках 0,4 л.</div>
+      <div class="cta"><a class="btn btn-primary" href="catalog.html">Смотреть каталог</a><a class="btn btn-ghost" href="order.html">Как заказать</a></div>
     </div>
-    <div class="b-trustline"><b>Сами выращиваем</b> · ЗКС в стаканчиках 0,4 л · участники «Дожинок» · отправка почтой по РБ от 75 руб</div>
-    <div class="b-cats">
-      <span class="cat on">Все</span><span class="cat">Ультраранние</span><span class="cat">Ранние</span><span class="cat">Средние</span><span class="cat">Поздние</span><span class="cat">Ремонтантные</span>
-    </div>
-    <div class="b-table">
-      <table>
-        <tr><th>Сорт</th><th>Категория</th><th>Тип</th><th>Цена</th><th>Наличие</th><th></th></tr>
-        <tr><td class="name">Хоней</td><td>ультраранний</td><td>КСД</td><td class="price">2,50 руб</td><td><span class="badge st-yes">есть</span></td><td><a class="go" href="#">открыть</a></td></tr>
-        <tr><td class="name">Клери</td><td>ранний</td><td>КСД</td><td class="price">2,50 руб</td><td><span class="badge st-yes">есть</span></td><td><a class="go" href="#">открыть</a></td></tr>
-        <tr><td class="name">Азия</td><td>средний</td><td>КСД</td><td class="price">2,50 руб</td><td><span class="badge st-yes">есть</span></td><td><a class="go" href="#">открыть</a></td></tr>
-        <tr><td class="name">Флёр</td><td>средний</td><td>КСД</td><td class="price">2,50 руб</td><td><span class="badge st-trial">на испытании</span></td><td><a class="go" href="#">открыть</a></td></tr>
-        <tr><td class="name">Мальвина</td><td>поздний</td><td>КСД</td><td class="price">2,50 руб</td><td><span class="badge st-no">нет</span></td><td><a class="go" href="#">открыть</a></td></tr>
-        <tr><td class="name">Сан-Андреас</td><td>ремонтантный</td><td>НСД</td><td class="price">3,00 руб</td><td><span class="badge st-season">сезонный: авг-окт</span></td><td><a class="go" href="#">открыть</a></td></tr>
-        <tr><td class="name">Альбион</td><td>ремонтантный</td><td>НСД</td><td class="price">3,00 руб</td><td><span class="badge st-yes">есть</span></td><td><a class="go" href="#">открыть</a></td></tr>
-      </table>
-      <div style="margin-top:10px;font-size:13px;color:var(--tx2);">В полном каталоге около 100 сортов. Набор здесь заглушка для макета.</div>
-    </div>
-    <div class="b-newbie">
-      <div class="box"><b>Впервые сажаете?</b>Подскажем, какой сорт взять новичку, и поможем с посадкой: у нас консультации по телефону и на рынке. Лучше недолить, чем перелить: про капельный полив тоже расскажем.</div>
-    </div>
-    <div class="b-contacts">
-      <div><h3>Выдача и отправка</h3><p>Минск, м. Каменная Горка, пн/чт 18:00-19:00 · рынок Дзержинск пт-вс · почта по РБ от 75 руб</p></div>
-      <div><h3>Контакты</h3><p>+375 29 000-00-00 (заказы) · +375 29 000-00-00 (консультации) · Telegram / Viber · klubnika.minsk.v@gmail.com</p></div>
+    <div class="photo"><img src="img/main-box.jpg" alt="Рассада клубники ЗКС в фирменной коробке"></div>
+  </div>
+</div>
+
+<!-- Счётчики -->
+<div class="counters sec" style="padding-top:6px;">
+  <div class="wrap">
+    <div class="c"><b>5 лет</b>питомнику</div>
+    <div class="c"><b>~100</b>сортов в каталоге</div>
+    <div class="c"><b>ЗКС</b>стаканчики 0,4 л</div>
+    <div class="c"><b>по всей</b>Беларуси отправляем</div>
+  </div>
+</div>
+
+<!-- Сезон -->
+<div class="sec" style="padding-top:0;">
+  <div class="wrap">
+    <div class="season"><span class="dot"></span><b>Заказы принимаем круглый год</b><span>два сезона посадки: весна и осень, ближе к сезону скажем точные даты выдачи</span></div>
+  </div>
+</div>
+
+<!-- Шаги новичка -->
+<div class="sec" style="padding-top:0;">
+  <div class="wrap">
+    <h2>Впервые сажаете клубнику?</h2>
+    <div class="lead">Мы подскажем на каждом шаге: от выбора сорта до первого урожая</div>
+    <div class="steps">
+      <div class="step"><span class="n">Шаг 1</span><b>Выберите сорт</b><span>Расскажем, что взять новичку: неприхотливое, ароматное, устойчивое</span></div>
+      <div class="step"><span class="n">Шаг 2</span><b>Соберите заказ</b><span>Корзина соберёт список сортов и даст номер заказа, вам останется отправить его нам</span></div>
+      <div class="step"><span class="n">Шаг 3</span><b>Заберите или получите</b><span>Минск, м. Каменная Горка, пн/чт 18:00-19:00, или почта по всей Беларуси</span></div>
     </div>
   </div>
+</div>
 
-  <!-- ===== C ИСТОРИЯ ===== -->
-  <div class="variant" id="home-c">
-    <div class="c-hero">
-      <h1>Мы выращиваем клубнику, которой сами гордимся</h1>
-      <p>Питомник в Минском районе. Рассада ЗКС в стаканчиках, отправка по всей Беларуси.</p>
-      <div class="ph photo"><img src="img/photo-main.jpg" alt="Фирменная коробка с рассадой"></div>
-    </div>
-    <div class="c-block">
-      <h2>Это наша плантация</h2>
-      <p>Всё, что мы продаём, выращено у нас: от маточных кустов до готовой рассады. Каждый сезон начинаем со своей плантации, поэтому мы знаем каждую партию лично.</p>
-      <div class="ph">Фото: ряды плантации крупным планом</div>
-      <p>Рассада с закрытой корневой системой живёт в стаканчике: корни не пересыхают и не травмируются при посадке. Приживается почти вся, старт даёт быстро. Открытая корневая в пучке такого старта не даёт.</p>
-    </div>
-    <div class="c-block">
-      <h2>Коробка, которую не спутаешь</h2>
-      <p>Для отправки мы собираем коробку, которая доезжает: прокладки, влажные корни, фиксация. Покупатели пишут, что по коробке сразу видно: люди вложили и мозги, и руки.</p>
-      <div class="ph photo"><img src="img/photo-main.jpg" alt="Собранная коробка с рассадой"></div>
-    </div>
-    <div class="c-block">
-      <h2>«Дожинки»</h2>
-      <p>Мы участвуем в республиканском фестивале-ярмарке «Дожинки» со своей ягодой и рассадой.</p>
-      <div class="ph">Фото или видео: стенд на «Дожинках»</div>
-      <div class="c-quote">«Лучше недолить, чем перелить» — папа, про капельный полив, каждую консультацию на рынке</div>
-    </div>
-    <div class="c-cta">
-      <div class="wrap">
-        <h2>Выберите свой сорт</h2>
-        <div class="cta"><a class="btn btn-primary" href="#">Открыть каталог</a><a class="btn btn-ghost" href="#">Позвонить и спросить</a></div>
-        <div class="small">Новичкам подскажем: какой сорт взять, как посадить, как не залить. Минск, м. Каменная Горка, пн/чт 18:00-19:00 · почта по РБ от 75 руб</div>
-      </div>
+<!-- Популярные сорта -->
+<div class="sec paper2">
+  <div class="wrap">
+    <h2>Популярные сорта</h2>
+    <div class="sortgrid">
+      <a class="sortcard" href="sort.html"><div class="photo"><img src="img/sort-san.jpg" alt="Ягоды Сан-Андреас"></div><div class="in"><b>Сан-Андреас</b><div class="row"><span class="badge">ремонтантный</span><span class="price">3,00 руб</span></div><div class="row"><span class="badge st-season">сезонный: авг-окт</span></div></div></a>
+      <a class="sortcard" href="sort.html"><div class="photo"><img src="img/sort-alb.jpg" alt="Ягоды Альбиона"></div><div class="in"><b>Альбион</b><div class="row"><span class="badge">ремонтантный</span><span class="price">3,00 руб</span></div><div class="row"><span class="badge st-yes">есть</span></div></div></a>
+      <a class="sortcard" href="sort.html"><div class="photo"><img src="img/sort-tray.jpg" alt="Ягоды на грядке"></div><div class="in"><b>Хоней</b><div class="row"><span class="badge">ультраранний</span><span class="price">2,50 руб</span></div><div class="row"><span class="badge st-yes">есть</span></div></div></a>
+      <a class="sortcard all" href="catalog.html"><div class="photo"><img src="img/plant.jpg" alt="Плантация питомника"></div><div class="in"><b>Все сорта</b><span>около 100 сортов: ультраранние, ранние, средние, поздние, ремонтантные</span></div></a>
     </div>
   </div>
+</div>
 
-  <!-- ===== D ПРАЙС-ЛИСТ ===== -->
-  <div class="variant" id="home-d">
-    <div class="d-top">
-      <div class="a-logo">Питомник клубники</div>
-      <div style="display:flex;gap:10px;flex-wrap:wrap;">
-        <a class="btn btn-ghost btn-sm" href="#">Как заказать</a>
-        <a class="tel" href="#" style="font-weight:600;text-decoration:none;align-self:center;">+375 29 000-00-00</a>
-      </div>
-    </div>
-    <div class="d-filters">
-      <span class="f on">Все сорта</span><span class="f">В наличии</span><span class="f">На испытании</span><span class="f">Сезонные</span><span class="f">Ультраранние</span><span class="f">Ранние</span><span class="f">Средние</span><span class="f">Поздние</span><span class="f">Ремонтантные</span>
-    </div>
-    <div class="d-table">
-      <table>
-        <tr><th>Сорт</th><th>Категория</th><th class="hide-m">Тип</th><th>Цена</th><th>Статус</th><th></th></tr>
-        <tr><td class="name">Хоней</td><td>ультраранний</td><td class="hide-m">КСД</td><td class="price">2,50</td><td><span class="badge st-yes">есть</span></td><td><a class="go" href="#">→</a></td></tr>
-        <tr><td class="name">Клери</td><td>ранний</td><td class="hide-m">КСД</td><td class="price">2,50</td><td><span class="badge st-yes">есть</span></td><td><a class="go" href="#">→</a></td></tr>
-        <tr><td class="name">Азия</td><td>средний</td><td class="hide-m">КСД</td><td class="price">2,50</td><td><span class="badge st-yes">есть</span></td><td><a class="go" href="#">→</a></td></tr>
-        <tr><td class="name">Флёр</td><td>средний</td><td class="hide-m">КСД</td><td class="price">2,50</td><td><span class="badge st-trial">на испытании</span></td><td><a class="go" href="#">→</a></td></tr>
-        <tr><td class="name">Мальвина</td><td>поздний</td><td class="hide-m">КСД</td><td class="price">2,50</td><td><span class="badge st-no">нет</span></td><td><a class="go" href="#">→</a></td></tr>
-        <tr><td class="name">Сан-Андреас</td><td>ремонтантный</td><td class="hide-m">НСД</td><td class="price">3,00</td><td><span class="badge st-season">сезонный: авг-окт</span></td><td><a class="go" href="#">→</a></td></tr>
-        <tr><td class="name">Альбион</td><td>ремонтантный</td><td class="hide-m">НСД</td><td class="price">3,00</td><td><span class="badge st-yes">есть</span></td><td><a class="go" href="#">→</a></td></tr>
-      </table>
-      <div style="margin-top:8px;font-size:13px;color:var(--tx2);">Полный список ~100 сортов откроется в каталоге; здесь показан фрагмент для макета.</div>
-    </div>
-    <div class="d-conditions">
-      <div class="c"><b>Выдача в Минске</b><span>метро Каменная Горка, пн/чт 18:00-19:00</span></div>
-      <div class="c"><b>Почта по Беларуси</b><span>от 75 руб, аккуратная упаковка</span></div>
-      <div class="c"><b>Рынок в Дзержинске</b><span>пятница-воскресенье, консультации на месте</span></div>
+<!-- ЗКС простыми словами -->
+<div class="sec">
+  <div class="wrap">
+    <h2>Что такое ЗКС и почему это важно</h2>
+    <div class="zks">
+      <div class="z good"><div class="ic">🥣</div><b>ЗКС: стаканчик с землёй</b><p>Корни живут в своём коме земли, не пересыхают и не рвутся при посадке. Растение почти не замечает переезда и сразу идёт в рост.</p></div>
+      <div class="z"><div class="ic">🌾</div><b>Открытая корневая: пучок</b><p>Рассада с голыми корнями в пакете. Дешевле, но корни пересыхают и травмируются, приживаемость и старт хуже.</p></div>
     </div>
   </div>
-</section>
+</div>
 
-<!-- ================= КАРТОЧКА СОРТА ================= -->
-<section class="proto-section" id="card">
-  <div class="sec-head"><h2>Карточка сорта</h2><span class="variants-name" id="cardName">вариант 1 «Досье» (сорт-пример: Альбион)</span></div>
-
-  <!-- ===== 1 ДОСЬЕ ===== -->
-  <div class="variant on" id="card-1">
-    <div class="k-bc"><a href="#">Каталог</a> / <a href="#">Ремонтантные</a> / Альбион</div>
-    <div class="k1">
-      <div class="ph photo"><img src="img/photo-sort.jpg" alt="Ягоды Сан-Андреас"></div>
-      <div>
-        <h1>Альбион</h1>
-        <div class="meta">
-          <span class="badge">ремонтантный</span><span class="badge">НСД</span>
-          <span class="badge st-yes">есть в наличии</span>
-        </div>
-        <div class="buy">
-          <span class="price">3,00 руб</span>
-          <a class="btn btn-primary btn-sm" href="#">Добавить в заказ</a>
-          <a class="btn btn-ghost btn-sm" href="#">Позвонить</a>
-        </div>
-        <div class="note" style="font-size:12.5px;color:var(--tx2);">Заказ собирается в корзине, дальше список уходит нам в Telegram или Viber</div>
-        <table class="specs">
-          <tr><td>Категория</td><td>ремонтантная (НСД)</td></tr>
-          <tr><td>Ягода</td><td>крупная, конус, тёмно-красная</td></tr>
-          <tr><td>Вкус и аромат</td><td>насыщенный, сладкий</td></tr>
-          <tr><td>Урожайность</td><td>примерно 1 кг с куста за сезон</td></tr>
-          <tr><td>Плодоношение</td><td>волнами с июня до октября</td></tr>
-          <tr><td>Транспортабельность</td><td>высокая, ягода плотная</td></tr>
-        </table>
-        <p class="desc">Один из самых надёжных ремонтантных сортов: ровная крупная ягода, которая не раскисает в дороге, и долгое плодоношение волнами. Хорошо держит урожай и в жару.</p>
-      </div>
-    </div>
-    <div class="cardnote">Характеристики в таблице: заглушки-примеры. Реальные значения согласуем: папа хочет описывать каждый сорт позитивно, «как один из лучших».</div>
+<!-- Отзыв -->
+<div class="sec paper2">
+  <div class="wrap">
+    <h2>Что говорят покупатели</h2>
+    <div class="quote">«Такую коробку просто так не сделаешь. Это значит, люди вложили и мозги, и руки»<div class="who">покупатель, из переписки с питомником</div></div>
   </div>
+</div>
 
-  <!-- ===== 2 БИОГРАФИЯ ===== -->
-  <div class="variant" id="card-2">
-    <div class="k-bc"><a href="#">Каталог</a> / <a href="#">Ремонтантные</a> / Альбион</div>
-    <div class="k2">
-      <h1>Альбион: ровная крупная ягода до самого октября</h1>
-      <div class="meta">
-        <span class="badge">ремонтантный</span><span class="badge">НСД</span>
-        <span class="badge st-yes">есть в наличии</span><span class="badge" style="border-color:var(--green);color:var(--green);">3,00 руб</span>
-      </div>
-      <p>Альбион один из тех сортов, за которые не стыдно: крупная конусная ягода тёмно-красного цвета, плотная, с насыщенным сладким вкусом. Плодоносит волнами с июня до октября, поэтому свежая клубника на грядке держится весь сезон.</p>
-      <p>Ягода плотная, дорогу переносит отлично: собрал утром, вечером она всё ещё товарная. Для тех, кто везёт урожай с дачи или продаёт, это главный аргумент.</p>
-      <div class="phs">
-        <div class="ph photo"><img src="img/photo-sort.jpg" alt="Ягоды"></div><div class="ph">фото: куст с урожаем</div><div class="ph">фото: рассада ЗКС</div>
-      </div>
-      <div class="specs">
-        <div><b>Категория</b>ремонтантная (НСД)</div>
-        <div><b>Ягода</b>крупная, конус, тёмно-красная</div>
-        <div><b>Вкус</b>насыщенный, сладкий</div>
-        <div><b>Урожайность</b>примерно 1 кг с куста за сезон</div>
-        <div><b>Плодоношение</b>волнами, июнь-октябрь</div>
-        <div><b>Транспортабельность</b>высокая</div>
-      </div>
-      <div class="cta">
-        <span class="price">3,00 руб</span>
-        <a class="btn btn-primary" href="#">Добавить в заказ</a>
-        <a class="btn btn-ghost btn-sm" href="#">Позвонить и спросить</a>
-      </div>
+<!-- О нас тизер -->
+<div class="sec">
+  <div class="wrap" style="display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:center;">
+    <div class="photo"><img src="img/plant.jpg" alt="Плантация питомника"></div>
+    <div>
+      <h2 style="margin-bottom:8px;">Мы выращиваем, которым сами гордимся</h2>
+      <p style="color:var(--tx2);margin-bottom:16px;">Питомник в Минском районе: маточные кусты, своя рассада, отправка по всей Беларуси. Участники республиканской ярмарки «Дожинки».</p>
+      <a class="btn btn-ghost btn-sm" href="about.html">О нас подробнее</a>
     </div>
   </div>
+</div>
 
-  <!-- ===== 3 ПАСПОРТ ===== -->
-  <div class="variant" id="card-3">
-    <div class="k-bc"><a href="#">Каталог</a> / <a href="#">Ремонтантные</a> / Альбион</div>
-    <div class="k3">
-      <div class="head">
-        <h1>Альбион</h1>
-        <div style="text-align:right;">
-          <div class="price">3,00 руб</div>
-          <span class="badge st-yes">есть</span>
-        </div>
-      </div>
-      <div class="ph photo"><img src="img/photo-sort.jpg" alt="Ягоды Альбиона"></div>
-      <table>
-        <tr><td>Категория</td><td>ремонтантная (НСД)</td></tr>
-        <tr><td>Ягода</td><td>крупная, конус, тёмно-красная</td></tr>
-        <tr><td>Вкус и аромат</td><td>насыщенный, сладкий</td></tr>
-        <tr><td>Урожайность</td><td>примерно 1 кг с куста за сезон</td></tr>
-        <tr><td>Плодоношение</td><td>волнами, июнь-октябрь</td></tr>
-        <tr><td>Транспортабельность</td><td>высокая</td></tr>
-      </table>
-      <p>Ремонтантный сорт с ровной крупной ягодой: плотная, сладкая, отлично переносит дорогу. Плодоносит волнами всё лето и осень.</p>
-      <div class="cta">
-        <a class="btn btn-primary btn-sm" href="#">Добавить в заказ</a>
-        <a class="btn btn-ghost btn-sm" href="#">Позвонить</a>
-      </div>
+<!-- FAQ тизер -->
+<div class="sec paper2">
+  <div class="wrap">
+    <h2>Частые вопросы</h2>
+    <div class="faq3">
+      <details><summary>Сорта не переопыляются между собой?</summary><p>Нет, каждый сорт плодоносит своими ягодами. Подробный ответ появится на странице FAQ.</p></details>
+      <details><summary>Как часто поливать рассаду?</summary><p>Лучше недолить, чем перелить: наша самая частая консультация про капельный полив. Развернём в FAQ.</p></details>
+      <details><summary>Чем ЗКС лучше открытой корневой?</summary><p>Корни в стаканчике не пересыхают и не травмируются, приживаемость выше. Схема выше на главной.</p></details>
     </div>
   </div>
-</section>
+</div>
 
-<script>
-(function(){
-  var params=new URLSearchParams(location.search);
-  var home=params.get('home')||'a', card=params.get('card')||'1';
-  var homeNames={a:'вариант A «Визитка»',b:'вариант B «Каталог»',c:'вариант C «История»',d:'вариант D «Прайс»'};
-  var cardNames={'1':'вариант 1 «Досье» (сорт-пример: Альбион)','2':'вариант 2 «Биография» (сорт-пример: Альбион)','3':'вариант 3 «Паспорт» (сорт-пример: Альбион)'};
-  function show(group,val,secId,nameEl,names){
-    document.querySelectorAll('[data-'+group+']').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-'+group)===val);});
-    document.querySelectorAll('#'+secId+' .variant').forEach(function(v){v.classList.toggle('on',v.id===secId+'-'+val);});
-    document.getElementById(nameEl).textContent=names[val];
-    params.set(group,val);
-    history.replaceState(null,'',location.pathname+'?'+params.toString());
-  }
-  document.querySelectorAll('[data-home]').forEach(function(b){b.addEventListener('click',function(){show('home',b.getAttribute('data-home'),'home','homeName',homeNames);});});
-  document.querySelectorAll('[data-card]').forEach(function(b){b.addEventListener('click',function(){show('card',b.getAttribute('data-card'),'card','cardName',cardNames);});});
-  document.querySelectorAll('[data-font]').forEach(function(b){b.addEventListener('click',function(){
-    document.querySelectorAll('[data-font]').forEach(function(x){x.classList.toggle('on',x===b);});
-    document.documentElement.className=b.getAttribute('data-font');
-    params.set('font',b.getAttribute('data-font'));
-    history.replaceState(null,'',location.pathname+'?'+params.toString());
-  });});
-  document.getElementById('qaToggle').addEventListener('click',function(){document.getElementById('qa').classList.toggle('hidden');});
-  // применить состояние из URL
-  show('home',home,'home','homeName',homeNames);
-  show('card',card,'card','cardName',cardNames);
-  var font=params.get('font');
-  if(font){document.querySelectorAll('[data-font]').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-font')===font);});document.documentElement.className=font;}
-})();
-</script>
+<!-- Как получить -->
+<div class="sec">
+  <div class="wrap">
+    <h2>Как получить заказ</h2>
+    <div class="get3">
+      <div class="g"><div class="photo"><img src="img/pickup.jpg" alt="Коробки в пункте выдачи"></div><div class="in"><b>Минск, Каменная Горка</b><span>пн и чт, 18:00-19:00, у метро</span></div></div>
+      <div class="g"><div class="photo"><img src="img/boxes.jpg" alt="Коробки для отправки"></div><div class="in"><b>Почта по Беларуси</b><span>от 75 руб, фирменная упаковка</span></div></div>
+      <div class="g"><div class="photo"><img src="img/market.jpg" alt="Наш прилавок на рынке"></div><div class="in"><b>Рынок в Дзержинске</b><span>пт-вс, консультации на месте</span></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- Контакты -->
+<div class="contacts paper2">
+  <div class="wrap">
+    <div><h3>Связаться с нами</h3><p>+375 29 000-00-00 (приём заказов) · +375 29 000-00-00 (консультации)<br>klubnika.minsk.v@gmail.com · Telegram / Viber</p></div>
+    <div><h3>Выдача заказов</h3><p>Минск, метро Каменная Горка: понедельник и четверг, 18:00-19:00<br>Рынок в Дзержинске: пятница-воскресенье</p></div>
+  </div>
+</div>
+<div class="footer">© Питомник клубники, Минск · klubnika-minsk.by</div>
+
+<script src="app.js"></script>
 </body>
 </html>

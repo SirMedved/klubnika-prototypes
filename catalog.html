@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ПРОТОТИП · Каталог</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="proto-bar">
+  <span class="proto-badge">ПРОТОТИП</span>
+  <a href="index.html">Главная</a> · <a href="catalog.html">Каталог</a> · <a href="about.html">О нас</a> · <a href="order.html">Как заказать</a> · <a href="sort.html">Карточка сорта</a>
+  <button id="qaToggle">Что обсуждаем</button>
+</div>
+<div class="qa" id="qa">
+  <div class="wrap">
+    <h2>Что обсуждаем</h2>
+    <ol>
+      <li><b>Вид каталога:</b> плитки с фото или прайс-таблица? Переключатель ниже, потыкайте оба. Или нужен вход с двух видов сразу?</li>
+      <li><b>Плитки:</b> что должно быть на карточке: фото, цена, статус, новинка?</li>
+      <li><b>Прайс:</b> хватает ли колонок: сорт, категория, тип, цена, статус?</li>
+      <li><b>Категории:</b> удобно ли выбирать сверху?</li>
+    </ol>
+    <p class="hint">Фото настоящие, сорта: заглушки. В полном каталоге около 100 сортов.</p>
+  </div>
+</div>
+
+<div class="nav">
+  <div class="wrap">
+    <a class="logo" href="index.html">Питомник клубники</a>
+    <nav>
+      <a href="catalog.html">Каталог</a>
+      <a href="catalog.html?view=table">Прайс</a>
+      <a href="about.html">О нас</a>
+      <a href="order.html">Как заказать</a>
+    </nav>
+    <div class="right">
+      <a class="msgbtn tg" href="#">Telegram</a>
+      <a class="msgbtn vb" href="#">Viber</a>
+      <a class="tel" href="#">+375 29 000-00-00</a>
+    </div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="wrap">
+    <h2 style="font-size:26px;">Каталог сортов</h2>
+    <div class="cats">
+      <span class="cat on">Все</span><span class="cat">Ультраранние</span><span class="cat">Ранние</span><span class="cat">Средние</span><span class="cat">Поздние</span><span class="cat">Ремонтантные</span>
+    </div>
+    <div class="viewswitch">
+      <button data-view="tiles" class="on">Плитки с фото</button>
+      <button data-view="table">Прайс-таблица</button>
+    </div>
+
+    <!-- Вид: плитки -->
+    <div class="tileview on" id="view-tiles">
+      <div class="sortgrid">
+        <a class="sortcard" href="sort.html"><div class="photo"><img src="img/sort-san.jpg" alt=""></div><div class="in"><b>Сан-Андреас</b><div class="row"><span class="badge">ремонтантный</span><span class="price">3,00 руб</span></div><div class="row"><span class="badge st-season">сезонный: авг-окт</span><span class="badge new">новинка</span></div></div></a>
+        <a class="sortcard" href="sort.html"><div class="photo"><img src="img/sort-alb.jpg" alt=""></div><div class="in"><b>Альбион</b><div class="row"><span class="badge">ремонтантный</span><span class="price">3,00 руб</span></div><div class="row"><span class="badge st-yes">есть</span></div></div></a>
+        <a class="sortcard" href="sort.html"><div class="photo"><img src="img/sort-tray.jpg" alt=""></div><div class="in"><b>Хоней</b><div class="row"><span class="badge">ультраранний</span><span class="price">2,50 руб</span></div><div class="row"><span class="badge st-yes">есть</span></div></div></a>
+        <a class="sortcard" href="sort.html"><div class="photo"><img src="img/sort-alb.jpg" alt=""></div><div class="in"><b>Клери</b><div class="row"><span class="badge">ранний</span><span class="price">2,50 руб</span></div><div class="row"><span class="badge st-yes">есть</span></div></div></a>
+        <a class="sortcard" href="sort.html"><div class="photo"><img src="img/sort-tray.jpg" alt=""></div><div class="in"><b>Азия</b><div class="row"><span class="badge">средний</span><span class="price">2,50 руб</span></div><div class="row"><span class="badge st-yes">есть</span></div></div></a>
+        <a class="sortcard" href="sort.html"><div class="photo"><img src="img/sort-san.jpg" alt=""></div><div class="in"><b>Флёр</b><div class="row"><span class="badge">средний</span><span class="price">2,50 руб</span></div><div class="row"><span class="badge st-trial">на испытании</span></div></div></a>
+        <a class="sortcard" href="sort.html"><div class="photo"><img src="img/sort-tray.jpg" alt=""></div><div class="in"><b>Мальвина</b><div class="row"><span class="badge">поздний</span><span class="price">2,50 руб</span></div><div class="row"><span class="badge st-no">нет</span></div></div></a>
+        <a class="sortcard" href="sort.html"><div class="photo"><img src="img/sort-alb.jpg" alt=""></div><div class="in"><b>Полка</b><div class="row"><span class="badge">средний</span><span class="price">2,50 руб</span></div><div class="row"><span class="badge st-yes">есть</span><span class="badge new">новинка</span></div></div></a>
+      </div>
+      <div class="note">В полном каталоге около 100 сортов. Фото в плитках: заглушки-повторы, у каждого сорта будет своё фото.</div>
+    </div>
+
+    <!-- Вид: прайс -->
+    <div class="tableview" id="view-table">
+      <table class="ptable">
+        <tr><th>Сорт</th><th>Категория</th><th class="hide-m">Тип</th><th>Цена</th><th>Статус</th><th></th></tr>
+        <tr><td class="name">Хоней</td><td>ультраранний</td><td class="hide-m">КСД</td><td class="price">2,50</td><td><span class="badge st-yes">есть</span></td><td><a href="sort.html">открыть</a></td></tr>
+        <tr><td class="name">Клери</td><td>ранний</td><td class="hide-m">КСД</td><td class="price">2,50</td><td><span class="badge st-yes">есть</span></td><td><a href="sort.html">открыть</a></td></tr>
+        <tr><td class="name">Азия</td><td>средний</td><td class="hide-m">КСД</td><td class="price">2,50</td><td><span class="badge st-yes">есть</span></td><td><a href="sort.html">открыть</a></td></tr>
+        <tr><td class="name">Полка</td><td>средний</td><td class="hide-m">КСД</td><td class="price">2,50</td><td><span class="badge st-yes">есть</span> <span class="badge new">новинка</span></td><td><a href="sort.html">открыть</a></td></tr>
+        <tr><td class="name">Флёр</td><td>средний</td><td class="hide-m">КСД</td><td class="price">2,50</td><td><span class="badge st-trial">на испытании</span></td><td><a href="sort.html">открыть</a></td></tr>
+        <tr><td class="name">Мальвина</td><td>поздний</td><td class="hide-m">КСД</td><td class="price">2,50</td><td><span class="badge st-no">нет</span></td><td><a href="sort.html">открыть</a></td></tr>
+        <tr><td class="name">Сан-Андреас</td><td>ремонтантный</td><td class="hide-m">НСД</td><td class="price">3,00</td><td><span class="badge st-season">сезонный: авг-окт</span> <span class="badge new">новинка</span></td><td><a href="sort.html">открыть</a></td></tr>
+        <tr><td class="name">Альбион</td><td>ремонтантный</td><td class="hide-m">НСД</td><td class="price">3,00</td><td><span class="badge st-yes">есть</span></td><td><a href="sort.html">открыть</a></td></tr>
+      </table>
+      <div class="note">Полный прайс откроется из выгрузки с Тильды: около 100 сортов в пяти категориях.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Контакты -->
+<div class="contacts paper2">
+  <div class="wrap">
+    <div><h3>Связаться с нами</h3><p>+375 29 000-00-00 (приём заказов) · +375 29 000-00-00 (консультации)<br>klubnika.minsk.v@gmail.com · Telegram / Viber</p></div>
+    <div><h3>Выдача заказов</h3><p>Минск, метро Каменная Горка: понедельник и четверг, 18:00-19:00<br>Рынок в Дзержинске: пятница-воскресенье</p></div>
+  </div>
+</div>
+<div class="footer">© Питомник клубники, Минск · klubnika-minsk.by</div>
+
+<script src="app.js"></script>
+</body>
+</html>
