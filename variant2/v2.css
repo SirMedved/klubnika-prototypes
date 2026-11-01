@@ -78,7 +78,7 @@ header.site{background:var(--bg2);padding:14px 16px 10px;display:flex;gap:18px;a
 .so.ig{background:#C13584}.so.em{background:#100F0F}.so.tg{background:#26A5E4}.so.vb{background:#7360F2}.so.wa{background:#25D366}
 .so svg{width:20px;height:20px}
 .so:hover{filter:brightness(.9)}
-.navribbon{background:linear-gradient(180deg,#F0CC5A 0%,#DDB02C 100%);border:1px solid rgba(28,27,26,.25);border-top-width:2px;max-width:1200px;margin:0 auto}
+.navribbon{background:linear-gradient(180deg,#E3B61F 0%,#C7950D 100%);border:1px solid rgba(28,27,26,.3);border-radius:8px;max-width:1200px;margin:14px auto}
 nav.main{margin:0 auto;max-width:1200px;display:flex;flex-wrap:wrap;justify-content:center;align-items:stretch;padding:6px 0}
 nav.main a{color:var(--tx);text-decoration:none;font-weight:600;font-size:18px;letter-spacing:.5px;padding:12px 18px;text-transform:uppercase;display:flex;align-items:center}
 nav.main a:hover{color:var(--red-d)}
@@ -117,10 +117,11 @@ h3.sec{font-size:22px;font-weight:600;margin:34px 0 14px}
 .btn.add.added{background:#1C6C66}
 
 /* ---------- футер ---------- */
-footer.site{margin-top:36px;background:var(--bg2);border-top:1px solid rgba(28,27,26,.15);padding:18px 20px}
-.foot-row{max-width:1200px;margin:0 auto;display:flex;gap:24px;flex-wrap:wrap;align-items:center;justify-content:space-between;font-size:15px}
-.foot-row .links{display:flex;gap:16px;flex-wrap:wrap}
+footer.site{margin-top:36px;background:var(--bg2);border-top:1px solid rgba(28,27,26,.15);padding:26px 24px}
+.foot-row{max-width:1200px;margin:0 auto;display:flex;gap:24px;flex-wrap:wrap;align-items:center;justify-content:space-between;font-size:19px}
+.foot-row .links{display:flex;gap:20px;flex-wrap:wrap;align-items:center}
 .foot-row a{color:var(--tx);text-decoration:none}
 .foot-row a:hover{color:var(--red-d)}
-.foot-row .cp{color:var(--tx2);font-size:13px}
-footer.site .so{width:34px;height:34px;font-size:14px}
+.foot-row .cp{color:var(--tx2);font-size:16px}
+footer.site .so{width:40px;height:40px}
+footer.site .so svg{width:20px;height:20px}
