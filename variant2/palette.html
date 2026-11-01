@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Палитра-кандидат: жёлто-голубая + красные акценты (Flexoki)</title>
+<style>
+:root{
+  /* Flexoki base, light */
+  --paper:#FFFCF0;--paper2:#F2F0E5;--ui:#F7F5ED;--ui2:#E6E4D9;--ui3:#DAD8CE;
+  --tx:#1C1B1A;--tx2:#6F6E69;--tx3:#B7B5AC;
+  /* Жёлтый (семейный основной) */
+  --ye50:#FAEEC6;--ye100:#F6E2A0;--ye200:#ECCB60;--ye300:#DFB431;
+  --ye400:#D0A215;--ye500:#BE9207;--ye600:#AD8301;--ye700:#8E6B01;
+  /* Голубой */
+  --bl50:#E1ECEB;--bl100:#C6DDE8;--bl200:#92BFDB;--bl300:#66A0C8;
+  --bl400:#4385BE;--bl500:#3171B2;--bl600:#205EA6;--bl700:#1A4F8C;
+  /* Красный (акценты) */
+  --re100:#FFCABB;--re300:#E8705F;--re400:#D14D41;--re500:#C03E35;--re600:#AF3029;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--paper);color:var(--tx);font-family:'Onest',system-ui,sans-serif;font-size:16px;line-height:1.5;padding:24px}
+h1{font-size:24px;font-weight:600;margin-bottom:4px}
+.sub{color:var(--tx2);margin-bottom:28px;max-width:70ch}
+h2{font-size:18px;font-weight:600;margin:32px 0 12px;padding-bottom:6px;border-bottom:2px solid var(--ui2)}
+.row{display:flex;flex-wrap:wrap;gap:8px}
+.sw{width:104px;border:1px solid var(--ui3);border-radius:6px;overflow:hidden;background:#fff}
+.sw .chip{height:64px}
+.sw .meta{padding:5px 7px;font-size:11px;line-height:1.4}
+.sw .meta b{display:block;font-size:12px}
+.sw .meta span{color:var(--tx2)}
+.note{font-size:13px;color:var(--tx2);margin:10px 0 4px;max-width:80ch}
+
+/* превью ролей */
+.preview{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:8px}
+.panel{border:1px solid var(--ui3);border-radius:8px;padding:14px;background:var(--paper2)}
+.panel h3{font-size:14px;font-weight:600;margin-bottom:10px;color:var(--tx2)}
+
+/* левая колонка: большие кнопки, как у SK */
+.cats{display:flex;flex-direction:column;gap:8px}
+.cat{display:block;padding:12px 14px;border-radius:8px;font-weight:600;font-size:14px;text-decoration:none}
+.cat.y{background:var(--ye100);color:var(--tx);border:2px solid var(--ye400)}
+.cat.y:hover{background:var(--ye200)}
+.cat.b{background:var(--bl100);color:var(--tx);border:2px solid var(--bl400)}
+.cat.b:hover{background:var(--bl200)}
+.cat.new{position:relative}
+.cat .flag{position:absolute;right:10px;top:50%;transform:translateY(-50%);background:var(--re600);color:#fff;font-size:10px;font-weight:600;padding:2px 7px;border-radius:10px}
+
+/* карточка сорта */
+.card{background:#fff;border:1px solid var(--ui2);border-radius:8px;overflow:hidden;width:230px}
+.card .ph{background:linear-gradient(135deg,var(--ye50),var(--bl50));height:120px;display:flex;align-items:center;justify-content:center;color:var(--tx3);font-size:12px}
+.card .body{padding:10px 12px}
+.card .name{font-weight:600;font-size:15px}
+.card .name i{font-style:normal;color:var(--tx2);font-weight:400}
+.card .rus{color:var(--re600);font-weight:600}
+.card .price{font-size:18px;font-weight:600;margin-top:6px}
+.card .price small{font-size:12px;color:var(--tx2);font-weight:400}
+.card .btns{display:flex;gap:8px;margin-top:10px}
+.btn{flex:1;border:0;border-radius:6px;padding:8px 10px;font:inherit;font-size:13px;font-weight:600;cursor:pointer;text-align:center;text-decoration:none}
+.btn.cart{background:var(--re600);color:#fff}
+.btn.cart:hover{background:var(--re500)}
+.btn.about{background:var(--bl600);color:#fff}
+.btn.about:hover{background:var(--bl500)}
+.btn.ghost{background:var(--ui2);color:var(--tx)}
+.btn.ghost:hover{background:var(--ui3)}
+
+/* шапка */
+.head{background:var(--paper);border:1px solid var(--ui2);border-radius:8px;padding:12px 14px;display:flex;gap:16px;align-items:center}
+.head .logo{width:44px;height:44px;border-radius:8px;background:var(--re600);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600}
+.head .ttl{font-weight:600}
+.head .ttl small{display:block;color:var(--tx2);font-weight:400;font-size:11px}
+.head nav{margin-left:auto;display:flex;gap:10px;font-size:12px;font-weight:500}
+.head nav a{color:var(--tx);text-decoration:none;padding:4px 8px;border-radius:6px}
+.head nav a:hover{background:var(--ye100)}
+.head nav a.act{background:var(--bl600);color:#fff}
+.phone{color:var(--bl600);font-weight:600;font-size:13px}
+
+/* баннер-герой */
+.hero{border:1px solid var(--ui3);border-radius:8px;overflow:hidden;position:relative;height:140px;background:linear-gradient(120deg,var(--bl100),var(--ye100))}
+.hero .cap{position:absolute;left:14px;bottom:12px;background:rgba(28,27,26,.82);color:var(--paper);padding:8px 14px;border-radius:8px;font-size:14px;font-weight:600}
+.hero .dots{position:absolute;right:14px;bottom:14px;display:flex;gap:6px}
+.hero .dots i{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.5)}
+.hero .dots i.on{background:var(--re400)}
+</style>
+</head>
+<body>
+<h1>Палитра-кандидат варианта 2</h1>
+<p class="sub">Жёлто-голубая семейная + красные акценты. Все стопы взяты из расширенной палитры
+Flexoki (stephango.com/flexoki, v2.0), база light («бумага»). Это заготовка до верстки:
+утверждаем роли, потом стопы уезжают в CSS-переменные варианта 2.</p>
+
+<h2>База Flexoki light</h2>
+<div class="row">
+  <div class="sw"><div class="chip" style="background:#FFFCF0"></div><div class="meta"><b>bg</b><span>#FFFCF0 фон</span></div></div>
+  <div class="sw"><div class="chip" style="background:#F2F0E5"></div><div class="meta"><b>bg-2</b><span>#F2F0E5 панель</span></div></div>
+  <div class="sw"><div class="chip" style="background:#E6E4D9"></div><div class="meta"><b>ui-2</b><span>#E6E4D9 границы</span></div></div>
+  <div class="sw"><div class="chip" style="background:#DAD8CE"></div><div class="meta"><b>ui-3</b><span>#DAD8CE границы активн.</span></div></div>
+  <div class="sw"><div class="chip" style="background:#6F6E69"></div><div class="meta"><b>tx-2</b><span>#6F6E69 втор. текст</span></div></div>
+  <div class="sw"><div class="chip" style="background:#1C1B1A"></div><div class="meta"><b>tx</b><span>#1C1B1A текст</span></div></div>
+</div>
+
+<h2>Жёлтый: основной семейный</h2>
+<p class="note">Кандидат на главный бренд-цвет: заливки левых кнопок, шапочные выделения, бейджи. Текстовый жёлтый: 600 (#AD8301) у него контраст с бумагой достаточный для мелкого текста, 400 и ниже только для заливок и крупных элементов.</p>
+<div class="row">
+  <div class="sw"><div class="chip" style="background:#FAEEC6"></div><div class="meta"><b>ye-50</b><span>#FAEEC6</span></div></div>
+  <div class="sw"><div class="chip" style="background:#F6E2A0"></div><div class="meta"><b>ye-100</b><span>#F6E2A0</span></div></div>
+  <div class="sw"><div class="chip" style="background:#ECCB60"></div><div class="meta"><b>ye-200</b><span>#ECCB60</span></div></div>
+  <div class="sw"><div class="chip" style="background:#DFB431"></div><div class="meta"><b>ye-300</b><span>#DFB431</span></div></div>
+  <div class="sw"><div class="chip" style="background:#D0A215"></div><div class="meta"><b>ye-400</b><span>#D0A215</span></div></div>
+  <div class="sw"><div class="chip" style="background:#AD8301"></div><div class="meta"><b>ye-600</b><span>#AD8301 текст</span></div></div>
+  <div class="sw"><div class="chip" style="background:#8E6B01"></div><div class="meta"><b>ye-700</b><span>#8E6B01</span></div></div>
+</div>
+
+<h2>Голубой: второй семейный</h2>
+<p class="note">Меню, ссылки, кнопка «О сорте», плитки чередования в левой колонке.</p>
+<div class="row">
+  <div class="sw"><div class="chip" style="background:#E1ECEB"></div><div class="meta"><b>bl-50</b><span>#E1ECEB</span></div></div>
+  <div class="sw"><div class="chip" style="background:#C6DDE8"></div><div class="meta"><b>bl-100</b><span>#C6DDE8</span></div></div>
+  <div class="sw"><div class="chip" style="background:#92BFDB"></div><div class="meta"><b>bl-200</b><span>#92BFDB</span></div></div>
+  <div class="sw"><div class="chip" style="background:#66A0C8"></div><div class="meta"><b>bl-300</b><span>#66A0C8</span></div></div>
+  <div class="sw"><div class="chip" style="background:#4385BE"></div><div class="meta"><b>bl-400</b><span>#4385BE</span></div></div>
+  <div class="sw"><div class="chip" style="background:#205EA6"></div><div class="meta"><b>bl-600</b><span>#205EA6 текст/кнопки</span></div></div>
+  <div class="sw"><div class="chip" style="background:#1A4F8C"></div><div class="meta"><b>bl-700</b><span>#1A4F8C</span></div></div>
+</div>
+
+<h2>Красный: акценты</h2>
+<p class="note">Цены, русские названия сортов (у SK так же: латиница серым, кириллица красным), флажок «новинка», кнопка «В корзину».</p>
+<div class="row">
+  <div class="sw"><div class="chip" style="background:#FFCABB"></div><div class="meta"><b>re-100</b><span>#FFCABB</span></div></div>
+  <div class="sw"><div class="chip" style="background:#E8705F"></div><div class="meta"><b>re-300</b><span>#E8705F</span></div></div>
+  <div class="sw"><div class="chip" style="background:#D14D41"></div><div class="meta"><b>re-400</b><span>#D14D41</span></div></div>
+  <div class="sw"><div class="chip" style="background:#C03E35"></div><div class="meta"><b>re-500</b><span>#C03E35</span></div></div>
+  <div class="sw"><div class="chip" style="background:#AF3029"></div><div class="meta"><b>re-600</b><span>#AF3029 текст/кнопки</span></div></div>
+</div>
+
+<h2>Превью ролей (мини-макеты)</h2>
+<div class="preview">
+  <div class="panel">
+    <h3>Шапка</h3>
+    <div class="head">
+      <div class="logo">К</div>
+      <div class="ttl">Питомник клубники<small>Минск, рассада ЗКС</small></div>
+      <div class="phone">+375 29 ххх-хх-хх</div>
+    </div>
+    <div style="margin-top:8px" class="head">
+      <nav>
+        <a class="act" href="#">ГЛАВНАЯ</a><a href="#">КАТАЛОГ</a><a href="#">ДОСТАВКА</a><a href="#">ВОПРОСЫ</a><a href="#">КОНТАКТЫ</a>
+      </nav>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h3>Левая колонка категорий</h3>
+    <div class="cats">
+      <a class="cat y new" href="#">НОВИНКИ<span class="flag">новинка</span></a>
+      <a class="cat b" href="#">Ультраранние</a>
+      <a class="cat y" href="#">Ранние</a>
+      <a class="cat b" href="#">Средние</a>
+      <a class="cat y" href="#">Поздние</a>
+      <a class="cat b" href="#">Ремонтантные</a>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h3>Герой-карусель</h3>
+    <div class="hero">
+      <div class="cap">Рассада клубники ЗКС в стаканчиках 0.4 л</div>
+      <div class="dots"><i class="on"></i><i></i><i></i></div>
+    </div>
+    <p class="note" style="margin-top:8px">Плантация на весь экран: фото поверх бумажного фона, подпись и точки поверх фото. Цвета с фото решат, нужны ли подложки.</p>
+  </div>
+
+  <div class="panel">
+    <h3>Карточка рекомендуемого сорта</h3>
+    <div class="card">
+      <div class="ph">фото сорта 260×260</div>
+      <div class="body">
+        <div class="name"><i>Albion /</i> <span class="rus">Альбион</span></div>
+        <div class="price">2,50 руб <small>стаканчик 0.4 л</small></div>
+        <div class="btns">
+          <a class="btn cart" href="#">В корзину</a>
+          <a class="btn about" href="#">О сорте</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h2>Открытые вопросы к утверждению</h2>
+<p class="note">
+1) Основной из двух семейных: жёлтый или голубой ведущий (сейчас в макетах жёлтый тёплый ведущий, голубой холодный уравновешивает).<br>
+2) Глубина заливок левых кнопок: сейчас 100-е ступени (светлые, текст тёмный) с границей 400-й. Вариант: насыщенные заливки 300/400.<br>
+3) Точки-навигация карусели красные или голубые.<br>
+4) Красный: 600 (#AF3029, спокойный) или 500 (#C03E35, чуть сочнее) для кнопок и цен.
+</p>
+
+</body>
+</html>
