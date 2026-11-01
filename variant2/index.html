@@ -270,5 +270,10 @@
   b.addEventListener('click',t);
   b.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();t();}});
 })();</script>
+<script>
+(function(){ // бейдж: 0 не показываем
+  function upd(){var els=document.querySelectorAll('.cart-badge');els.forEach(function(el){el.setAttribute('data-zero',el.textContent==='0'?'1':'0');});}
+  upd(); setInterval(upd,800);
+})();</script>
 </body>
 </html>
