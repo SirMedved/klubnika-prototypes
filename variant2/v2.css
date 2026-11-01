@@ -60,20 +60,6 @@ header.site{background:var(--bg2);padding:14px 16px 10px;display:flex;gap:18px;a
  .hero-acc .slide.open{opacity:1;position:relative;pointer-events:auto}
  .hero-acc .cap{writing-mode:horizontal-tb;transform:none;font-size:14px}
 }
-@media (max-width:700px){
- .bighead{padding:12px 12px 10px}
- .bh-row{gap:12px}
- .bh-photo{width:128px;height:96px;flex-basis:128px;border-radius:8px}
- .bh-titles{min-width:0}
- .bh-name{font-size:24px}
- .bh-domain{font-size:16px}
- .bh-sub{font-size:14px;margin-top:1px}
- .bh-contacts{font-size:14px;line-height:1.5}
- .so{width:30px;height:30px}.so svg{width:16px;height:16px}
- .navribbon{margin:10px 12px;border-radius:8px}
- .wrap{padding:0 12px 20px;gap:14px}
- .cats .cap{font-size:22px}
-}
 
 /* ---------- крупная шапка-микс (старый сайт + SK) ---------- */
 .bighead{background:linear-gradient(180deg,#F9E8B4 0%,var(--bg2) 100%);padding:14px 20px 12px}
@@ -150,7 +136,7 @@ footer.site .so{width:40px;height:40px}
 footer.site .so svg{width:17px;height:17px}
 
 /* ---------- 2D клубника: покачивание ---------- */
-.bh-berry{width:64px;height:70px;flex:0 0 64px;align-self:center;transform-origin:50% 80%;animation:sway 3.4s ease-in-out infinite;margin:0 10px}
+.bh-berry{width:104px;height:114px;flex:0 0 104px;align-self:center;transform:translateY(22px);transform-origin:50% 80%;animation:sway 3.4s ease-in-out infinite;margin:0 6px}
 @keyframes sway{0%,100%{transform:rotate(-7deg)}50%{transform:rotate(7deg)}}
 @media (max-width:700px){
  .bh-berry{width:64px;height:70px;flex-basis:64px;order:10;align-self:center;margin:6px auto 0}
@@ -161,3 +147,20 @@ footer.site .so svg{width:17px;height:17px}
 /* весь контент выше матрицы */
 .bighead,.navribbon,.wrap,footer.site{position:relative;z-index:1}
 .wrap,footer.site,.bighead,.navribbon{position:relative}
+
+/* ---------- мобилка: шапка (в конце, чтобы не перебивалась десктопными) ---------- */
+@media (max-width:700px){
+ .bighead{padding:10px 12px 8px}
+ .bh-row{flex-wrap:wrap;gap:8px}
+ .bh-photo{width:100%;flex-basis:100%;height:160px;border-radius:8px}
+ .bh-titles{flex:1 1 100%;min-width:0}
+ .bh-name{font-size:26px;white-space:normal}
+ .bh-domain{font-size:17px;white-space:normal}
+ .bh-sub{font-size:15px;white-space:normal;margin-top:1px}
+ .bh-berry{width:64px;height:70px;flex:0 0 64px;transform:none;margin:8px auto}
+ .bh-contacts{flex:1 1 100%;font-size:14px;line-height:1.5}
+ .so{width:30px;height:30px}.so svg{width:16px;height:16px}
+ .navribbon{margin:10px 12px;border-radius:8px}
+ .wrap{padding:0 12px 20px;gap:14px}
+ .cats .cap{font-size:22px}
+}
