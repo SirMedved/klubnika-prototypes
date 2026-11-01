@@ -57,14 +57,14 @@ header.site{background:var(--bg2);padding:14px 16px 10px;display:flex;gap:18px;a
  .hero-acc .slide{position:absolute;inset:0;flex:none;opacity:0;transition:opacity .45s;pointer-events:none}
  .hero-acc .slide.open{opacity:1;position:relative;pointer-events:auto}
  .hero-acc .cap{writing-mode:horizontal-tb;transform:none;font-size:14px}
- .bh-photo{width:150px;height:106px;flex-basis:150px}.bh-contacts{font-size:15px}
+ .bh-photo{width:160px;height:120px;flex-basis:160px}.bh-contacts{font-size:15px}
 }
 @media (max-width:700px){.bh-photo{width:140px;height:100px;flex-basis:140px}.bh-contacts{font-size:15px}}
 
 /* ---------- крупная шапка-микс (старый сайт + SK) ---------- */
 .bighead{background:linear-gradient(180deg,#F9E8B4 0%,var(--bg2) 100%);padding:18px 20px 14px;border-bottom:1px solid rgba(28,27,26,.15)}
 .bh-row{display:flex;gap:22px;align-items:center;max-width:1200px;margin:0 auto;flex-wrap:wrap}
-.bh-photo{width:210px;height:150px;object-fit:cover;border-radius:10px;flex:0 0 210px;box-shadow:0 2px 8px rgba(28,27,26,.25)}
+.bh-photo{width:230px;height:172px;object-fit:cover;border-radius:10px;flex:0 0 230px;box-shadow:0 2px 8px rgba(28,27,26,.25);object-position:center}
 .bh-titles{flex:1;min-width:260px}
 .bh-name{font-size:clamp(30px,4.5vw,46px);font-weight:600;color:var(--red);letter-spacing:.5px;line-height:1.05}
 .bh-domain{font-size:clamp(20px,2.6vw,28px);font-weight:600;color:var(--tx)}
