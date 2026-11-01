@@ -17,7 +17,8 @@
   --red-d:#AF3029;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:var(--bg);color:var(--tx);font-family:'Onest',system-ui,sans-serif;font-size:21px;line-height:1.55}
+html{background:var(--bg)}
+body{background:transparent;color:var(--tx);font-family:'Onest',system-ui,sans-serif;font-size:21px;line-height:1.55}
 a{color:var(--bl600)}
 img{max-width:100%}
 
@@ -153,5 +154,7 @@ footer.site .so svg{width:20px;height:20px}
 @media (max-width:700px){.bh-berry{width:40px;height:40px;flex-basis:40px}}
 
 /* ---------- матрица ягод ---------- */
-#berryField{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.35}
+#berryField{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.35}
+/* весь контент выше матрицы */
+.bighead,.navribbon,.wrap,footer.site{position:relative;z-index:1}
 .wrap,footer.site,.bighead,.navribbon{position:relative}
