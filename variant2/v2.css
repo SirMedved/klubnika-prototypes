@@ -76,21 +76,21 @@ header.site{background:var(--bg2);padding:14px 16px 10px;display:flex;gap:18px;a
 }
 
 /* ---------- крупная шапка-микс (старый сайт + SK) ---------- */
-.bighead{background:linear-gradient(180deg,#F9E8B4 0%,var(--bg2) 100%);padding:22px 20px 18px}
-.bh-row{display:flex;gap:22px;align-items:center;max-width:1200px;margin:0 auto;flex-wrap:wrap}
+.bighead{background:linear-gradient(180deg,#F9E8B4 0%,var(--bg2) 100%);padding:14px 20px 12px}
+.bh-row{display:flex;gap:20px;align-items:center;max-width:1200px;margin:0 auto}
 .bh-photo{width:336px;height:252px;object-fit:cover;border-radius:12px;flex:0 0 336px;box-shadow:0 2px 8px rgba(28,27,26,.25);object-position:center}
 .bh-titles{flex:1;min-width:260px}
-.bh-name{font-size:clamp(36px,5.4vw,58px);font-weight:600;color:var(--red);letter-spacing:.5px;line-height:1.05;white-space:nowrap}
-.bh-domain{font-size:clamp(24px,3.1vw,36px);font-weight:600;color:var(--tx);white-space:nowrap}
-.bh-sub{font-size:clamp(19px,2.6vw,30px);font-weight:600;color:var(--red);margin-top:2px;white-space:nowrap}
-.bh-contacts{font-size:23px;line-height:1.7}
+.bh-name{font-size:clamp(30px,3.6vw,44px);font-weight:600;color:var(--red);letter-spacing:.5px;line-height:1.05;white-space:nowrap}
+.bh-domain{font-size:clamp(18px,2.2vw,26px);font-weight:600;color:var(--tx);white-space:nowrap}
+.bh-sub{font-size:clamp(15px,1.8vw,22px);font-weight:600;color:var(--red);margin-top:2px;white-space:nowrap}
+.bh-contacts{font-size:17px;line-height:1.55}
 .bh-contacts a{color:var(--tx);text-decoration:none;font-weight:600}
 .bh-contacts .ord{color:var(--bl600)}
 .bh-contacts .cons{color:var(--bl600)}
 .bh-social{display:flex;gap:8px;margin-top:8px}
 .so{width:40px;height:40px;font-size:16px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff !important;font-weight:600;font-size:14px;text-decoration:none}
 .so.ig{background:#C13584}.so.em{background:#100F0F}.so.tg{background:#26A5E4}.so.vb{background:#7360F2}.so.wa{background:#25D366}
-.so svg{width:20px;height:20px}
+.so svg{width:17px;height:17px}
 .so:hover{filter:brightness(.9)}
 .burger{display:none;align-items:center;gap:10px;justify-content:center;font-weight:600;font-size:16px;padding:12px;cursor:pointer;user-select:none}
 .burger svg{width:22px;height:22px}
@@ -147,12 +147,14 @@ footer.site{margin-top:36px;background:var(--bg2);border-top:1px solid rgba(28,2
 .foot-row a:hover{color:var(--red-d)}
 .foot-row .cp{color:var(--tx2);font-size:16px}
 footer.site .so{width:40px;height:40px}
-footer.site .so svg{width:20px;height:20px}
+footer.site .so svg{width:17px;height:17px}
 
 /* ---------- 2D клубника: покачивание ---------- */
-.bh-berry{width:96px;height:96px;flex:0 0 96px;transform-origin:50% 80%;animation:sway 3.4s ease-in-out infinite}
+.bh-berry{width:64px;height:70px;flex:0 0 64px;align-self:center;transform-origin:50% 80%;animation:sway 3.4s ease-in-out infinite;margin:0 10px}
 @keyframes sway{0%,100%{transform:rotate(-7deg)}50%{transform:rotate(7deg)}}
-@media (max-width:700px){.bh-berry{width:56px;height:56px;flex-basis:56px}}
+@media (max-width:700px){
+ .bh-berry{width:64px;height:70px;flex-basis:64px;order:10;align-self:center;margin:6px auto 0}
+}
 
 /* ---------- матрица ягод ---------- */
 #berryField{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.35}
