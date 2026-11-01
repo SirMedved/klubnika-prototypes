@@ -16,11 +16,13 @@
 </style>
 </head>
 <body>
+<canvas id="berryField" aria-hidden="true"></canvas>
 
 <!-- шапка-микс: крупная, как на текущем сайте (фото слева, титулы, оба телефона, соцкнопки) + меню как у SK -->
 <header class="bighead">
   <div class="bh-row">
     <img class="bh-photo" src="assets/head-berries.jpg" alt="Ягода клубники с цветком, как в шапке старого сайта">
+    <img class="bh-berry" src="assets/berry.svg" alt="" aria-hidden="true">
     <div class="bh-titles">
       <div class="bh-name">КЛУБНИКА-МИНСК</div>
       <div class="bh-domain">klubnika-minsk.by</div>
@@ -42,6 +44,10 @@
 </header>
 
 <div class="navribbon">
+  <div class="burger" id="burger" role="button" tabindex="0" aria-label="Меню">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    Меню
+  </div>
   <nav class="main">
     <a class="on" href="index.html">Главная</a>
     <a href="../catalog.html">Каталог</a>
@@ -182,6 +188,51 @@
 
 <script src="app.js"></script>
 <script>
+// матрица падающих ягод: canvas за контентом, предохранители по ресёрчу
+(function(){
+  var c=document.getElementById('berryField');
+  if(!c) return;
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var mobile=window.matchMedia('(max-width:700px)').matches;
+  if(reduce) return; // уважаем настройку системы
+  var ctx=c.getContext('2d');
+  var img=new Image();
+  img.src='assets/berry.svg';
+  var COUNT=mobile?10:22, FPS=mobile?30:45, DPR=Math.min(window.devicePixelRatio||1, mobile?1.25:2);
+  var berries=[], W=0, H=0, visible=true, raf=null;
+  function resize(){
+    W=c.clientWidth=innerWidth; H=c.clientHeight=innerHeight;
+    c.width=W*DPR; c.height=H*DPR; ctx.setTransform(DPR,0,0,DPR,0,0);
+  }
+  function make(init){
+    return {x:Math.random()*W, y:init?Math.random()*H:-40,
+      s:mobile?14+Math.random()*14:18+Math.random()*26,
+      v:12+Math.random()*22, r:Math.random()*Math.PI*2,
+      vr:(Math.random()-.5)*0.8, sway:Math.random()*Math.PI*2};
+  }
+  function tick(dt){
+    ctx.clearRect(0,0,W,H);
+    for(var i=0;i<berries.length;i++){var b=berries[i];
+      b.y+=b.v*dt; b.x+=Math.sin(b.sway+=dt*0.7)*0.3; b.r+=b.vr*dt;
+      if(b.y>H+50){berries[i]=make(false);}
+      if(img.complete&&img.naturalWidth){ctx.save();ctx.translate(b.x,b.y);ctx.rotate(b.r);ctx.globalAlpha=.5;ctx.drawImage(img,-b.s/2,-b.s/2,b.s,b.s);ctx.restore();}
+    }
+  }
+  var last=null;
+  function loop(t){ if(!visible){raf=null;return;}
+    if(!last) last=t;
+    var dt=Math.min((t-last)/1000,.05); last=t;
+    tick(dt); raf=requestAnimationFrame(loop);
+  }
+  function start(){ if(!raf&&visible){last=null;raf=requestAnimationFrame(loop);} }
+  resize();
+  for(var i=0;i<COUNT;i++) berries.push(make(true));
+  addEventListener('resize',function(){resize();},{passive:true});
+  document.addEventListener('visibilitychange',function(){visible=!document.hidden; if(visible){last=null;start();}});
+  // пауза, когда шапка/контент давно вне экрана не обязательна: canvas fixed, всегда в кадре; гасим при скрытой вкладке
+  img.onload=start; start();
+})();</script>
+<script>
 // аккордеон героя: клик раскрывает слайд
 (function(){
   var acc=document.getElementById('heroAcc');
@@ -210,5 +261,14 @@
   play();
 })();
 </script>
+<script>
+(function(){
+  var b=document.getElementById('burger');
+  if(!b) return;
+  var n=document.querySelector('nav.main');
+  function t(){n.classList.toggle('open');}
+  b.addEventListener('click',t);
+  b.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();t();}});
+})();</script>
 </body>
 </html>

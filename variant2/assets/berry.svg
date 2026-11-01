@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- листья -->
+  <g>
+    <path d="M50 22 L38 8 L46 20 L34 14 L44 25 L30 24 L43 30 Z" fill="#2d7a1e"/>
+    <path d="M50 22 L62 8 L54 20 L66 14 L56 25 L70 24 L57 30 Z" fill="#359426"/>
+    <path d="M50 24 C44 20 40 20 36 24 C42 26 46 27 50 27 C54 27 58 26 64 24 C60 20 56 20 50 24 Z" fill="#3fa82d"/>
+  </g>
+  <!-- ягода: сердце -->
+  <path d="M50 92 C30 78 18 60 18 44 C18 32 27 26 38 26 C44 26 48 29 50 33 C52 29 56 26 62 26 C73 26 82 32 82 44 C82 60 70 78 50 92 Z" fill="#d92b1f"/>
+  <!-- блик -->
+  <path d="M30 40 C28 48 30 58 36 68 C34 56 33 47 34 41 Z" fill="#ffffff" opacity=".25"/>
+  <!-- семечки -->
+  <g fill="#ffe9b0">
+    <ellipse cx="34" cy="44" rx="2.2" ry="3.2"/>
+    <ellipse cx="44" cy="38" rx="2.2" ry="3.2"/>
+    <ellipse cx="56" cy="38" rx="2.2" ry="3.2"/>
+    <ellipse cx="66" cy="44" rx="2.2" ry="3.2"/>
+    <ellipse cx="28" cy="56" rx="2.2" ry="3.2"/>
+    <ellipse cx="40" cy="54" rx="2.2" ry="3.2"/>
+    <ellipse cx="52" cy="52" rx="2.2" ry="3.2"/>
+    <ellipse cx="64" cy="56" rx="2.2" ry="3.2"/>
+    <ellipse cx="34" cy="68" rx="2.2" ry="3.2"/>
+    <ellipse cx="46" cy="68" rx="2.2" ry="3.2"/>
+    <ellipse cx="58" cy="70" rx="2.2" ry="3.2"/>
+    <ellipse cx="50" cy="82" rx="2.2" ry="3.2"/>
+  </g>
+</svg>
