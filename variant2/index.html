@@ -20,7 +20,7 @@
 <!-- шапка-микс: крупная, как на текущем сайте (фото слева, титулы, оба телефона, соцкнопки) + меню как у SK -->
 <header class="bighead">
   <div class="bh-row">
-    <img class="bh-photo" src="assets/head-plantation.jpg" alt="Рассада клубники на плантации">
+    <img class="bh-photo" src="assets/head-berries.jpg" alt="Ягода клубники с цветком, как в шапке старого сайта">
     <div class="bh-titles">
       <div class="bh-name">КЛУБНИКА-МИНСК</div>
       <div class="bh-domain">klubnika-minsk.by</div>
@@ -39,6 +39,7 @@
       </div>
     </div>
   </div>
+  <div class="navribbon">
   <nav class="main">
     <a class="on" href="index.html">Главная</a>
     <a href="../catalog.html">Каталог</a>
@@ -47,6 +48,7 @@
     <a href="../about.html">О нас</a>
     <a href="../cart.html" class="cart-link">Корзина [<span data-cart-count></span>]</a>
   </nav>
+  </div>
 </header>
 
 <div class="wrap">
@@ -201,6 +203,14 @@
   }
   function play(){ if(timer) return; timer=setInterval(function(){show(cur+1);},5000); }
   function stop(){ clearInterval(timer); timer=null; }
+  function next(){show(cur+1);} function prev(){show(cur-1);}
+  var x0=null;
+  acc.addEventListener('touchstart',function(e){x0=e.touches[0].clientX;stop();},{passive:true});
+  acc.addEventListener('touchend',function(e){
+    if(x0===null) return;
+    var dx=e.changedTouches[0].clientX-x0; x0=null;
+    if(dx<-30) next(); else if(dx>30) prev();
+  },{passive:true});
   acc.addEventListener('click',function(e){
     var s=e.target.closest('.slide');
     if(!s) return;
