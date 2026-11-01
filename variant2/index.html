@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="assets/favicon.ico">
 <title>Питомник клубники klubnika-minsk.by — рассада клубники ЗКС, Минск и вся Беларусь</title>
-<link rel="stylesheet" href="v2.css?v=15">
+<link rel="stylesheet" href="v2.css?v=16">
 <style>
 @font-face{font-family:'Onest';src:url('../fonts/onest-cyrillic-400.woff2') format('woff2');font-weight:400;font-display:swap;unicode-range:U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;}
 @font-face{font-family:'Onest';src:url('../fonts/onest-latin-400.woff2') format('woff2');font-weight:400;font-display:swap;}
@@ -16,7 +16,6 @@
 </style>
 </head>
 <body>
-<canvas id="berryField" aria-hidden="true"></canvas>
 
 <!-- шапка-микс: крупная, как на текущем сайте (фото слева, титулы, оба телефона, соцкнопки) + меню как у SK -->
 <header class="bighead">
@@ -27,7 +26,7 @@
       <div class="bh-domain">klubnika-minsk.by</div>
       <div class="bh-sub">РАССАДА КЛУБНИКИ В МИНСКЕ</div>
     </div>
-    <img class="bh-berry" src="assets/berry-dark.svg" width="96" height="96" alt="" aria-hidden="true">
+    <img class="bh-berry" src="assets/berry.svg" width="96" height="96" alt="" aria-hidden="true">
     <div class="bh-contacts">
       <div><a href="tel:+375291803282">+375 29 180 32 82</a> <span>Рита - <b class="ord">Приём заказов</b></span></div>
       <div><a href="tel:+375296409298">+375 29 640 92 98</a> <span>Владимир - <b class="cons">Консультация</b></span></div>
@@ -111,54 +110,54 @@
         <div class="pcard">
           <div class="ph"><img src="../img/sort-alb.jpg" alt="Клубника Альба" loading="lazy"></div>
           <div class="body">
-            <div class="name"><i>Alba /</i> <span class="ru">Альба</span></div>
+            <div class="name"><span class="ru">Альба</span></div>
             <div class="meta">ультраранняя · ягоды до 40 г</div>
-            <div class="price">2,50 руб <small>стаканчик 0.4 л</small></div>
+            <div class="price">2,50 руб</div>
             <div class="btns"><button class="btn add" data-add="Альба" data-type="ультраранняя" data-price="2.5">В корзину</button><a class="btn about" href="../sort.html?s=alba">О сорте</a></div>
           </div>
         </div>
         <div class="pcard">
           <div class="ph"><img src="../img/sort-san.jpg" alt="Клубника Сан-Андреас" loading="lazy"><span class="flag">новинка</span></div>
           <div class="body">
-            <div class="name"><i>San Andreas /</i> <span class="ru">Сан-Андреас</span></div>
+            <div class="name"><span class="ru">Сан-Андреас</span></div>
             <div class="meta">ремонтантная · плодоносит до октября</div>
-            <div class="price">3,00 руб <small>стаканчик 0.4 л</small></div>
+            <div class="price">3,00 руб</div>
             <div class="btns"><button class="btn add" data-add="Сан-Андреас" data-type="ремонтантная" data-price="3">В корзину</button><a class="btn about" href="../sort.html?s=san-andreas">О сорте</a></div>
           </div>
         </div>
         <div class="pcard">
           <div class="ph"><img src="../img/sort-tray.jpg" alt="Клубника в кассете" loading="lazy"></div>
           <div class="body">
-            <div class="name"><i>Joly /</i> <span class="ru">Жоли</span></div>
+            <div class="name"><span class="ru">Жоли</span></div>
             <div class="meta">ранняя · урожайная, ягода сладкая</div>
-            <div class="price">2,50 руб <small>стаканчик 0.4 л</small></div>
+            <div class="price">2,50 руб</div>
             <div class="btns"><button class="btn add" data-add="Жоли" data-type="ранняя" data-price="2.5">В корзину</button><a class="btn about" href="../sort.html?s=joly">О сорте</a></div>
           </div>
         </div>
         <div class="pcard">
           <div class="ph"><img src="../img/plant.jpg" alt="Клубника Азия" loading="lazy"></div>
           <div class="body">
-            <div class="name"><i>Asia /</i> <span class="ru">Азия</span></div>
+            <div class="name"><span class="ru">Азия</span></div>
             <div class="meta">средняя · крупные ягоды до 60 г</div>
-            <div class="price">2,50 руб <small>стаканчик 0.4 л</small></div>
+            <div class="price">2,50 руб</div>
             <div class="btns"><button class="btn add" data-add="Азия" data-type="средняя" data-price="2.5">В корзину</button><a class="btn about" href="../sort.html?s=asia">О сорте</a></div>
           </div>
         </div>
         <div class="pcard">
           <div class="ph"><img src="../img/main-box.jpg" alt="Клубника Мальга" loading="lazy"></div>
           <div class="body">
-            <div class="name"><i>Malga /</i> <span class="ru">Мальга</span></div>
+            <div class="name"><span class="ru">Мальга</span></div>
             <div class="meta">средне-поздняя · десертный вкус</div>
-            <div class="price">2,50 руб <small>стаканчик 0.4 л</small></div>
+            <div class="price">2,50 руб</div>
             <div class="btns"><button class="btn add" data-add="Мальга" data-type="средне-поздняя" data-price="2.5">В корзину</button><a class="btn about" href="../sort.html?s=malga">О сорте</a></div>
           </div>
         </div>
         <div class="pcard">
           <div class="ph"><img src="../img/market.jpg" alt="Клубника Иришка" loading="lazy"></div>
           <div class="body">
-            <div class="name"><i>Irischka /</i> <span class="ru">Иришка</span></div>
+            <div class="name"><span class="ru">Иришка</span></div>
             <div class="meta">средняя · ароматная, для рынка</div>
-            <div class="price">2,50 руб <small>стаканчик 0.4 л</small></div>
+            <div class="price">2,50 руб</div>
             <div class="btns"><button class="btn add" data-add="Иришка" data-type="средняя" data-price="2.5">В корзину</button><a class="btn about" href="../sort.html?s=irischka">О сорте</a></div>
           </div>
         </div>
@@ -178,15 +177,11 @@
       <a href="../faq.html">Вопросы</a>
       <a href="mailto:klubnika.minsk.v@gmail.com">klubnika.minsk.v@gmail.com</a>
     </span>
-    <span class="links">
-      <a class="so ig" href="https://www.instagram.com/klubnika_minsk/" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
-      <a class="so tg" href="https://t.me/klubnika_minsk" aria-label="Telegram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg></a>
-      <a class="so vb" href="viber://chat?number=%2B375291803282" aria-label="Viber"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg></a>
-    </span>
   </div>
 </footer>
 
-<script src="../app.js?v=15"></script>
+<canvas id="berryField" aria-hidden="true"></canvas>
+<script src="../app.js?v=16"></script>
 <script>
 // матрица падающих ягод: canvas за контентом, предохранители по ресёрчу
 (function(){
@@ -197,7 +192,7 @@
   // поэтому в прототипе флаг игнорируем, чтобы видеть эффект)
   var ctx=c.getContext('2d');
   var img=new Image();
-  img.src='assets/berry-dark.svg';
+  img.src='assets/berry.svg';
   var COUNT=mobile?16:40, FPS=mobile?30:45, DPR=Math.min(window.devicePixelRatio||1, mobile?1.25:2);
   var berries=[], W=0, H=0, visible=true, raf=null;
   function resize(){

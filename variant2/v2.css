@@ -136,17 +136,15 @@ footer.site .so{width:40px;height:40px}
 footer.site .so svg{width:17px;height:17px}
 
 /* ---------- 2D клубника: покачивание ---------- */
-.bh-berry{width:104px;height:114px;flex:0 0 104px;align-self:center;transform:translateY(22px);transform-origin:50% 80%;animation:sway 3.4s ease-in-out infinite;margin:0 6px}
+.bh-berry{width:88px;height:97px;flex:0 0 88px;align-self:center;transform:translate(10px,27px);transform-origin:50% 80%;animation:sway 3.4s ease-in-out infinite;margin:0 6px}
 @keyframes sway{0%,100%{transform:rotate(-7deg)}50%{transform:rotate(7deg)}}
 @media (max-width:700px){
  .bh-berry{width:64px;height:70px;flex-basis:64px;order:10;align-self:center;margin:6px auto 0}
 }
 
 /* ---------- матрица ягод ---------- */
-#berryField{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.35}
-/* весь контент выше матрицы */
+#berryField{position:fixed;inset:0;z-index:5;pointer-events:none;opacity:.35}
 .bighead,.navribbon,.wrap,footer.site{position:relative;z-index:1}
-.wrap,footer.site,.bighead,.navribbon{position:relative}
 
 /* ---------- мобилка: шапка (в конце, чтобы не перебивалась десктопными) ---------- */
 @media (max-width:700px){
