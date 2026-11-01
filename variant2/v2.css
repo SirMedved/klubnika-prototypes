@@ -37,11 +37,12 @@ header.site{background:var(--bg2);padding:14px 16px 10px;display:flex;gap:18px;a
 /* левая колонка категорий */
 .cats{display:flex;flex-direction:column;gap:10px;position:sticky;top:12px}
 .cats .cap{font-size:30px;font-weight:600;font-style:italic;letter-spacing:1px;color:var(--tx);text-transform:uppercase;margin-bottom:8px}
-.cat{display:block;padding:26px 22px;border-radius:12px;font-weight:600;font-size:20px;line-height:1.45;text-align:center;min-height:110px;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 1px 2px rgba(28,27,26,.15);transition:transform .12s, box-shadow .12s}
+.cat{padding:22px 18px;border-radius:12px;font-weight:600;font-size:18px;line-height:1.35;text-align:center;min-height:112px;flex-direction:column;justify-content:center;text-decoration:none;box-shadow:0 1px 2px rgba(28,27,26,.15);transition:transform .12s, box-shadow .12s}
 .cat:hover{transform:translateY(-1px);box-shadow:0 3px 8px rgba(28,27,26,.2)}
 .cat.y{background:var(--ye200);color:var(--tx)}
 .cat.b{background:var(--bl400);color:#fff}
-.cat.y .en,.cat.b .en{display:block;font-weight:400;font-size:14px;opacity:.8;margin-top:3px}
+.cat .n1{display:block;font-weight:700;text-transform:uppercase;letter-spacing:.5px}
+.cat .n2{display:block;font-weight:400;font-size:17px;margin-top:4px}
 @media (max-width:900px){.cats{position:static;flex-direction:row;flex-wrap:wrap}
  .cat{flex:1 1 200px;text-align:center}}
 
@@ -57,14 +58,13 @@ header.site{background:var(--bg2);padding:14px 16px 10px;display:flex;gap:18px;a
  .hero-acc .slide{position:absolute;inset:0;flex:none;opacity:0;transition:opacity .45s;pointer-events:none}
  .hero-acc .slide.open{opacity:1;position:relative;pointer-events:auto}
  .hero-acc .cap{writing-mode:horizontal-tb;transform:none;font-size:14px}
- .bh-photo{width:160px;height:120px;flex-basis:160px}.bh-contacts{font-size:15px}
 }
-@media (max-width:700px){.bh-photo{width:140px;height:100px;flex-basis:140px}.bh-contacts{font-size:15px}}
+@media (max-width:700px){.bh-photo{width:190px;height:142px;flex-basis:190px}.bh-contacts{font-size:15px}}
 
 /* ---------- крупная шапка-микс (старый сайт + SK) ---------- */
 .bighead{background:linear-gradient(180deg,#F9E8B4 0%,var(--bg2) 100%);padding:22px 20px 18px}
 .bh-row{display:flex;gap:22px;align-items:center;max-width:1200px;margin:0 auto;flex-wrap:wrap}
-.bh-photo{width:280px;height:210px;object-fit:cover;border-radius:12px;flex:0 0 280px;box-shadow:0 2px 8px rgba(28,27,26,.25);object-position:center}
+.bh-photo{width:336px;height:252px;object-fit:cover;border-radius:12px;flex:0 0 336px;box-shadow:0 2px 8px rgba(28,27,26,.25);object-position:center}
 .bh-titles{flex:1;min-width:260px}
 .bh-name{font-size:clamp(36px,5.4vw,56px);font-weight:600;color:var(--red);letter-spacing:.5px;line-height:1.05}
 .bh-domain{font-size:clamp(24px,3.1vw,34px);font-weight:600;color:var(--tx)}
