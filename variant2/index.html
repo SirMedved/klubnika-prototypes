@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Питомник клубники klubnika-minsk.by — рассада клубники ЗКС, Минск и вся Беларусь</title>
+<link rel="stylesheet" href="v2.css">
+<style>
+@font-face{font-family:'Onest';src:url('../fonts/onest-cyrillic-400.woff2') format('woff2');font-weight:400;font-display:swap;unicode-range:U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;}
+@font-face{font-family:'Onest';src:url('../fonts/onest-latin-400.woff2') format('woff2');font-weight:400;font-display:swap;}
+@font-face{font-family:'Onest';src:url('../fonts/onest-cyrillic-500.woff2') format('woff2');font-weight:500;font-display:swap;unicode-range:U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;}
+@font-face{font-family:'Onest';src:url('../fonts/onest-latin-500.woff2') format('woff2');font-weight:500;font-display:swap;}
+@font-face{font-family:'Onest';src:url('../fonts/onest-cyrillic-600.woff2') format('woff2');font-weight:600;font-display:swap;unicode-range:U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;}
+@font-face{font-family:'Onest';src:url('../fonts/onest-latin-600.woff2') format('woff2');font-weight:600;font-display:swap;}
+</style>
+</head>
+<body>
+
+<!-- верхняя полоса контактов: как у SK (телефон, мессенджеры, почта) -->
+<div class="topline">
+  <a href="tel:+375291803282">+375 29 180-32-82</a>
+  <a href="viber://chat?number=%2B375291803282">Viber</a>
+  <a href="https://t.me/klubnika_minsk">Telegram</a>
+</div>
+
+<!-- шапка: текстовый логотип + меню верхнего уровня -->
+<header class="site">
+  <a class="logo" href="index.html">
+    <img class="mark" src="../img/main-box.jpg" alt="Рассада клубники в стаканчике">
+    <span class="name">Питомник клубники<small>klubnika-minsk.by · Минск</small></span>
+  </a>
+  <nav class="main">
+    <a class="on" href="index.html">Главная</a>
+    <a href="../catalog.html">Каталог</a>
+    <a href="../order.html">Доставка</a>
+    <a href="../faq.html">Вопросы</a>
+    <a href="../about.html">О нас</a>
+    <a href="../cart.html" class="cart-link">Корзина [<span data-cart-count></span>]</a>
+  </nav>
+</header>
+
+<div class="wrap">
+
+  <!-- левая колонка: 5 категорий клубники (НОВИНКИ убраны, решение 2026-11-01) -->
+  <aside class="cats">
+    <span class="cap">Каталог клубники</span>
+    <a class="cat y" href="../catalog.html?cat=ultra">Ультраранние<span class="en">созревание конца мая</span></a>
+    <a class="cat b" href="../catalog.html?cat=early">Ранние<span class="en">первая декада июня</span></a>
+    <a class="cat y" href="../catalog.html?cat=mid">Средние<span class="en">середина июня</span></a>
+    <a class="cat b" href="../catalog.html?cat=late">Поздние<span class="en">конец июня - июль</span></a>
+    <a class="cat y" href="../catalog.html?cat=rem">Ремонтантные<span class="en">плодоносят до осени</span></a>
+  </aside>
+
+  <!-- контент -->
+  <main>
+
+    <!-- герой: аккордеон из 3 фото. Слайд 1 открыт по умолчанию.
+         Третье фото: рынок (решение Владимира 2026-11-01) -->
+    <div class="hero-acc" id="heroAcc">
+      <div class="slide open">
+        <img src="../img/main-box.jpg" alt="Ящик рассады клубники ЗКС">
+        <div class="cap">Рассада клубники ЗКС в стаканчиках 0.4 л</div>
+      </div>
+      <div class="slide">
+        <img src="../img/plant.jpg" alt="Наша плантация">
+        <div class="cap">Наша плантация</div>
+      </div>
+      <div class="slide">
+        <img src="../img/market.jpg" alt="Наши прилавки на рынке">
+        <div class="cap">Каждые выходные на рынке</div>
+      </div>
+    </div>
+
+    <!-- приветствие, как у SK: h2 + абзацы -->
+    <section class="welcome">
+      <h3 class="sec">Здравствуйте, дорогие любители ягод!</h3>
+      <p>Мы семейный питомник: выращиваем рассаду клубники с закрытой корневой системой
+      в стаканчиках 0.4 литра. Каждый стаканчик посажен и выращен нашими руками,
+      рассада с собственной плантации под Минском.</p>
+      <p>В коллекции проверенные сорта белорусской и европейской селекции: от ультраранних
+      до поздних и ремонтантных, которые плодоносят до осени. Сорта подобраны так, чтобы
+      ягода была и для себя, и на продажу.</p>
+      <p>Заказы принимаем круглый год. Соберите список в корзине, и вы получите готовый
+      текст заявки для Telegram или Viber, а мы договоримся о доставке.</p>
+    </section>
+
+    <!-- рекомендуемые сорта: карточки как у SK 260x260, кнопки "В корзину" + "О сорте" -->
+    <section>
+      <h3 class="sec">Рекомендуемые сорта</h3>
+      <div class="grid" id="featured">
+        <div class="pcard">
+          <div class="ph"><img src="../img/sort-alb.jpg" alt="Клубника Альба" loading="lazy"></div>
+          <div class="body">
+            <div class="name"><i>Alba /</i> <span class="ru">Альба</span></div>
+            <div class="meta">ультраранняя · ягоды до 40 г</div>
+            <div class="price">2,50 руб <small>стаканчик 0.4 л</small></div>
+            <div class="btns"><button class="btn add" data-add="Альба" data-type="ультраранняя" data-price="2.5">В корзину</button><a class="btn about" href="../sort.html?s=alba">О сорте</a></div>
+          </div>
+        </div>
+        <div class="pcard">
+          <div class="ph"><img src="../img/sort-san.jpg" alt="Клубника Сан-Андреас" loading="lazy"><span class="flag">новинка</span></div>
+          <div class="body">
+            <div class="name"><i>San Andreas /</i> <span class="ru">Сан-Андреас</span></div>
+            <div class="meta">ремонтантная · плодоносит до октября</div>
+            <div class="price">3,00 руб <small>стаканчик 0.4 л</small></div>
+            <div class="btns"><button class="btn add" data-add="Сан-Андреас" data-type="ремонтантная" data-price="3">В корзину</button><a class="btn about" href="../sort.html?s=san-andreas">О сорте</a></div>
+          </div>
+        </div>
+        <div class="pcard">
+          <div class="ph"><img src="../img/sort-tray.jpg" alt="Клубника в кассете" loading="lazy"></div>
+          <div class="body">
+            <div class="name"><i>Joly /</i> <span class="ru">Жоли</span></div>
+            <div class="meta">ранняя · урожайная, ягода сладкая</div>
+            <div class="price">2,50 руб <small>стаканчик 0.4 л</small></div>
+            <div class="btns"><button class="btn add" data-add="Жоли" data-type="ранняя" data-price="2.5">В корзину</button><a class="btn about" href="../sort.html?s=joly">О сорте</a></div>
+          </div>
+        </div>
+        <div class="pcard">
+          <div class="ph"><img src="../img/plant.jpg" alt="Клубника Азия" loading="lazy"></div>
+          <div class="body">
+            <div class="name"><i>Asia /</i> <span class="ru">Азия</span></div>
+            <div class="meta">средняя · крупные ягоды до 60 г</div>
+            <div class="price">2,50 руб <small>стаканчик 0.4 л</small></div>
+            <div class="btns"><button class="btn add" data-add="Азия" data-type="средняя" data-price="2.5">В корзину</button><a class="btn about" href="../sort.html?s=asia">О сорте</a></div>
+          </div>
+        </div>
+        <div class="pcard">
+          <div class="ph"><img src="../img/main-box.jpg" alt="Клубника Мальга" loading="lazy"></div>
+          <div class="body">
+            <div class="name"><i>Malga /</i> <span class="ru">Мальга</span></div>
+            <div class="meta">средне-поздняя · десертный вкус</div>
+            <div class="price">2,50 руб <small>стаканчик 0.4 л</small></div>
+            <div class="btns"><button class="btn add" data-add="Мальга" data-type="средне-поздняя" data-price="2.5">В корзину</button><a class="btn about" href="../sort.html?s=malga">О сорте</a></div>
+          </div>
+        </div>
+        <div class="pcard">
+          <div class="ph"><img src="../img/market.jpg" alt="Клубника Иришка" loading="lazy"></div>
+          <div class="body">
+            <div class="name"><i>Irischka /</i> <span class="ru">Иришка</span></div>
+            <div class="meta">средняя · ароматная, для рынка</div>
+            <div class="price">2,50 руб <small>стаканчик 0.4 л</small></div>
+            <div class="btns"><button class="btn add" data-add="Иришка" data-type="средняя" data-price="2.5">В корзину</button><a class="btn about" href="../sort.html?s=irischka">О сорте</a></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- плантация на весь экран (папа: "на весь экран наша плантация") -->
+<section class="plantation">
+  <img src="../img/plant.jpg" alt="Плантация питомника" loading="lazy">
+  <div class="veil"></div>
+  <div class="txt">
+    <h2>Своя плантация, свой посадочный материал</h2>
+    <p>Мы не перепродаём рассаду: каждая розетка выращена у нас на плантации
+    и посажена в стаканчик с закрытой корневой системой. Приживается лучше
+    открытой корневой и стартует без стресса.</p>
+  </div>
+</section>
+
+<!-- футер: контакты, как у SK соцсети и адрес -->
+<footer class="site">
+  <div class="col">
+    <b>Питомник клубники</b>
+    Минск, Беларусь<br>
+    Рассада ЗКС в стаканчиках 0.4 л
+  </div>
+  <div class="col">
+    <b>Связь</b>
+    <a href="tel:+375291803282">+375 29 180-32-82</a><br>
+    <a href="viber://chat?number=%2B375291803282">Viber</a> ·
+    <a href="https://t.me/klubnika_minsk">Telegram</a>
+  </div>
+  <div class="col">
+    <b>Разделы</b>
+    <a href="../catalog.html">Каталог</a><br>
+    <a href="../order.html">Доставка</a><br>
+    <a href="../faq.html">Вопросы и ответы</a>
+  </div>
+  <div class="col note">
+    Прототип варианта 2 (клон Super Klubnika). Сорта и цены: часть из выгрузки Тильды,
+    часть заглушки. Не для показа клиентам, только для согласования с родителями.
+  </div>
+</footer>
+
+<script src="app.js"></script>
+<script>
+// аккордеон героя: клик раскрывает слайд
+(function(){
+  var acc=document.getElementById('heroAcc');
+  if(!acc) return;
+  acc.addEventListener('click',function(e){
+    var s=e.target.closest('.slide');
+    if(!s||s.classList.contains('open')) return;
+    acc.querySelectorAll('.slide').forEach(function(x){x.classList.remove('open');});
+    s.classList.add('open');
+  });
+})();
+</script>
+</body>
+</html>
