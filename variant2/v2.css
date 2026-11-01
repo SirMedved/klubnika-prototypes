@@ -36,8 +36,8 @@ header.site{background:var(--bg2);padding:14px 16px 10px;display:flex;gap:18px;a
 
 /* левая колонка категорий */
 .cats{display:flex;flex-direction:column;gap:10px;position:sticky;top:12px}
-.cats .cap{font-size:12px;font-weight:600;letter-spacing:.5px;color:var(--tx2);text-transform:uppercase;margin-bottom:2px}
-.cat{display:block;padding:20px 22px;border-radius:12px;font-weight:600;font-size:19px;line-height:1.35;text-decoration:none;box-shadow:0 1px 2px rgba(28,27,26,.15);transition:transform .12s, box-shadow .12s}
+.cats .cap{font-size:30px;font-weight:600;font-style:italic;letter-spacing:1px;color:var(--tx);text-transform:uppercase;margin-bottom:8px}
+.cat{display:block;padding:26px 22px;border-radius:12px;font-weight:600;font-size:20px;line-height:1.45;text-align:center;min-height:110px;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 1px 2px rgba(28,27,26,.15);transition:transform .12s, box-shadow .12s}
 .cat:hover{transform:translateY(-1px);box-shadow:0 3px 8px rgba(28,27,26,.2)}
 .cat.y{background:var(--ye200);color:var(--tx)}
 .cat.b{background:var(--bl400);color:#fff}
@@ -62,7 +62,7 @@ header.site{background:var(--bg2);padding:14px 16px 10px;display:flex;gap:18px;a
 @media (max-width:700px){.bh-photo{width:140px;height:100px;flex-basis:140px}.bh-contacts{font-size:15px}}
 
 /* ---------- крупная шапка-микс (старый сайт + SK) ---------- */
-.bighead{background:linear-gradient(180deg,#F9E8B4 0%,var(--bg2) 100%);padding:22px 20px 0}
+.bighead{background:linear-gradient(180deg,#F9E8B4 0%,var(--bg2) 100%);padding:22px 20px 18px}
 .bh-row{display:flex;gap:22px;align-items:center;max-width:1200px;margin:0 auto;flex-wrap:wrap}
 .bh-photo{width:280px;height:210px;object-fit:cover;border-radius:12px;flex:0 0 280px;box-shadow:0 2px 8px rgba(28,27,26,.25);object-position:center}
 .bh-titles{flex:1;min-width:260px}
@@ -76,8 +76,9 @@ header.site{background:var(--bg2);padding:14px 16px 10px;display:flex;gap:18px;a
 .bh-social{display:flex;gap:8px;margin-top:8px}
 .so{width:40px;height:40px;font-size:16px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff !important;font-weight:600;font-size:14px;text-decoration:none}
 .so.ig{background:#C13584}.so.em{background:#100F0F}.so.tg{background:#26A5E4}.so.vb{background:#7360F2}.so.wa{background:#25D366}
+.so svg{width:20px;height:20px}
 .so:hover{filter:brightness(.9)}
-.navribbon{background:linear-gradient(180deg,#F0CC5A 0%,#DDB02C 100%);border-top:1px solid rgba(28,27,26,.2);border-bottom:2px solid rgba(28,27,26,.25);max-width:1200px;margin:0 auto;border-left:1px solid rgba(28,27,26,.2);border-right:1px solid rgba(28,27,26,.2)}
+.navribbon{background:linear-gradient(180deg,#F0CC5A 0%,#DDB02C 100%);border:1px solid rgba(28,27,26,.25);border-top-width:2px;max-width:1200px;margin:0 auto}
 nav.main{margin:0 auto;max-width:1200px;display:flex;flex-wrap:wrap;justify-content:center;align-items:stretch;padding:6px 0}
 nav.main a{color:var(--tx);text-decoration:none;font-weight:600;font-size:18px;letter-spacing:.5px;padding:12px 18px;text-transform:uppercase;display:flex;align-items:center}
 nav.main a:hover{color:var(--red-d)}
