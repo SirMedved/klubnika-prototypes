@@ -16,7 +16,7 @@
   --bl50:#E1ECEB;--bl100:#C6DDE8;--bl200:#92BFDB;--bl300:#66A0C8;
   --bl400:#4385BE;--bl500:#3171B2;--bl600:#205EA6;--bl700:#1A4F8C;
   /* Красный (акценты) */
-  --re100:#FFCABB;--re300:#E8705F;--re400:#D14D41;--re500:#C03E35;--re600:#AF3029;
+  --re100:#FFCABB;--re300:#E8705F;--re400:#D14D41;--re500:#C03E35;--re500:#C03E35;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:var(--paper);color:var(--tx);font-family:'Onest',system-ui,sans-serif;font-size:16px;line-height:1.5;padding:24px}
@@ -43,8 +43,9 @@ h2{font-size:18px;font-weight:600;margin:32px 0 12px;padding-bottom:6px;border-b
 .cat.y:hover{background:var(--ye200)}
 .cat.b{background:var(--bl100);color:var(--tx);border:2px solid var(--bl400)}
 .cat.b:hover{background:var(--bl200)}
+.sat{display:block;padding:12px 14px;border-radius:8px;font-weight:600;font-size:14px;text-decoration:none}
 .cat.new{position:relative}
-.cat .flag{position:absolute;right:10px;top:50%;transform:translateY(-50%);background:var(--re600);color:#fff;font-size:10px;font-weight:600;padding:2px 7px;border-radius:10px}
+.cat .flag{position:absolute;right:10px;top:50%;transform:translateY(-50%);background:var(--re500);color:#fff;font-size:10px;font-weight:600;padding:2px 7px;border-radius:10px}
 
 /* карточка сорта */
 .card{background:#fff;border:1px solid var(--ui2);border-radius:8px;overflow:hidden;width:230px}
@@ -52,12 +53,12 @@ h2{font-size:18px;font-weight:600;margin:32px 0 12px;padding-bottom:6px;border-b
 .card .body{padding:10px 12px}
 .card .name{font-weight:600;font-size:15px}
 .card .name i{font-style:normal;color:var(--tx2);font-weight:400}
-.card .rus{color:var(--re600);font-weight:600}
+.card .rus{color:var(--re500);font-weight:600}
 .card .price{font-size:18px;font-weight:600;margin-top:6px}
 .card .price small{font-size:12px;color:var(--tx2);font-weight:400}
 .card .btns{display:flex;gap:8px;margin-top:10px}
 .btn{flex:1;border:0;border-radius:6px;padding:8px 10px;font:inherit;font-size:13px;font-weight:600;cursor:pointer;text-align:center;text-decoration:none}
-.btn.cart{background:var(--re600);color:#fff}
+.btn.cart{background:var(--re500);color:#fff}
 .btn.cart:hover{background:var(--re500)}
 .btn.about{background:var(--bl600);color:#fff}
 .btn.about:hover{background:var(--bl500)}
@@ -66,7 +67,7 @@ h2{font-size:18px;font-weight:600;margin:32px 0 12px;padding-bottom:6px;border-b
 
 /* шапка */
 .head{background:var(--paper);border:1px solid var(--ui2);border-radius:8px;padding:12px 14px;display:flex;gap:16px;align-items:center}
-.head .logo{width:44px;height:44px;border-radius:8px;background:var(--re600);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600}
+.head .logo{width:44px;height:44px;border-radius:8px;background:var(--re500);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600}
 .head .ttl{font-weight:600}
 .head .ttl small{display:block;color:var(--tx2);font-weight:400;font-size:11px}
 .head nav{margin-left:auto;display:flex;gap:10px;font-size:12px;font-weight:500}
@@ -129,8 +130,8 @@ Flexoki (stephango.com/flexoki, v2.0), база light («бумага»). Это
   <div class="sw"><div class="chip" style="background:#FFCABB"></div><div class="meta"><b>re-100</b><span>#FFCABB</span></div></div>
   <div class="sw"><div class="chip" style="background:#E8705F"></div><div class="meta"><b>re-300</b><span>#E8705F</span></div></div>
   <div class="sw"><div class="chip" style="background:#D14D41"></div><div class="meta"><b>re-400</b><span>#D14D41</span></div></div>
-  <div class="sw"><div class="chip" style="background:#C03E35"></div><div class="meta"><b>re-500</b><span>#C03E35</span></div></div>
-  <div class="sw"><div class="chip" style="background:#AF3029"></div><div class="meta"><b>re-600</b><span>#AF3029 текст/кнопки</span></div></div>
+  <div class="sw"><div class="chip" style="background:#C03E35"></div><div class="meta"><b>re-500</b><span>#C03E35 КНОПКИ/ЦЕНЫ</span></div></div>
+  <div class="sw"><div class="chip" style="background:#AF3029"></div><div class="meta"><b>re-600</b><span>#AF3029 запасной</span></div></div>
 </div>
 
 <h2>Превью ролей (мини-макеты)</h2>
@@ -152,7 +153,6 @@ Flexoki (stephango.com/flexoki, v2.0), база light («бумага»). Это
   <div class="panel">
     <h3>Левая колонка категорий</h3>
     <div class="cats">
-      <a class="cat y new" href="#">НОВИНКИ<span class="flag">новинка</span></a>
       <a class="cat b" href="#">Ультраранние</a>
       <a class="cat y" href="#">Ранние</a>
       <a class="cat b" href="#">Средние</a>
@@ -186,13 +186,69 @@ Flexoki (stephango.com/flexoki, v2.0), база light («бумага»). Это
   </div>
 </div>
 
-<h2>Открытые вопросы к утверждению</h2>
+<h2>ВЫБРАНО Владимиром 2026-11-01</h2>
 <p class="note">
-1) Основной из двух семейных: жёлтый или голубой ведущий (сейчас в макетах жёлтый тёплый ведущий, голубой холодный уравновешивает).<br>
-2) Глубина заливок левых кнопок: сейчас 100-е ступени (светлые, текст тёмный) с границей 400-й. Вариант: насыщенные заливки 300/400.<br>
-3) Точки-навигация карусели красные или голубые.<br>
-4) Красный: 600 (#AF3029, спокойный) или 500 (#C03E35, чуть сочнее) для кнопок и цен.
+1) База жёлтая: фон сайта жёлтый (варианты A/B ниже).<br>
+2) Левые кнопки насыщенные, цвет показывается вариантами 1-4 ниже, выбрать один.<br>
+3) Красный: сочный #C03E35 (re-500).<br>
+4) НОВИНКИ из левой колонки убраны, остались 5 категорий клубники.
 </p>
+
+<h2>Фон сайта: жёлтая база, 2 варианта</h2>
+<div style="display:flex;gap:16px;flex-wrap:wrap">
+  <div style="flex:1;min-width:300px;border:1px solid var(--ui3);border-radius:8px;overflow:hidden">
+    <div style="background:#FAEEC6;padding:16px;min-height:120px">
+      <b>Вариант A: ye-50 #FAEEC6</b>
+      <div style="background:#F6E2A0;margin-top:8px;padding:8px;border-radius:6px">панель/шапка: ye-100 #F6E2A0</div>
+      <div style="background:#FFFCF0;margin-top:8px;padding:8px;border-radius:6px">карточки: бумага #FFFCF0</div>
+      <div style="margin-top:8px;font-size:13px;color:#1C1B1A">текст #1C1B1A: контраст на #FAEEC6 достаточный (примерно 12:1)</div>
+    </div>
+  </div>
+  <div style="flex:1;min-width:300px;border:1px solid var(--ui3);border-radius:8px;overflow:hidden">
+    <div style="background:#F6E2A0;padding:16px;min-height:120px">
+      <b>Вариант B: ye-100 #F6E2A0</b>
+      <div style="background:#ECCB60;margin-top:8px;padding:8px;border-radius:6px">панель/шапка: ye-200 #ECCB60</div>
+      <div style="background:#FFFCF0;margin-top:8px;padding:8px;border-radius:6px">карточки: бумага #FFFCF0</div>
+      <div style="margin-top:8px;font-size:13px;color:#1C1B1A">жёлтее и сочнее, но «бумажность» Flexoki теряется; проверить на телефоне дачника</div>
+    </div>
+  </div>
+</div>
+
+<h2>Левые кнопки: насыщенные, 4 варианта (выбрать один)</h2>
+<div class="preview">
+  <div class="panel"><h3>Вариант 1: чередование жёлтый-голубой (300)</h3>
+    <div class="cats">
+      <a class="sat" style="background:#DFB431;color:#1C1B1A" href="#">Ультраранние</a>
+      <a class="sat" style="background:#66A0C8;color:#fff" href="#">Ранние</a>
+      <a class="sat" style="background:#DFB431;color:#1C1B1A" href="#">Средние</a>
+      <a class="sat" style="background:#66A0C8;color:#fff" href="#">Поздние</a>
+      <a class="sat" style="background:#DFB431;color:#1C1B1A" href="#">Ремонтантные</a>
+    </div></div>
+  <div class="panel"><h3>Вариант 2: всё жёлтое (300), голубая рамка</h3>
+    <div class="cats">
+      <a class="sat" style="background:#DFB431;color:#1C1B1A;border:2px solid #205EA6" href="#">Ультраранние</a>
+      <a class="sat" style="background:#DFB431;color:#1C1B1A;border:2px solid #205EA6" href="#">Ранние</a>
+      <a class="sat" style="background:#DFB431;color:#1C1B1A;border:2px solid #205EA6" href="#">Средние</a>
+      <a class="sat" style="background:#DFB431;color:#1C1B1A;border:2px solid #205EA6" href="#">Поздние</a>
+      <a class="sat" style="background:#DFB431;color:#1C1B1A;border:2px solid #205EA6" href="#">Ремонтантные</a>
+    </div></div>
+  <div class="panel"><h3>Вариант 3: глубже, 400 ступень</h3>
+    <div class="cats">
+      <a class="sat" style="background:#D0A215;color:#1C1B1A" href="#">Ультраранние</a>
+      <a class="sat" style="background:#4385BE;color:#fff" href="#">Ранние</a>
+      <a class="sat" style="background:#D0A215;color:#1C1B1A" href="#">Средние</a>
+      <a class="sat" style="background:#4385BE;color:#fff" href="#">Поздние</a>
+      <a class="sat" style="background:#D0A215;color:#1C1B1A" href="#">Ремонтантные</a>
+    </div></div>
+  <div class="panel"><h3>Вариант 4: светлые с сочной рамкой (прошлый макет)</h3>
+    <div class="cats">
+      <a class="cat y" href="#">Ультраранние</a>
+      <a class="cat b" href="#">Ранние</a>
+      <a class="cat y" href="#">Средние</a>
+      <a class="cat b" href="#">Поздние</a>
+      <a class="cat y" href="#">Ремонтантные</a>
+    </div></div>
+</div>
 
 </body>
 </html>
