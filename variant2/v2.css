@@ -17,7 +17,7 @@
   --red-d:#AF3029;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:var(--bg);color:var(--tx);font-family:'Onest',system-ui,sans-serif;font-size:16px;line-height:1.5}
+body{background:var(--bg);color:var(--tx);font-family:'Onest',system-ui,sans-serif;font-size:21px;line-height:1.55}
 a{color:var(--bl600)}
 img{max-width:100%}
 
@@ -30,14 +30,6 @@ header.site{background:var(--bg2);padding:14px 16px 10px;display:flex;gap:18px;a
 .logo .mark{width:52px;height:52px;flex:0 0 52px}
 .logo .name{font-weight:600;font-size:20px;line-height:1.2}
 .logo .name small{display:block;font-weight:400;font-size:11px;color:var(--tx2);letter-spacing:.5px;text-transform:uppercase}
-nav.main{margin-left:auto;display:flex;gap:4px;flex-wrap:wrap}
-nav.main a{color:var(--tx);text-decoration:none;font-weight:600;font-size:13px;letter-spacing:.5px;padding:8px 12px;border-radius:8px;text-transform:uppercase}
-nav.main a:hover{background:rgba(255,255,255,.55)}
-nav.main a.on{background:var(--bl600);color:#fff}
-nav.main a.cart-link{background:var(--red);color:#fff}
-nav.main a.cart-link:hover{background:var(--red-d)}
-nav.main a.cart-link [data-cart-count]:empty{display:none}
-
 /* ---------- лейаут: колонка + контент ---------- */
 .wrap{max-width:1200px;margin:0 auto;padding:20px 16px;display:grid;grid-template-columns:270px 1fr;gap:20px;align-items:start}
 @media (max-width:900px){.wrap{grid-template-columns:1fr}}
@@ -54,21 +46,39 @@ nav.main a.cart-link [data-cart-count]:empty{display:none}
  .cat{flex:1 1 160px;text-align:center}}
 
 /* ---------- герой: аккордеон из 3 фото ---------- */
-.hero-acc{display:flex;gap:6px;height:420px;border-radius:12px;overflow:hidden}
+.hero-acc{display:flex;gap:6px;height:520px;border-radius:12px;overflow:hidden}
 .hero-acc .slide{position:relative;flex:1;overflow:hidden;cursor:pointer;transition:flex 1s cubic-bezier(.2,.7,.3,1);border-radius:0}
 .hero-acc .slide.open{flex:7;cursor:default}
 .hero-acc img{width:100%;height:100%;object-fit:cover;display:block}
 .hero-acc .cap{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(transparent,rgba(28,27,26,.78));color:#fff;padding:26px 16px 12px;font-weight:600;font-size:15px}
 .hero-acc .slide:not(.open) .cap{writing-mode:vertical-rl;transform:rotate(180deg);position:absolute;top:14px;left:auto;right:12px;bottom:auto;background:none;padding:0;font-size:13px;opacity:.95;text-shadow:0 1px 3px rgba(0,0,0,.6)}
-@media (max-width:700px){.hero-acc{height:300px}.hero-acc .cap{font-size:13px}}
+@media (max-width:700px){.hero-acc{height:340px}.hero-acc .cap{font-size:13px}}
+@media (max-width:700px){.bh-photo{width:140px;height:100px;flex-basis:140px}.bh-contacts{font-size:15px}}
 
-/* ---------- плантация на весь экран ---------- */
-.plantation{position:relative;height:100vh;min-height:480px;margin-top:20px}
-.plantation img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.plantation .veil{position:absolute;inset:0;background:linear-gradient(rgba(28,27,26,.05),rgba(28,27,26,.45))}
-.plantation .txt{position:absolute;left:50%;bottom:60px;transform:translateX(-50%);text-align:center;color:#fff;max-width:720px;padding:0 16px}
-.plantation .txt h2{font-size:clamp(22px,4vw,40px);font-weight:600;text-shadow:0 2px 8px rgba(0,0,0,.5)}
-.plantation .txt p{margin-top:8px;font-size:clamp(14px,2vw,18px);text-shadow:0 1px 6px rgba(0,0,0,.6)}
+/* ---------- крупная шапка-микс (старый сайт + SK) ---------- */
+.bighead{background:var(--bg2);padding:18px 20px 12px}
+.bh-row{display:flex;gap:22px;align-items:center;max-width:1200px;margin:0 auto;flex-wrap:wrap}
+.bh-photo{width:210px;height:150px;object-fit:cover;border-radius:10px;flex:0 0 210px;box-shadow:0 2px 8px rgba(28,27,26,.25)}
+.bh-titles{flex:1;min-width:260px}
+.bh-name{font-size:clamp(30px,4.5vw,46px);font-weight:600;color:var(--red);letter-spacing:.5px;line-height:1.05}
+.bh-domain{font-size:clamp(20px,2.6vw,28px);font-weight:600;color:var(--tx)}
+.bh-sub{font-size:clamp(16px,2.2vw,24px);font-weight:600;color:var(--red);margin-top:2px}
+.bh-contacts{font-size:17px;line-height:1.6}
+.bh-contacts a{color:var(--tx);text-decoration:none;font-weight:600}
+.bh-contacts .ord{color:var(--bl600)}
+.bh-contacts .cons{color:var(--bl600)}
+.bh-social{display:flex;gap:8px;margin-top:8px}
+.so{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff !important;font-weight:600;font-size:14px;text-decoration:none}
+.so.ig{background:#C13584}.so.em{background:#100F0F}.so.tg{background:#26A5E4}.so.vb{background:#7360F2}.so.wa{background:#25D366}
+.so:hover{filter:brightness(.9)}
+nav.main{margin:12px auto 0;max-width:1200px;display:flex;gap:6px;flex-wrap:wrap;justify-content:center}
+nav.main a{color:var(--tx);text-decoration:none;font-weight:600;font-size:15px;letter-spacing:.5px;padding:10px 18px;border-radius:9px;text-transform:uppercase}
+nav.main a:hover{background:rgba(255,255,255,.55)}
+nav.main a.on{background:var(--bl600);color:#fff}
+nav.main a.cart-link{background:var(--red);color:#fff}
+nav.main a.cart-link:hover{background:var(--red-d)}
+nav.main a.cart-link [data-cart-count]:empty{display:none}
+header.site{display:none}
 
 /* ---------- секции под героем ---------- */
 h3.sec{font-size:22px;font-weight:600;margin:34px 0 14px}
@@ -98,8 +108,8 @@ h3.sec{font-size:22px;font-weight:600;margin:34px 0 14px}
 .btn.add.added{background:#1C6C66}
 
 /* ---------- футер ---------- */
-footer.site{margin-top:40px;background:var(--bg2);border-top:1px solid rgba(28,27,26,.12);padding:22px 16px;display:flex;gap:20px;flex-wrap:wrap;align-items:flex-start;font-size:14px}
-footer.site .col{min-width:200px}
+footer.site{margin-top:40px;background:var(--bg2);border-top:1px solid rgba(28,27,26,.12);padding:28px 20px;display:flex;gap:26px;flex-wrap:wrap;align-items:flex-start;font-size:16px}
+footer.site .col{min-width:220px;font-size:17px}
 footer.site b{display:block;margin-bottom:6px;font-size:13px;text-transform:uppercase;letter-spacing:.5px}
 footer.site a{color:var(--tx)}
 footer.site .note{color:var(--tx2);font-size:12px;margin-top:10px}
