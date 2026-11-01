@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="assets/favicon.ico">
 <title>Питомник клубники klubnika-minsk.by — рассада клубники ЗКС, Минск и вся Беларусь</title>
-<link rel="stylesheet" href="v2.css?v=8">
+<link rel="stylesheet" href="v2.css?v=9">
 <style>
 @font-face{font-family:'Onest';src:url('../fonts/onest-cyrillic-400.woff2') format('woff2');font-weight:400;font-display:swap;unicode-range:U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;}
 @font-face{font-family:'Onest';src:url('../fonts/onest-latin-400.woff2') format('woff2');font-weight:400;font-display:swap;}
@@ -22,12 +22,12 @@
 <header class="bighead">
   <div class="bh-row">
     <img class="bh-photo" src="assets/head-berries.jpg" alt="Ягода клубники с цветком, как в шапке старого сайта">
-    <img class="bh-berry" src="assets/berry.svg" width="64" height="64" alt="" aria-hidden="true">
     <div class="bh-titles">
       <div class="bh-name">КЛУБНИКА-МИНСК</div>
       <div class="bh-domain">klubnika-minsk.by</div>
       <div class="bh-sub">РАССАДА КЛУБНИКИ В МИНСКЕ</div>
     </div>
+    <img class="bh-berry" src="assets/berry.svg" width="96" height="96" alt="" aria-hidden="true">
     <div class="bh-contacts">
       <div><a href="tel:+375291803282">+375 29 180 32 82</a> <span>Рита - <b class="ord">Приём заказов</b></span></div>
       <div><a href="tel:+375296409298">+375 29 640 92 98</a> <span>Владимир - <b class="cons">Консультация</b></span></div>
@@ -186,15 +186,15 @@
   </div>
 </footer>
 
-<script src="../app.js?v=8"></script>
+<script src="../app.js?v=9"></script>
 <script>
 // матрица падающих ягод: canvas за контентом, предохранители по ресёрчу
 (function(){
   var c=document.getElementById('berryField');
   if(!c) return;
-  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var mobile=window.matchMedia('(max-width:700px)').matches;
-  if(reduce) return; // уважаем настройку системы
+  // TODO прод: вернуть уважение prefers-reduced-motion (у Владимира системные анимации выключены,
+  // поэтому в прототипе флаг игнорируем, чтобы видеть эффект)
   var ctx=c.getContext('2d');
   var img=new Image();
   img.src='assets/berry.svg';
