@@ -36,6 +36,8 @@ header.site{background:var(--bg2);padding:14px 16px 10px;display:flex;gap:18px;a
 .logo .name small{display:block;font-weight:400;font-size:11px;color:var(--tx2);letter-spacing:.5px;text-transform:uppercase}
 /* ---------- лейаут: колонка + контент ---------- */
 .wrap{max-width:1200px;margin:0 auto;padding:0 18px 24px;display:grid;grid-template-columns:300px 1fr;gap:22px;align-items:start;padding-top:0}
+.wrap.solo{display:block;max-width:900px}
+.wrap.solo main{padding-top:6px}
 @media (max-width:900px){.wrap{grid-template-columns:1fr}}
 
 /* левая колонка категорий */
@@ -69,12 +71,13 @@ header.site{background:var(--bg2);padding:14px 16px 10px;display:flex;gap:18px;a
 .bighead{background:var(--site-yellow);padding:14px 20px 12px}
 .bh-row{display:flex;gap:20px;align-items:center;max-width:1200px;margin:0 auto}
 .bh-photo{width:336px;height:252px;object-fit:cover;border-radius:12px;flex:0 0 336px;box-shadow:0 2px 8px rgba(28,27,26,.25);object-position:center}
-.bh-titles{flex:1;min-width:260px}
-.bh-name{font-size:clamp(34px,4.2vw,54px);font-weight:600;color:var(--navy);letter-spacing:.5px;line-height:1.05;white-space:nowrap}
+.bh-titles{flex:1;min-width:300px}
+.bh-name{font-size:clamp(34px,3.4vw,46px);font-weight:600;color:var(--navy);letter-spacing:.5px;line-height:1.05;white-space:nowrap}
 .bh-domain{font-size:clamp(18px,2.2vw,26px);font-weight:600;color:var(--tx);white-space:nowrap}
 .bh-sub{font-size:clamp(15px,1.8vw,22px);font-weight:600;color:var(--red);margin-top:2px;white-space:nowrap}
-.bh-contacts{font-size:21px;line-height:1.6}
-.bh-contacts a{color:var(--navy);text-decoration:none;font-weight:600;font-size:24px}
+.bh-contacts{font-size:20px;line-height:1.45}
+.bh-contacts a{color:var(--navy);text-decoration:none;font-weight:600;font-size:20px}
+.bh-contacts .lbl{display:block;font-size:13px;color:var(--tx2);font-weight:500;margin-bottom:4px}
 .bh-contacts .ord{color:var(--bl600)}
 .bh-contacts .cons{color:var(--bl600)}
 .bh-social{display:flex;gap:8px;margin-top:8px}
@@ -140,7 +143,7 @@ footer.site .so{width:40px;height:40px}
 footer.site .so svg{width:22px;height:22px}
 
 /* ---------- 2D клубника: покачивание ---------- */
-.bh-berry{width:128px;height:109px;flex:0 0 128px;align-self:center;transform:translate(14px,30px);transform-origin:50% 85%;animation:sway 3.4s ease-in-out infinite;margin:0 4px}
+.bh-berry{width:96px;height:82px;align-self:flex-end;position:relative;left:-6px;top:2px;transform-origin:50% 85%;animation:sway 3.4s ease-in-out infinite}
 @keyframes sway{0%,100%{transform:rotate(-7deg)}50%{transform:rotate(7deg)}}
 @media (max-width:700px){
  .bh-berry{width:64px;height:70px;flex-basis:64px;order:10;align-self:center;margin:6px auto 0}
@@ -171,3 +174,86 @@ footer.site .so svg{width:22px;height:22px}
 .hero-dots{display:flex;gap:8px;justify-content:center;margin-top:8px}
 .hero-dots i{width:11px;height:11px;border-radius:50%;background:rgba(28,27,26,.3)}
 .hero-dots i.on{background:var(--red)}
+
+/* ---------- мобильная шапка SK-стиль: видна только на мобиле ---------- */
+.mhead{display:none}
+@media (max-width:700px){
+ .mhead{display:block;text-align:center;padding:18px 10px 12px;background:var(--site-yellow)}
+ .bighead{display:none}
+ .mh-word{font-size:52px;font-weight:700;color:var(--red);line-height:1.05;letter-spacing:1px}
+ .mh-small{font-size:14px;color:var(--tx);letter-spacing:3px;text-transform:uppercase;margin:4px 0}
+ .mh-site{font-size:20px;font-weight:600;color:var(--navy);margin-top:6px}
+ .mh-sub{font-size:18px;font-weight:600;color:var(--red);margin:2px 0 10px}
+ .mh-photo{width:70%;max-width:320px;height:auto;border-radius:10px;box-shadow:0 2px 8px rgba(28,27,26,.25)}
+ .mh-phones{margin-top:12px;font-size:17px;line-height:1.5}
+ .mh-phones a{display:block;color:var(--navy);font-weight:600;text-decoration:none;font-size:22px}
+ .mh-phones span{display:block;color:var(--tx2);font-size:14px;margin-bottom:6px}
+ .mh-social{display:flex;gap:10px;justify-content:center;margin-top:10px}
+}
+
+/* ---------- каталог ---------- */
+.catfilter{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:14px 0 18px}
+.cf{padding:8px 14px;border-radius:9px;font-weight:600;font-size:14px;cursor:pointer;background:var(--paper);border:1px solid var(--ui);user-select:none}
+.cf.on{background:var(--red);color:#fff;border-color:var(--red)}
+.cf.avail.on{background:#1C6C66;border-color:#1C6C66}
+#sortSearch{padding:9px 14px;border-radius:9px;border:1px solid var(--ui);font:inherit;font-size:14px;min-width:200px;background:var(--paper)}
+.viewswitch{margin-left:auto;display:flex;border:1px solid var(--ui);border-radius:9px;overflow:hidden}
+.viewswitch button{border:0;background:var(--paper);font:inherit;font-size:13px;font-weight:600;padding:8px 14px;cursor:pointer}
+.viewswitch button.on{background:var(--bl600);color:#fff}
+.tablewrap{background:var(--paper);border:1px solid var(--ui);border-radius:10px;overflow-x:auto}
+.ptable{width:100%;border-collapse:collapse;font-size:16px}
+.ptable th{position:sticky;top:0;background:var(--bg2);text-align:left;padding:12px 14px;font-size:13px;text-transform:uppercase;letter-spacing:.5px;border-bottom:2px solid rgba(28,27,26,.2)}
+.ptable td{padding:10px 14px;border-bottom:1px solid var(--ui);vertical-align:middle}
+.ptable tr:hover td{background:rgba(255,255,255,.5)}
+.ptable .name b{font-size:17px}
+.ptable .price{font-weight:600;font-size:17px;white-space:nowrap}
+.st{display:inline-block;padding:2px 9px;border-radius:10px;font-size:12px;font-weight:600;background:var(--ui);color:var(--tx)}
+.st-yes{background:#BFE8D9;color:#164F4A}
+.st-trial{background:#F6E2A0;color:#664D01}
+.st-no{background:#FDB2A2;color:#6C201C}
+.st.new{background:var(--red);color:#fff}
+.btn-sm{padding:7px 12px;font-size:13px}
+.pcard .ph.noimg{display:flex;align-items:center;justify-content:center;font-size:64px;font-weight:600;color:rgba(28,27,26,.18);background:linear-gradient(135deg,var(--bg2),var(--bl400) 160%)}
+@media (max-width:700px){
+ #sortSearch{min-width:0;flex:1 1 100%}
+ .viewswitch{margin-left:0}
+ .ptable{font-size:14px}
+ .ptable td,.ptable th{padding:8px 10px}
+}
+
+/* ---------- корзина и формы (перенос из прототипа-1) ---------- */
+.chead{display:grid;grid-template-columns:1fr 110px 130px 110px 40px;gap:8px;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.4px;color:var(--tx2);padding:0 10px 8px}
+.crow{display:grid;grid-template-columns:1fr 110px 130px 110px 40px;gap:8px;align-items:center;background:var(--paper);border:1px solid var(--ui);border-radius:10px;padding:10px;margin-bottom:8px}
+.crow .cname b{font-size:17px}
+.crow .badge{display:inline-block;padding:2px 9px;border-radius:10px;font-size:12px;font-weight:600;background:var(--bg2);color:var(--tx);margin-left:8px}
+.crow .cprice,.crow .csum{font-weight:600;white-space:nowrap}
+.cqty{display:flex;gap:8px;align-items:center}
+.qbtn{width:32px;height:32px;border-radius:8px;border:1px solid var(--ui);background:var(--paper);font:inherit;font-weight:600;cursor:pointer}
+.qbtn:hover{background:var(--bg2)}
+.qbtn.del{border:none;background:none;color:var(--red);font-size:22px;width:34px}
+.ctotal{display:flex;justify-content:flex-end;gap:26px;font-size:20px;font-weight:600;padding:14px 10px;border-top:2px solid rgba(28,27,26,.2);max-width:520px;margin-left:auto}
+.btn-danger{background:var(--red);color:#fff;border-radius:8px;padding:9px 16px;font:inherit;font-weight:600;cursor:pointer}
+.deliv{display:flex;flex-direction:column;gap:8px}
+.deliv label{display:flex;flex-wrap:wrap;gap:4px 10px;align-items:baseline;background:var(--paper);border:2px solid var(--ui);border-radius:10px;padding:12px 14px;cursor:pointer}
+.deliv label.on{border-color:var(--bl600)}
+.deliv label b{font-size:17px}
+.deliv label span{color:var(--tx2);font-size:14px}
+.field{margin-bottom:12px}
+.field label{display:block;font-size:14px;font-weight:600;margin-bottom:4px}
+.field input,.field select,.field textarea{width:100%;padding:10px 12px;border:1px solid var(--ui);border-radius:8px;font:inherit;font-size:16px;background:var(--paper)}
+.minwarn{background:#F6E2A0;border:1px solid #DDB02C;border-radius:8px;padding:10px 14px;margin:10px 0;font-weight:500}
+.consult{background:var(--paper);border:1px solid var(--ui);border-radius:10px;padding:14px 16px;margin:16px 0}
+.ordernum{background:#BFE8D9;border:1px solid #1C6C66;color:#164F4A;font-weight:600;border-radius:10px;padding:12px 16px;margin-bottom:10px}
+#order-text{width:100%;min-height:180px;font:inherit;font-size:14px;border:1px solid var(--ui);border-radius:10px;padding:12px;background:var(--paper)}
+.copyhint{color:var(--tx2);font-size:14px;margin:8px 0}
+.btn-primary{background:var(--red);color:#fff;border:0;border-radius:9px;padding:12px 20px;font:inherit;font-weight:600;cursor:pointer}
+.btn-primary:hover{background:var(--red-d)}
+.btn-ghost{background:var(--paper);border:1px solid var(--ui);border-radius:9px;padding:9px 16px;font:inherit;font-weight:600;cursor:pointer}
+.hidden{display:none}
+h2,h3{font-weight:600}
+@media (max-width:700px){
+ .chead{display:none}
+ .crow{grid-template-columns:1fr;gap:6px}
+ .crow .cqty{justify-content:flex-start}
+ .ctotal{max-width:none}
+}
