@@ -1,27 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 170">
-  <!-- листья -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 180">
+  <!-- листья: веер за ягодами, цельные -->
   <g>
-    <path d="M60 60 C40 30 20 26 8 34 C22 48 42 58 60 62 Z" fill="#879A39"/>
-    <path d="M70 46 C64 20 50 8 34 6 C42 24 54 40 70 48 Z" fill="#879A39"/>
-    <path d="M100 42 C104 18 118 6 134 4 C128 22 116 38 102 44 Z" fill="#879A39"/>
-    <path d="M130 58 C150 32 168 26 180 32 C168 46 148 56 132 60 Z" fill="#879A39"/>
+    <path d="M106 40 C100 14 86 4 66 0 C74 20 88 34 104 42 Z" fill="#879A39"/>
+    <path d="M114 40 C124 16 140 6 160 4 C150 22 134 38 118 42 Z" fill="#879A39"/>
+    <path d="M100 44 C84 28 62 22 44 28 C58 40 80 48 98 50 Z" fill="#879A39"/>
+    <path d="M122 46 C140 32 160 28 178 34 C164 44 144 50 126 50 Z" fill="#879A39"/>
   </g>
-  <!-- задняя клубника -->
-  <g transform="translate(128,52) rotate(24)">
-    <path d="M0 58 C-18 44 -28 28 -28 14 C-28 4 -21 -2 -12 -2 C-7 -2 -3 1 0 5 C3 1 7 -2 12 -2 C21 -2 28 4 28 14 C28 28 18 44 0 58 Z" fill="#ECCB60" stroke="#1C1B1A" stroke-width="2.5"/>
-    <g fill="#1C1B1A" opacity=".85">
-      <ellipse cx="-14" cy="14" rx="1.8" ry="2.6"/><ellipse cx="0" cy="10" rx="1.8" ry="2.6"/>
-      <ellipse cx="14" cy="14" rx="1.8" ry="2.6"/><ellipse cx="-19" cy="26" rx="1.8" ry="2.6"/>
-      <ellipse cx="-7" cy="24" rx="1.8" ry="2.6"/><ellipse cx="7" cy="24" rx="1.8" ry="2.6"/>
-      <ellipse cx="19" cy="26" rx="1.8" ry="2.6"/><ellipse cx="-12" cy="38" rx="1.8" ry="2.6"/>
-      <ellipse cx="2" cy="36" rx="1.8" ry="2.6"/><ellipse cx="14" cy="40" rx="1.8" ry="2.6"/>
-    </g>
-  </g>
-  <!-- передняя клубника (крупная) -->
-  <g transform="translate(74,64) rotate(-8)">
+  <!-- главная клубника (центр, крупная, лёгкий наклон) -->
+  <g transform="translate(100,70) rotate(-4)">
     <path d="M50 22 L38 8 L46 20 L34 14 L44 25 L30 24 L43 30 Z" fill="#879A39"/>
     <path d="M50 22 L62 8 L54 20 L66 14 L56 25 L70 24 L57 30 Z" fill="#879A39"/>
-    <path d="M50 92 C30 78 18 60 18 44 C18 32 27 26 38 26 C44 26 48 29 50 33 C52 29 56 26 62 26 C73 26 82 32 82 44 C82 60 70 78 50 92 Z" fill="#ECCB60" stroke="#1C1B1A" stroke-width="3"/>
+    <path d="M50 92 C30 78 18 60 18 44 C18 32 27 26 38 26 C44 26 48 29 50 33 C52 29 56 26 62 26 C73 26 82 32 82 44 C82 60 70 78 50 92 Z" fill="#ECCB60"/>
     <path d="M30 40 C28 48 30 58 36 68 C34 56 33 47 34 41 Z" fill="#ffffff" opacity=".25"/>
     <g fill="#1C1B1A">
       <ellipse cx="34" cy="44" rx="2.2" ry="3.2"/><ellipse cx="44" cy="38" rx="2.2" ry="3.2"/>
@@ -32,21 +21,22 @@
       <ellipse cx="46" cy="84" rx="2.2" ry="3.2"/>
     </g>
   </g>
-  <!-- голубика: слева -->
-  <g transform="translate(30,112)">
-    <circle cx="0" cy="14" r="15" fill="#C6DDE8" stroke="#1C1B1A" stroke-width="2.5"/>
-    <circle cx="0" cy="14" r="15" fill="none" stroke="#1C1B1A" stroke-width="1.5"/>
-    <path d="M-4 3 a5 4 0 0 1 8 0" fill="none" stroke="#1C1B1A" stroke-width="2"/>
-    <circle cx="26" cy="2" r="11" fill="#C6DDE8" stroke="#1C1B1A" stroke-width="2"/>
-    <path d="M23 -6 a4 3 0 0 1 6 0" fill="none" stroke="#1C1B1A" stroke-width="1.6"/>
+  <!-- голубика слева -->
+  <g>
+    <circle cx="52" cy="112" r="14" fill="#C6DDE8"/>
+    <path d="M54 100 a4 3 0 0 1 7 0" fill="none" stroke="#1C1B1A" stroke-width="1.6"/>
+    <circle cx="36" cy="120" r="17" fill="#C6DDE8"/>
+    <path d="M34 119 a5 4 0 0 1 8 0" fill="none" stroke="#1C1B1A" stroke-width="2"/>
+    <circle cx="70" cy="138" r="15" fill="#C6DDE8"/>
+    <path d="M58 134 a4 3 0 0 1 7 0" fill="none" stroke="#1C1B1A" stroke-width="1.7"/>
+    <circle cx="26" cy="140" r="13" fill="#C6DDE8"/>
+    <path d="M18 141 a4 3 0 0 1 7 0" fill="none" stroke="#1C1B1A" stroke-width="1.7"/>
   </g>
-  <!-- голубика: справа -->
-  <g transform="translate(150,104)">
-    <circle cx="0" cy="6" r="13" fill="#C6DDE8" stroke="#1C1B1A" stroke-width="2"/>
-    <path d="M-3 -4 a4 3 0 0 1 6 0" fill="none" stroke="#1C1B1A" stroke-width="1.6"/>
-    <circle cx="22" cy="18" r="15" fill="#C6DDE8" stroke="#1C1B1A" stroke-width="2.5"/>
-    <circle cx="22" cy="18" r="15" fill="none" stroke="#1C1B1A" stroke-width="1.5"/>
-    <path d="M18 7 a5 4 0 0 1 8 0" fill="none" stroke="#1C1B1A" stroke-width="2"/>
-    <circle cx="14" cy="-2" r="9" fill="#E1ECEB" stroke="#1C1B1A" stroke-width="2"/>
+  <!-- голубика справа внизу -->
+  <g>
+    <circle cx="192" cy="138" r="15" fill="#C6DDE8"/>
+    <path d="M176 126 a4 3 0 0 1 7 0" fill="none" stroke="#1C1B1A" stroke-width="1.7"/>
+    <circle cx="192" cy="146" r="13" fill="#C6DDE8"/>
+    <path d="M196 141 a4 3 0 0 1 7 0" fill="none" stroke="#1C1B1A" stroke-width="1.7"/>
   </g>
 </svg>

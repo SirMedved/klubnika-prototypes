@@ -65,6 +65,7 @@ header.site{background:var(--bg2);padding:14px 16px 10px;display:flex;gap:18px;a
  .hero-acc .slide{position:absolute;inset:0;flex:none;opacity:0;transition:opacity .45s;pointer-events:none}
  .hero-acc .slide.open{opacity:1;position:relative;pointer-events:auto}
  .hero-acc .cap{writing-mode:horizontal-tb;transform:none;font-size:14px}
+ .hero-dots{display:flex}
 }
 
 /* ---------- крупная шапка-микс (старый сайт + SK) ---------- */
@@ -72,12 +73,12 @@ header.site{background:var(--bg2);padding:14px 16px 10px;display:flex;gap:18px;a
 .bh-row{display:flex;gap:20px;align-items:center;max-width:1200px;margin:0 auto}
 .bh-photo{width:336px;height:252px;object-fit:cover;border-radius:12px;flex:0 0 336px;box-shadow:0 2px 8px rgba(28,27,26,.25);object-position:center}
 .bh-titles{flex:1;min-width:300px}
-.bh-name{font-size:clamp(34px,3.4vw,46px);font-weight:600;color:var(--navy);letter-spacing:.5px;line-height:1.05;white-space:nowrap}
+.bh-name{font-size:clamp(34px,3.8vw,54px);font-weight:600;color:var(--navy);letter-spacing:.5px;line-height:1.05;white-space:nowrap}
 .bh-domain{font-size:clamp(18px,2.2vw,26px);font-weight:600;color:var(--tx);white-space:nowrap}
 .bh-sub{font-size:clamp(15px,1.8vw,22px);font-weight:600;color:var(--red);margin-top:2px;white-space:nowrap}
 .bh-contacts{font-size:20px;line-height:1.45}
-.bh-contacts a{color:var(--navy);text-decoration:none;font-weight:600;font-size:20px}
-.bh-contacts .lbl{display:block;font-size:13px;color:var(--tx2);font-weight:500;margin-bottom:4px}
+.bh-contacts a{color:var(--red);text-decoration:none;font-weight:600;font-size:20px}
+.bh-contacts .lbl{display:block;font-size:16px;color:var(--bl600);font-weight:600;margin-bottom:4px}
 .bh-contacts .ord{color:var(--bl600)}
 .bh-contacts .cons{color:var(--bl600)}
 .bh-social{display:flex;gap:8px;margin-top:8px}
@@ -143,14 +144,14 @@ footer.site .so{width:40px;height:40px}
 footer.site .so svg{width:22px;height:22px}
 
 /* ---------- 2D клубника: покачивание ---------- */
-.bh-berry{width:96px;height:82px;align-self:flex-end;position:relative;left:-6px;top:2px;transform-origin:50% 85%;animation:sway 3.4s ease-in-out infinite}
+.bh-berry{width:96px;height:82px;align-self:flex-end;position:relative;left:-45px;top:-37px;transform-origin:50% 85%;animation:sway 3.4s ease-in-out infinite}
 @keyframes sway{0%,100%{transform:rotate(-7deg)}50%{transform:rotate(7deg)}}
 @media (max-width:700px){
  .bh-berry{width:64px;height:70px;flex-basis:64px;order:10;align-self:center;margin:6px auto 0}
 }
 
 /* ---------- матрица ягод ---------- */
-#berryField{position:fixed;inset:0;z-index:5;pointer-events:none;opacity:.35}
+#berryField{position:fixed;inset:0;z-index:5;pointer-events:none}
 .bighead,.navribbon,.wrap,footer.site{position:relative;z-index:1}
 
 /* ---------- мобилка: шапка (в конце, чтобы не перебивалась десктопными) ---------- */
@@ -171,7 +172,7 @@ footer.site .so svg{width:22px;height:22px}
 }
 
 /* ---------- точки-индикаторы аккордеона (мобильный слайд-шоу) ---------- */
-.hero-dots{display:flex;gap:8px;justify-content:center;margin-top:8px}
+.hero-dots{display:none;gap:8px;justify-content:center;margin-top:8px}
 .hero-dots i{width:11px;height:11px;border-radius:50%;background:rgba(28,27,26,.3)}
 .hero-dots i.on{background:var(--red)}
 
