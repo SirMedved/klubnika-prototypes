@@ -1,0 +1,27 @@
+---
+import type { GetStaticPaths } from 'astro';
+import Layout from '../../../layouts/Layout.astro';
+import CatalogView from '../../../components/CatalogView.astro';
+import { CATEGORIES, SORTS, type Category } from '../../../lib/sorts';
+import { url } from '../../../lib/site';
+
+export const getStaticPaths = (() => CATEGORIES.map((cat) => ({ params: { category: cat.path }, props: { cat } }))) satisfies GetStaticPaths;
+
+interface Props { cat: Category }
+const { cat } = Astro.props;
+const sorts = SORTS.filter((s) => s.category === cat.id);
+const available = sorts.filter((s) => s.status === 'available').length;
+const INTRO: Record<Category['id'], string> = {
+  ultra: 'Самые первые ягоды сезона: начинают созревать уже в конце мая.',
+  early: 'Ранние сорта дают основной урожай в начале июня, когда на рынке ещё мало своей ягоды.',
+  mid: 'Сорта середины сезона: продолжают сбор после ранних, ягода к середине июня.',
+  late: 'Поздние сорта продлевают сезон до середины июля, когда ранние уже отошли.',
+  rem: 'Ремонтантные (НСД) плодоносят волнами с июня до заморозков. Посаженные весной дают ягоду в тот же сезон.',
+};
+---
+<Layout title={`${cat.title}: цены и наличие`} description={`${cat.title} в питомнике Клубника-Минск: ${available} в продаже, рассада ЗКС в стаканчиках 0,4 л.`} active="catalog" activeCategory={cat.id}>
+  <nav class="crumbs" aria-label="Хлебные крошки"><a href={url()}>Главная</a> / <a href={url('catalog/')}>Каталог</a> / {cat.short}</nav>
+  <h1 class="ptitle">{cat.title}</h1>
+  <p class="lead">{INTRO[cat.id]} В продаже {available} из {sorts.length}.</p>
+  <CatalogView sorts={sorts} current={cat.id} />
+</Layout>

@@ -1,0 +1,165 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { CONTACTS, DELIVERY, MIN_ORDER_BYN, url } from '../lib/site';
+---
+<Layout title="Корзина и оформление заказа" description="Соберите заказ рассады клубники и получите готовый текст заявки для Telegram или Viber." active="cart">
+  <nav class="crumbs" aria-label="Хлебные крошки"><a href={url()}>Главная</a> / Корзина</nav>
+  <h1 class="ptitle">Корзина</h1>
+  <div class="steps-bar" aria-hidden="true"><span class="on">1. Сорта</span><span data-step2>2. Получение и контакты</span><span data-step3>3. Текст заявки</span></div>
+
+  <section data-cart-empty hidden class="panel">
+    <p><b>Корзина пока пуста.</b></p>
+    <p>Откройте <a href={url('catalog/')}>каталог</a>, нажмите «В корзину» у нужных сортов и возвращайтесь сюда.</p>
+    <p class="note">Не знаете, что выбрать? Позвоните: <a href={`tel:${CONTACTS.consult.tel}`}>{CONTACTS.consult.phone}</a> ({CONTACTS.consult.who}).</p>
+  </section>
+
+  <section data-cart-full hidden>
+    <div class="cart-head"><span>Сорт</span><span>Цена</span><span>Количество</span><span>Сумма</span><span></span></div>
+    <div id="cartRows"></div>
+    <div class="cart-total"><small id="cartCount"></small><span>Итого: <span id="cartTotal">0,00</span> руб</span></div>
+    <p style="text-align:right"><button type="button" class="btn btn-ghost btn-sm" id="cartClear">Очистить корзину</button></p>
+
+    <form id="orderForm" class="panel" style="margin-top:22px" novalidate>
+      <fieldset>
+        <legend>Как получить</legend>
+        <div class="deliv">
+          <label><input type="radio" name="delivery" value="minsk" checked /><span><b>{DELIVERY.minsk.title}</b><span>{DELIVERY.minsk.when}, заказ от {MIN_ORDER_BYN} руб</span></span></label>
+          <label><input type="radio" name="delivery" value="market" /><span><b>{DELIVERY.market.title}</b><span>{DELIVERY.market.when}, любое количество, консультация на месте</span></span></label>
+          <label><input type="radio" name="delivery" value="post" /><span><b>{DELIVERY.post.title}</b><span>фирменная коробка с ячейками, заказ от {MIN_ORDER_BYN} руб</span></span></label>
+        </div>
+        <p class="warn" id="minWarn" hidden style="margin-top:10px"></p>
+      </fieldset>
+
+      <fieldset style="margin-top:20px">
+        <legend>Ваши данные</legend>
+        <div class="form-grid">
+          <div class="field"><label for="fName">Имя</label><input id="fName" autocomplete="name" placeholder="Как к вам обращаться" required /><div class="err" hidden>Напишите, как к вам обращаться</div></div>
+          <div class="field"><label for="fPhone">Телефон</label><input id="fPhone" type="tel" autocomplete="tel" placeholder="+375 29 123-45-67" required /><div class="err" hidden>Нужен телефон: из него получится номер заказа</div></div>
+          <div class="field" data-for="minsk"><label for="fDayMinsk">Удобный день выдачи</label><select id="fDayMinsk"><option>понедельник</option><option>четверг</option></select></div>
+          <div class="field" data-for="market" hidden><label for="fDayMarket">Удобный день на рынке</label><select id="fDayMarket"><option>пятница</option><option>суббота</option><option>воскресенье</option></select></div>
+          <div class="field" data-for="post" hidden><label for="fIndex">Индекс</label><input id="fIndex" inputmode="numeric" placeholder="220000" /></div>
+          <div class="field" data-for="post" hidden><label for="fCity">Город, посёлок</label><input id="fCity" placeholder="Минск" /></div>
+          <div class="field" data-for="post" hidden><label for="fAddress">Улица, дом, квартира</label><input id="fAddress" placeholder="ул. Ленина 1, кв. 2" /></div>
+          <div class="field" data-for="post" hidden><label for="fReceiver">ФИО получателя</label><input id="fReceiver" placeholder="Иванов Иван Иванович" /></div>
+        </div>
+        <div class="field" style="margin-top:6px"><label for="fComment">Комментарий (необязательно)</label><textarea id="fComment" rows="2" placeholder="Например: можно заменить сорт на похожий, если закончится"></textarea></div>
+        <label class="check" style="margin-top:10px"><input type="checkbox" id="fConsult" /><span>Нужна консультация по выбору сортов или посадке</span></label>
+      </fieldset>
+
+      <div style="margin-top:18px"><button class="btn btn-red btn-lg" type="submit">Сформировать текст заявки</button></div>
+    </form>
+
+    <section id="orderResult" class="result" hidden style="margin-top:22px" tabindex="-1">
+      <div class="order-num" id="orderNum"></div>
+      <p>Скопируйте текст и отправьте нам одним сообщением в Telegram или Viber. Мы ответим и согласуем получение.</p>
+      <textarea class="order-text" id="orderText" readonly aria-label="Текст заявки"></textarea>
+      <div class="actions">
+        <button type="button" class="btn btn-ghost" id="copyBtn">Скопировать текст</button>
+        <a class="btn msg tg" href={CONTACTS.telegram} target="_blank" rel="noopener">Открыть Telegram</a>
+        <a class="btn msg vb" href={CONTACTS.viber}>Открыть Viber</a>
+      </div>
+      <p class="note" style="margin-top:10px">Нет мессенджеров? Позвоните: <a href={`tel:${CONTACTS.orders.tel}`}>{CONTACTS.orders.phone}</a> ({CONTACTS.orders.who}), продиктуйте номер заказа.</p>
+    </section>
+  </section>
+</Layout>
+
+<script>
+  import { clear, count, fmt, getCart, onCartChange, setQty, total, type CartItem } from '../scripts/cart';
+  import { buildOrder, type Delivery } from '../scripts/order';
+
+  const $ = <T extends HTMLElement>(id: string) => document.getElementById(id) as T | null;
+  const rows = $('cartRows');
+  const MIN = 75;
+
+  const delivery = (): Delivery => {
+    const v = document.querySelector<HTMLInputElement>('input[name="delivery"]:checked')?.value;
+    return v === 'market' || v === 'post' ? v : 'minsk';
+  };
+
+  function row(i: CartItem): HTMLElement {
+    const el = document.createElement('div');
+    el.className = 'cart-row';
+    el.innerHTML = `
+      <div class="nm"><a></a><span class="tp"></span></div>
+      <div class="pr"></div>
+      <div class="qt"><span class="qty"><button type="button" data-d="-1" aria-label="Меньше">−</button><input type="number" min="1" inputmode="numeric" aria-label="Количество"><button type="button" data-d="1" aria-label="Больше">+</button></span></div>
+      <div class="sum"></div>
+      <button type="button" class="del" aria-label="Убрать из корзины">×</button>`;
+    const a = el.querySelector('a');
+    if (a) { a.textContent = i.name; a.href = i.href; }
+    el.querySelector('.tp')!.textContent = i.type;
+    el.querySelector('.pr')!.textContent = `${fmt(i.price)} руб`;
+    el.querySelector('.sum')!.textContent = `${fmt(i.price * i.qty)} руб`;
+    const input = el.querySelector('input');
+    if (input) {
+      input.value = String(i.qty);
+      input.addEventListener('change', () => setQty(i.slug, Math.max(0, Math.floor(Number(input.value) || 0))));
+    }
+    el.querySelectorAll<HTMLElement>('[data-d]').forEach((b) => b.addEventListener('click', () => setQty(i.slug, i.qty + Number(b.dataset.d))));
+    el.querySelector('.del')?.addEventListener('click', () => setQty(i.slug, 0));
+    return el;
+  }
+
+  function render(): void {
+    const items = getCart();
+    document.querySelector<HTMLElement>('[data-cart-empty]')!.hidden = items.length > 0;
+    document.querySelector<HTMLElement>('[data-cart-full]')!.hidden = items.length === 0;
+    rows?.replaceChildren(...items.map(row));
+    $('cartTotal')!.textContent = fmt(total(items));
+    $('cartCount')!.textContent = `${count(items)} шт, ${items.length} ${items.length === 1 ? 'сорт' : 'сорта(ов)'}`;
+    const d = delivery();
+    document.querySelectorAll<HTMLElement>('[data-for]').forEach((f) => { f.hidden = f.dataset.for !== d; });
+    const warn = $('minWarn');
+    const short = MIN - total(items);
+    if (warn) {
+      warn.hidden = d === 'market' || short <= 0;
+      warn.textContent = `До минимальной суммы ${MIN} руб не хватает ${fmt(short)} руб. Добавьте сорта или выберите получение на рынке.`;
+    }
+    $('orderResult')!.hidden = true;
+    document.querySelector('[data-step3]')?.classList.remove('on');
+  }
+
+  onCartChange(render);
+  document.querySelectorAll('input[name="delivery"]').forEach((r) => r.addEventListener('change', render));
+  $('cartClear')?.addEventListener('click', () => { if (confirm('Убрать все сорта из корзины?')) clear(); });
+  document.getElementById('orderForm')?.addEventListener('focusin', () => document.querySelector('[data-step2]')?.classList.add('on'));
+
+  const val = (id: string) => ($<HTMLInputElement>(id)?.value ?? '').trim();
+  $('orderForm')?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = val('fName');
+    const phone = val('fPhone');
+    const nameErr = $('fName')?.parentElement?.querySelector<HTMLElement>('.err');
+    const phoneErr = $('fPhone')?.parentElement?.querySelector<HTMLElement>('.err');
+    const phoneOk = phone.replace(/\D/g, '').length >= 7;
+    if (nameErr) nameErr.hidden = name.length > 0;
+    if (phoneErr) phoneErr.hidden = phoneOk;
+    if (!name) { $('fName')?.focus(); return; }
+    if (!phoneOk) { $('fPhone')?.focus(); return; }
+    const d = delivery();
+    const order = buildOrder({
+      items: getCart(), name, phone, delivery: d,
+      day: d === 'minsk' ? val('fDayMinsk') : d === 'market' ? val('fDayMarket') : undefined,
+      address: d === 'post' ? [val('fIndex'), val('fCity'), val('fAddress'), val('fReceiver')].filter(Boolean).join(', ') : undefined,
+      comment: val('fComment'),
+      consult: $<HTMLInputElement>('fConsult')?.checked ?? false,
+    });
+    $('orderNum')!.textContent = `Ваш номер заказа: №${order.number}`;
+    $<HTMLTextAreaElement>('orderText')!.value = order.text;
+    const res = $('orderResult')!;
+    res.hidden = false;
+    document.querySelector('[data-step3]')?.classList.add('on');
+    res.focus();
+    res.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+  $('copyBtn')?.addEventListener('click', async () => {
+    const btn = $('copyBtn')!;
+    const text = $<HTMLTextAreaElement>('orderText')?.value ?? '';
+    try { await navigator.clipboard.writeText(text); btn.textContent = 'Скопировано ✓'; }
+    catch { $<HTMLTextAreaElement>('orderText')?.select(); btn.textContent = 'Выделено: нажмите «Копировать»'; }
+    setTimeout(() => { btn.textContent = 'Скопировать текст'; }, 2000);
+  });
+
+  render();
+</script>

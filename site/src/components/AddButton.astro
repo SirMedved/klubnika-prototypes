@@ -1,0 +1,11 @@
+---
+import { categoryById, isOrderable, typeLabel, type Sort } from '../lib/sorts';
+import { url } from '../lib/site';
+
+interface Props { sort: Sort; small?: boolean; large?: boolean; qtyFrom?: string; label?: string }
+const { sort: s, small = false, large = false, qtyFrom, label = 'В корзину' } = Astro.props;
+const size = small ? ' btn-sm' : large ? ' btn-lg' : '';
+---
+{isOrderable(s)
+  ? <button type="button" class={`btn btn-red${size}`} data-add data-slug={s.slug} data-name={s.name} data-type={typeLabel(s)} data-price={s.priceByn} data-href={url(`catalog/${categoryById(s.category).path}/${s.slug}/`)} data-qty-from={qtyFrom}>{label}</button>
+  : <button type="button" class={`btn btn-ghost${size}`} disabled title="Сорт сейчас не продаётся">Нет в продаже</button>}

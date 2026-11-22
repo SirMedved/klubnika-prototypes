@@ -1,0 +1,25 @@
+---
+// Левая колонка «Наши сорта»: одна на всех страницах.
+import { CATEGORIES, SORTS, type CategoryId } from '../lib/sorts';
+import { CONTACTS, url } from '../lib/site';
+
+interface Props { activeCategory?: CategoryId }
+const { activeCategory } = Astro.props;
+const count = (id: CategoryId) => SORTS.filter((s) => s.category === id && s.status !== 'retired').length;
+---
+<aside class="cats" aria-label="Разделы каталога">
+  <span class="cap">Наши сорта</span>
+  {CATEGORIES.map((c, i) => (
+    <a class={`cat ${i % 2 ? 'b' : 'y'}`} href={url(`catalog/${c.path}/`)} aria-current={c.id === activeCategory ? 'page' : undefined}>
+      <span class="n1">Клубника</span>
+      <span class="n2">{c.long}</span>
+      <span class="count">{count(c.id)} сортов</span>
+    </a>
+  ))}
+  <span class="cat stub" aria-disabled="true"><span class="n1">Голубика</span><span class="n2">скоро в питомнике</span></span>
+  <div class="help">
+    <b>Не знаете, что выбрать?</b>
+    Позвоните, подскажем сорт под ваш участок.
+    <a href={`tel:${CONTACTS.consult.tel}`}>{CONTACTS.consult.phone}</a>
+  </div>
+</aside>

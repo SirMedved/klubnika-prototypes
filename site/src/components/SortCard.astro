@@ -1,0 +1,31 @@
+---
+import { Image } from 'astro:assets';
+import { categoryById, detailsFor, fmtPrice, isOrderable, statusLabel, type Sort } from '../lib/sorts';
+import { url } from '../lib/site';
+import AddButton from './AddButton.astro';
+
+interface Props { sort: Sort; eager?: boolean }
+const { sort: s, eager = false } = Astro.props;
+const cat = categoryById(s.category);
+const href = url(`catalog/${cat.path}/${s.slug}/`);
+const cover = detailsFor(s)?.photos[0];
+---
+<article class="pcard" data-item data-cat={s.category} data-avail={isOrderable(s) ? 'yes' : 'no'} data-name={s.name.toLowerCase()}>
+  <a class="ph" href={href} tabindex="-1" aria-hidden="true">
+    {cover
+      ? <Image src={cover.src} alt={cover.alt} widths={[240, 480]} sizes="(max-width:700px) 50vw, 240px" loading={eager ? 'eager' : 'lazy'} />
+      : <span class="letter">{s.name[0]}</span>}
+    {s.novelty && <span class="st st-new flag">новинка</span>}
+  </a>
+  <div class="body">
+    <a class="name" href={href}>{s.name}</a>
+    <div class="meta">{s.term} · {s.type}</div>
+    {s.status !== 'available' && <div><span class={`st st-${s.status}`}>{statusLabel(s)}</span></div>}
+    <div class="price">{fmtPrice(s.priceByn)} руб</div>
+    <div class="incart" data-incart-for={s.slug}></div>
+    <div class="btns">
+      <AddButton sort={s} small />
+      <a class="btn btn-olive" href={href}>О сорте</a>
+    </div>
+  </div>
+</article>

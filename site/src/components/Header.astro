@@ -1,0 +1,59 @@
+---
+import { Image } from 'astro:assets';
+import Social from './Social.astro';
+import Icon from './Icon.astro';
+import { CONTACTS, NAV, url, type NavId } from '../lib/site';
+import headPhoto from '../assets/brand/head-berries.jpg';
+import logo from '../assets/brand/logo-berries-v2.svg';
+
+interface Props { active?: NavId }
+const { active } = Astro.props;
+---
+<header class="site-header">
+  <!-- мобильная шапка по схеме SK: крупные слова, фото, номера -->
+  <div class="mhead">
+    <a href={url()} style="text-decoration:none;color:inherit">
+      <div class="mh-word">КЛУБНИКА</div>
+      <div class="mh-small">частная коллекция</div>
+      <div class="mh-word">МИНСК</div>
+    </a>
+    <div class="mh-site">klubnika-minsk.by</div>
+    <div class="mh-sub">РАССАДА КЛУБНИКИ</div>
+    <Image class="mh-photo" src={headPhoto} alt="Ягоды клубники на нашей плантации" widths={[320, 640]} sizes="78vw" loading="eager" />
+    <div class="mh-phones">
+      <a href={`tel:${CONTACTS.orders.tel}`}>{CONTACTS.orders.phone}</a><span>{CONTACTS.orders.who}, {CONTACTS.orders.role}</span>
+      <a href={`tel:${CONTACTS.consult.tel}`}>{CONTACTS.consult.phone}</a><span>{CONTACTS.consult.who}, {CONTACTS.consult.role}</span>
+    </div>
+    <Social />
+  </div>
+
+  <!-- десктопная шапка -->
+  <div class="bighead">
+    <div class="bh-row">
+      <Image class="bh-photo" src={headPhoto} alt="Ягоды клубники на нашей плантации" widths={[300, 600]} sizes="300px" loading="eager" />
+      <div class="bh-titles">
+        <a class="bh-name" href={url()}>КЛУБНИКА-МИНСК</a>
+        <div class="bh-domain">klubnika-minsk.by</div>
+        <div class="bh-sub">РАССАДА КЛУБНИКИ В МИНСКЕ</div>
+      </div>
+      <img class="bh-logo" src={logo.src} width="110" height="90" alt="" />
+      <div class="bh-contacts">
+        <div><a href={`tel:${CONTACTS.orders.tel}`}>{CONTACTS.orders.phone}</a><span class="lbl">{CONTACTS.orders.who}, {CONTACTS.orders.role}</span></div>
+        <div><a href={`tel:${CONTACTS.consult.tel}`}>{CONTACTS.consult.phone}</a><span class="lbl">{CONTACTS.consult.who}, {CONTACTS.consult.role}</span></div>
+        <div><a href={`mailto:${CONTACTS.email}`} style="font-size:17px">{CONTACTS.email}</a></div>
+        <Social />
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="navribbon">
+  <button class="burger" type="button" aria-expanded="false" aria-controls="mainnav"><Icon name="menu" /> Меню</button>
+  <nav class="main" id="mainnav" aria-label="Главное меню">
+    {NAV.map((n) => (
+      <a href={url(n.path)} aria-current={n.id === active ? 'page' : undefined}>
+        {n.label}{n.id === 'cart' && <span class="cart-badge" data-cart-count hidden></span>}
+      </a>
+    ))}
+  </nav>
+</div>

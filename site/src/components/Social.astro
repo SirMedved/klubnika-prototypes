@@ -1,0 +1,11 @@
+---
+import Icon from './Icon.astro';
+import { CONTACTS } from '../lib/site';
+---
+<div class="social">
+  <a class="so ig" href={CONTACTS.instagram} aria-label="Instagram"><Icon name="instagram" /></a>
+  <a class="so tg" href={CONTACTS.telegram} aria-label="Telegram"><Icon name="telegram" /></a>
+  <a class="so vb" href={CONTACTS.viber} aria-label="Viber"><Icon name="viber" /></a>
+  <a class="so em" href={`mailto:${CONTACTS.email}`} aria-label="Почта"><Icon name="mail" /></a>
+  <a class="so ph" href={`tel:${CONTACTS.orders.tel}`} aria-label="Позвонить"><Icon name="phone" /></a>
+</div>

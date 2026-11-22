@@ -1,0 +1,139 @@
+---
+import { Image } from 'astro:assets';
+import Layout from '../layouts/Layout.astro';
+import SortCard from '../components/SortCard.astro';
+import { FEATURED_SLUGS, SORTS, sortBySlug } from '../lib/sorts';
+import { CONTACTS, DELIVERY, MIN_ORDER_BYN, url } from '../lib/site';
+import { FAQ } from '../data/faq';
+import plant from '../assets/photos/plant.jpg';
+import box from '../assets/photos/main-box.jpg';
+import market from '../assets/photos/market.jpg';
+import boxes from '../assets/photos/boxes.jpg';
+
+const slides = [
+  { src: plant, cap: 'Наша плантация под Минском', alt: 'Ряды рассады клубники в стаканчиках на нашей плантации' },
+  { src: box, cap: 'Рассада ЗКС в стаканчиках 0,4 л', alt: 'Ящик с рассадой клубники в стаканчиках' },
+  { src: market, cap: 'Каждые выходные на рынке в Дзержинске', alt: 'Наш прилавок с рассадой на рынке' },
+];
+const featured = FEATURED_SLUGS.map(sortBySlug);
+const available = SORTS.filter((s) => s.status === 'available').length;
+---
+<Layout title="Клубника-Минск: рассада клубники ЗКС в Минске и по Беларуси" description="Семейный питомник клубники под Минском: рассада с закрытой корневой системой в стаканчиках 0,4 л, сорта всех сроков созревания, выдача в Минске и почта по Беларуси." active="home">
+
+  <div class="hero-acc" id="heroAcc">
+    {slides.map((s, i) => (
+      <button type="button" class={`slide${i === 0 ? ' open' : ''}`} aria-label={s.cap}>
+        <Image src={s.src} alt={s.alt} widths={[480, 900, 1400]} sizes="(max-width:1000px) 100vw, 880px" loading={i === 0 ? 'eager' : 'lazy'} />
+        <span class="cap">{s.cap}</span>
+      </button>
+    ))}
+  </div>
+  <div class="hero-dots" id="heroDots">
+    {slides.map((s, i) => <button type="button" aria-label={`Фото ${i + 1}: ${s.cap}`} aria-current={i === 0 ? 'true' : 'false'}></button>)}
+  </div>
+
+  <section class="panel" style="margin-top:22px">
+    <h1 class="ptitle">Здравствуйте, дорогие любители ягод!</h1>
+    <p>Мы семейный питомник под Минском. Выращиваем рассаду клубники с закрытой корневой системой
+    в стаканчиках 0,4 литра: каждый куст посажен и выращен нашими руками на собственной плантации.</p>
+    <p>В коллекции {available} сортов в продаже: от ультраранних до поздних, плюс ремонтантные,
+    которые плодоносят до осени. Сорта подобраны так, чтобы ягода была и для себя, и на продажу.</p>
+    <p>Заказы принимаем круглый год. Соберите список в корзине, отправьте нам в Telegram или Viber,
+    и мы договоримся о получении.</p>
+    <div class="actions" style="margin-top:16px">
+      <a class="btn btn-red btn-lg" href={url('catalog/')}>Смотреть сорта</a>
+      <a class="btn btn-ghost btn-lg" href={url('order/')}>Как заказать</a>
+    </div>
+  </section>
+
+  <h2 class="sec">Почему нашу рассаду берут снова</h2>
+  <div class="trust">
+    <div class="t"><div class="big">{available}</div><b>сортов в продаже</b><span>всех сроков созревания и ремонтантные</span></div>
+    <div class="t"><div class="big">0,4 л</div><b>стаканчик ЗКС</b><span>корни в своём коме земли, приживается почти вся</span></div>
+    <div class="t"><div class="big">100%</div><b>своя плантация</b><span>знаем каждую партию: как росла и чем кормилась</span></div>
+    <div class="t"><div class="big">3</div><b>способа получить</b><span>Минск, рынок в Дзержинске, почта по Беларуси</span></div>
+  </div>
+
+  <h2 class="sec">Рекомендуемые сорта</h2>
+  <div class="grid">
+    {featured.map((s) => <SortCard sort={s} />)}
+  </div>
+  <p style="margin-top:14px"><a class="btn btn-blue" href={url('catalog/')}>Весь каталог: {SORTS.length} сортов</a></p>
+
+  <h2 class="sec">Как заказать</h2>
+  <div class="steps row">
+    <div class="s"><span class="num">1</span><div><b>Выберите сорта</b><p>В каталоге видны цена и наличие.</p></div></div>
+    <div class="s"><span class="num">2</span><div><b>Соберите корзину</b><p>Укажите количество и способ получения.</p></div></div>
+    <div class="s"><span class="num">3</span><div><b>Отправьте заявку</b><p>Сайт соберёт готовый текст для Telegram или Viber.</p></div></div>
+    <div class="s"><span class="num">4</span><div><b>Получите рассаду</b><p>В Минске, на рынке или почтой.</p></div></div>
+  </div>
+
+  <div class="split" style="margin-top:22px">
+    <div class="photo"><Image src={boxes} alt="Коробки с рассадой, собранные к отправке" widths={[400, 800]} sizes="(max-width:800px) 100vw, 440px" /></div>
+    <div class="panel">
+      <h3 style="font-size:21px;margin-bottom:8px">Выдача и доставка</h3>
+      <p><b>{DELIVERY.minsk.title}:</b> {DELIVERY.minsk.when}.</p>
+      <p><b>{DELIVERY.market.title}:</b> {DELIVERY.market.when}, консультация на месте.</p>
+      <p><b>{DELIVERY.post.title}:</b> в фирменной коробке с ячейками.</p>
+      <p class="note">Заказ от {MIN_ORDER_BYN} руб для Минска и почты.</p>
+      <p style="margin-top:12px"><a href={url('order/')}>Подробнее о доставке</a></p>
+    </div>
+  </div>
+
+  <h2 class="sec">Новости питомника</h2>
+  <div class="seasons">
+    <article class="sn">
+      <h3>Весенний сезон</h3>
+      <p>Принимаем заказы на весеннюю посадку. Рассада в стаканчиках готова к пересадке сразу после получения.
+      Ремонтантные сорта, посаженные весной, дадут ягоду уже этим летом.</p>
+    </article>
+    <article class="sn autumn">
+      <h3>Осенний сезон</h3>
+      <p>Посадка в конце лета закладывает урожай следующего года. В этом сезоне мы нарастили объёмы рассады,
+      чтобы хватило всем, включая заказы почтой.</p>
+    </article>
+  </div>
+
+  <h2 class="sec">Вы спрашиваете, мы отвечаем</h2>
+  <div class="faq">
+    {FAQ.filter((f) => f.home).map((f) => (
+      <details><summary>{f.q}</summary>{f.a.map((p) => <p>{p}</p>)}</details>
+    ))}
+  </div>
+  <p><a href={url('faq/')}>Все вопросы и ответы</a></p>
+
+  <div class="cta">
+    <div><b>Не знаете, с какого сорта начать?</b><p>Позвоните или напишите: подберём сорта под ваш участок.</p></div>
+    <a class="phone" href={`tel:${CONTACTS.consult.tel}`}>{CONTACTS.consult.phone}</a>
+  </div>
+</Layout>
+
+<script>
+  // Герой: аккордеон на десктопе, слайд-шоу с точками, свайпом и автопрокруткой на мобиле.
+  const slides = [...document.querySelectorAll<HTMLElement>('#heroAcc .slide')];
+  const dots = [...document.querySelectorAll<HTMLElement>('#heroDots button')];
+  const mobile = window.matchMedia('(max-width:700px)');
+  let cur = 0;
+  let timer = 0;
+  const show = (i: number) => {
+    cur = (i + slides.length) % slides.length;
+    slides.forEach((s, k) => s.classList.toggle('open', k === cur));
+    dots.forEach((d, k) => d.setAttribute('aria-current', String(k === cur)));
+  };
+  const restart = () => {
+    window.clearInterval(timer);
+    if (mobile.matches) timer = window.setInterval(() => show(cur + 1), 5000);
+  };
+  slides.forEach((s, i) => s.addEventListener('click', () => { show(i); restart(); }));
+  dots.forEach((d, i) => d.addEventListener('click', () => { show(i); restart(); }));
+  let x0: number | null = null;
+  const acc = document.getElementById('heroAcc');
+  acc?.addEventListener('touchstart', (e) => { x0 = e.touches[0]?.clientX ?? null; }, { passive: true });
+  acc?.addEventListener('touchend', (e) => {
+    const x1 = e.changedTouches[0]?.clientX;
+    if (x0 !== null && x1 !== undefined && Math.abs(x1 - x0) > 40) { show(cur + (x1 < x0 ? 1 : -1)); restart(); }
+    x0 = null;
+  });
+  mobile.addEventListener('change', restart);
+  restart();
+</script>

@@ -1,0 +1,53 @@
+---
+// Единый каркас всех страниц: шапка, лента меню, левая колонка, контент, футер.
+// Страница отдаёт только содержимое <main>; разъехаться шапкам и футерам негде.
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import CategoryColumn from '../components/CategoryColumn.astro';
+import { url, type NavId } from '../lib/site';
+import type { CategoryId } from '../lib/sorts';
+
+interface Props {
+  title: string;
+  description: string;
+  active?: NavId;
+  activeCategory?: CategoryId;
+}
+const { title, description, active, activeCategory } = Astro.props;
+const fullTitle = title.includes('Клубника-Минск') ? title : `${title} | Клубника-Минск`;
+---
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{fullTitle}</title>
+  <meta name="description" content={description} />
+  <meta name="robots" content="noindex" />
+  <link rel="icon" href={url('favicon.ico')} />
+  <meta property="og:title" content={fullTitle} />
+  <meta property="og:description" content={description} />
+  <meta property="og:locale" content="ru_BY" />
+  <slot name="head" />
+</head>
+<body>
+  <Header active={active} />
+  <div class="page">
+    <main id="content">
+      <slot />
+    </main>
+    <CategoryColumn activeCategory={activeCategory} />
+  </div>
+  <Footer />
+  <canvas id="berryField" aria-hidden="true" data-sprite={url('berry.svg')}></canvas>
+  <script>
+    import '../scripts/site';
+  </script>
+</body>
+</html>
+
+<style is:global>
+  /* колонка идёт в разметке после main (контент важнее для читалок и мобилы), на десктопе слева */
+  @media (min-width:1001px){ .page > .cats{grid-column:1;grid-row:1} .page > main{grid-column:2;grid-row:1} }
+</style>

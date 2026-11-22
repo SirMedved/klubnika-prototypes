@@ -1,0 +1,55 @@
+---
+import { Image } from 'astro:assets';
+import Layout from '../layouts/Layout.astro';
+import { CONTACTS, DELIVERY, MIN_ORDER_BYN, url } from '../lib/site';
+import pickup from '../assets/photos/pickup.jpg';
+import boxes from '../assets/photos/boxes.jpg';
+import market from '../assets/photos/market.jpg';
+import box from '../assets/photos/main-box.jpg';
+---
+<Layout title="Доставка и как заказать" description="Как заказать рассаду клубники: корзина на сайте, текст заявки в Telegram или Viber. Выдача в Минске у метро Каменная Горка, рынок в Дзержинске, почта по Беларуси." active="order">
+  <nav class="crumbs" aria-label="Хлебные крошки"><a href={url()}>Главная</a> / Доставка</nav>
+  <h1 class="ptitle">Как заказать и получить</h1>
+  <p class="lead">Через корзину на сайте: весь заказ одним сообщением, без долгих созвонов и пересчёта по телефону.</p>
+
+  <div class="steps">
+    <div class="s"><span class="num">1</span><div><b>Соберите заказ в корзине</b><p>Откройте <a href={url('catalog/')}>каталог</a> и добавьте нужные сорта. Цена и наличие видны сразу.</p></div></div>
+    <div class="s"><span class="num">2</span><div><b>Получите текст заявки и номер заказа</b><p>Корзина соберёт готовое сообщение: имя, телефон, способ получения и список сортов. Номер заказа: последние 4 цифры вашего телефона.</p></div></div>
+    <div class="s"><span class="num">3</span><div><b>Отправьте нам в Telegram или Viber</b><p>Скопируйте текст и отправьте одним сообщением. Мы ответим и согласуем время.</p></div></div>
+    <div class="s"><span class="num">4</span><div><b>Заберите или получите почтой</b><p>Минимальная сумма заказа {MIN_ORDER_BYN} руб для Минска и почты. На рынке можно купить любое количество.</p></div></div>
+  </div>
+
+  <h2 class="sec">Способы получения</h2>
+  <div class="cards3">
+    <div class="c">
+      <div class="photo"><Image src={pickup} alt="Коробки с рассадой в пункте выдачи" widths={[300, 600]} sizes="(max-width:800px) 100vw, 290px" /></div>
+      <div class="in"><b>{DELIVERY.minsk.title}</b><p>Выдача у метро. Подходит для Минска и окрестностей.</p>
+        <dl><dt>Когда</dt><dd>{DELIVERY.minsk.when}</dd><dt>Минимум</dt><dd>{MIN_ORDER_BYN} руб</dd></dl></div>
+    </div>
+    <div class="c">
+      <div class="photo"><Image src={boxes} alt="Коробки с рассадой, собранные к отправке почтой" widths={[300, 600]} sizes="(max-width:800px) 100vw, 290px" /></div>
+      <div class="in"><b>{DELIVERY.post.title}</b><p>Фирменная коробка с ячейками: каждый стаканчик зафиксирован, корни во влажной земле.</p>
+        <dl><dt>Куда</dt><dd>любой город и посёлок Беларуси</dd><dt>Минимум</dt><dd>{MIN_ORDER_BYN} руб</dd></dl></div>
+    </div>
+    <div class="c">
+      <div class="photo"><Image src={market} alt="Наш прилавок на рынке в Дзержинске" widths={[300, 600]} sizes="(max-width:800px) 100vw, 290px" /></div>
+      <div class="in"><b>{DELIVERY.market.title}</b><p>Заберите заказ или выберите рассаду на месте. Консультация бесплатно.</p>
+        <dl><dt>Когда</dt><dd>{DELIVERY.market.when}</dd><dt>Минимум</dt><dd>нет</dd></dl></div>
+    </div>
+  </div>
+
+  <div class="split rev" style="margin-top:30px">
+    <div class="photo"><Image src={box} alt="Ящик рассады клубники в стаканчиках" widths={[400, 800]} sizes="(max-width:800px) 100vw, 440px" /></div>
+    <div class="panel">
+      <h2 style="font-size:23px;margin-bottom:8px">Коробка, которая доезжает</h2>
+      <p>Мы сами собираем коробки для отправки: ячейки под каждый стаканчик, плотная фиксация, влажные корни.
+      Рассада приезжает такой же, какой уехала с плантации.</p>
+      <p>Покупатели часто говорят, что по коробке сразу видно: люди вложили и голову, и руки.</p>
+    </div>
+  </div>
+
+  <div class="cta">
+    <div><b>Остались вопросы по заказу?</b><p>{CONTACTS.orders.who} принимает заказы и подскажет по доставке.</p></div>
+    <a class="phone" href={`tel:${CONTACTS.orders.tel}`}>{CONTACTS.orders.phone}</a>
+  </div>
+</Layout>

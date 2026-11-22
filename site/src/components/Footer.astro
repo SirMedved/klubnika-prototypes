@@ -1,0 +1,41 @@
+---
+import Social from './Social.astro';
+import { CATEGORIES } from '../lib/sorts';
+import { CONTACTS, DELIVERY, NAV, url } from '../lib/site';
+---
+<footer class="site-footer">
+  <div class="foot">
+    <div>
+      <div class="brand">Клубника-Минск</div>
+      <div class="brand-sub">Семейный питомник. Рассада клубники с закрытой корневой системой в стаканчиках 0,4 л.</div>
+      <Social />
+    </div>
+    <div>
+      <h2>Каталог</h2>
+      <ul>
+        {CATEGORIES.map((c) => <li><a href={url(`catalog/${c.path}/`)}>{c.short}</a></li>)}
+        <li><a href={url('catalog/')}>Все сорта</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2>Выдача заказов</h2>
+      <ul>
+        <li><b>{DELIVERY.minsk.title}</b><span class="lbl">{DELIVERY.minsk.when}</span></li>
+        <li><b>{DELIVERY.market.title}</b><span class="lbl">{DELIVERY.market.when}</span></li>
+        <li><b>{DELIVERY.post.title}</b><span class="lbl">от {DELIVERY.post.min} руб</span></li>
+      </ul>
+    </div>
+    <div>
+      <h2>Связаться</h2>
+      <ul>
+        <li><a class="ph" href={`tel:${CONTACTS.orders.tel}`}>{CONTACTS.orders.phone}</a><span class="lbl">{CONTACTS.orders.who}, {CONTACTS.orders.role}</span></li>
+        <li><a class="ph" href={`tel:${CONTACTS.consult.tel}`}>{CONTACTS.consult.phone}</a><span class="lbl">{CONTACTS.consult.who}, {CONTACTS.consult.role}</span></li>
+        <li><a href={`mailto:${CONTACTS.email}`}>{CONTACTS.email}</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© Питомник «Клубника-Минск». Сайт не интернет-магазин: заказ бронируется, детали согласуем в переписке.</span>
+    <span>{NAV.filter((n) => n.id !== 'home').map((n, i) => <>{i > 0 && ' · '}<a href={url(n.path)} style="color:#fff">{n.label}</a></>)}</span>
+  </div>
+</footer>

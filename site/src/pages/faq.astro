@@ -1,0 +1,33 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { FAQ } from '../data/faq';
+import { CONTACTS, url } from '../lib/site';
+
+const faqLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: FAQ.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a.join(' ') } })),
+};
+---
+<Layout title="Вопросы и ответы о рассаде клубники" description="Частые вопросы покупателей: переопыление сортов, КСД и НСД, рассада ЗКС, сроки посадки, доставка почтой." active="faq">
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(faqLd)} />
+  <nav class="crumbs" aria-label="Хлебные крошки"><a href={url()}>Главная</a> / Вопросы</nav>
+  <h1 class="ptitle">Вы спрашиваете, мы отвечаем</h1>
+  <p class="lead">Вопросы, которые нам чаще всего задают по телефону и на рынке.</p>
+
+  <h2 class="sec">ЗКС или открытая корневая</h2>
+  <div class="zks">
+    <div class="z good"><b>ЗКС: стаканчик с землёй</b><p>Корни живут в своём коме земли, не пересыхают и не рвутся при посадке. Куст почти не замечает переезда и сразу идёт в рост. Вся наша рассада такая.</p></div>
+    <div class="z"><b>Открытая корневая: пучок</b><p>Рассада с голыми корнями в пакете. Дешевле, но корни пересыхают и травмируются, приживается хуже и стартует позже.</p></div>
+  </div>
+
+  <h2 class="sec">Частые вопросы</h2>
+  <div class="faq">
+    {FAQ.map((f, i) => <details open={i === 0}><summary>{f.q}</summary>{f.a.map((p) => <p>{p}</p>)}</details>)}
+  </div>
+
+  <div class="cta">
+    <div><b>Не нашли ответ?</b><p>Позвоните или напишите: ответим на любой вопрос про сорта и посадку.</p></div>
+    <a class="phone" href={`tel:${CONTACTS.consult.tel}`}>{CONTACTS.consult.phone}</a>
+  </div>
+</Layout>

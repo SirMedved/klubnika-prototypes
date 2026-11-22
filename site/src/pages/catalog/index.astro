@@ -1,0 +1,14 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CatalogView from '../../components/CatalogView.astro';
+import { SORTS } from '../../lib/sorts';
+import { url } from '../../lib/site';
+
+const available = SORTS.filter((s) => s.status === 'available').length;
+---
+<Layout title="Каталог сортов клубники: цены и наличие" description={`Все сорта клубники питомника Клубника-Минск: ${available} в продаже, цены от 2,50 руб за стаканчик ЗКС 0,4 л.`} active="catalog">
+  <nav class="crumbs" aria-label="Хлебные крошки"><a href={url()}>Главная</a> / Каталог</nav>
+  <h1 class="ptitle">Каталог сортов</h1>
+  <p class="lead">Рассада в стаканчиках 0,4 л: 2,50 руб за сорта однократного плодоношения (КСД) и 3,00 руб за ремонтантные (НСД). В продаже {available} сортов из {SORTS.length}.</p>
+  <CatalogView sorts={SORTS} />
+</Layout>

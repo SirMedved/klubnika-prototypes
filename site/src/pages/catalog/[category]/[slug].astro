@@ -1,0 +1,146 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { Image, getImage } from 'astro:assets';
+import Layout from '../../../layouts/Layout.astro';
+import AddButton from '../../../components/AddButton.astro';
+import SortCard from '../../../components/SortCard.astro';
+import { SORTS, categoryById, detailsFor, fmtPrice, isOrderable, statusLabel, typeLabel, type Sort } from '../../../lib/sorts';
+import { CONTACTS, url } from '../../../lib/site';
+
+export const getStaticPaths = (() => SORTS.map((sort) => ({
+  params: { category: categoryById(sort.category).path, slug: sort.slug },
+  props: { sort },
+}))) satisfies GetStaticPaths;
+
+interface Props { sort: Sort }
+const { sort: s } = Astro.props;
+const cat = categoryById(s.category);
+const d = detailsFor(s);
+const photos = d?.photos ?? [];
+const siblings = SORTS.filter((x) => x.category === s.category);
+const idx = siblings.findIndex((x) => x.slug === s.slug);
+const prev = siblings[(idx - 1 + siblings.length) % siblings.length];
+const next = siblings[(idx + 1) % siblings.length];
+const more = siblings.filter((x) => x.slug !== s.slug && x.status === 'available' && detailsFor(x)).slice(0, 3);
+const moreFill = more.length < 3
+  ? siblings.filter((x) => x.slug !== s.slug && x.status === 'available' && !more.includes(x)).slice(0, 3 - more.length)
+  : [];
+
+const specs: [string, string | undefined][] = [
+  ['Срок созревания', d?.ripening ?? (s.type === 'НСД' ? 'волнами с июня до осени' : s.term)],
+  ['Тип', typeLabel(s)],
+  ['Ягода', d?.berry],
+  ['Вкус и аромат', d?.taste],
+  ['Урожайность', d?.yield],
+  ['Куст', d?.plant],
+  ['Селекция', [d?.breeder, d?.origin, d?.year].filter(Boolean).join(', ') || undefined],
+  ['Рассада', 'стаканчик 0,4 л, закрытая корневая система'],
+];
+
+const cover = photos[0] ? await getImage({ src: photos[0].src, width: 800 }) : undefined;
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: `Рассада клубники ${s.name}`,
+  description: d?.description ?? `Рассада клубники сорта ${s.name}, ${s.term}, в стаканчике 0,4 л.`,
+  category: cat.title,
+  ...(cover ? { image: new URL(cover.src, Astro.site).href } : {}),
+  offers: {
+    '@type': 'Offer',
+    price: s.priceByn.toFixed(2),
+    priceCurrency: 'BYN',
+    availability: isOrderable(s) ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
+  },
+};
+---
+<Layout title={`Клубника ${s.name}: рассада ЗКС, ${fmtPrice(s.priceByn)} руб`} description={d?.description ?? `Рассада клубники ${s.name} (${s.term}) в стаканчиках 0,4 л. ${statusLabel(s)}.`} active="catalog" activeCategory={s.category}>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(jsonLd)} />
+  <nav class="crumbs" aria-label="Хлебные крошки"><a href={url()}>Главная</a> / <a href={url('catalog/')}>Каталог</a> / <a href={url(`catalog/${cat.path}/`)}>{cat.short}</a> / {s.name}</nav>
+
+  <div class="sortcard">
+    <div class="gallery">
+      <div class="main-ph">
+        {photos.length
+          ? photos.map((p, i) => <Image src={p.src} alt={p.alt} widths={[480, 800, 1200]} sizes="(max-width:800px) 100vw, 460px" loading={i === 0 ? 'eager' : 'lazy'} data-photo={i} hidden={i !== 0} />)
+          : <span class="letter">{s.name[0]}</span>}
+      </div>
+      {photos.length > 1 && (
+        <div class="thumbs">
+          {photos.map((p, i) => (
+            <button type="button" data-thumb={i} aria-label={`Фото ${i + 1}`} aria-current={i === 0 ? 'true' : 'false'}>
+              <Image src={p.src} alt="" widths={[80, 160]} sizes="76px" />
+            </button>
+          ))}
+        </div>
+      )}
+      {photos.length > 0 && (
+        <p class="credit">Фото: {photos.map((p, i) => <>{i > 0 && ', '}{p.sourcePage ? <a href={p.sourcePage} rel="nofollow noopener" target="_blank">{p.credit ?? 'источник'}</a> : p.credit}</>)}</p>
+      )}
+      {photos.length === 0 && <p class="credit">Фото сорта с нашей плантации добавим в сезон.</p>}
+    </div>
+
+    <div>
+      <h1>{s.name}</h1>
+      {d?.nameOrig && <div class="orig">{d.nameOrig}</div>}
+      <div class="badges">
+        <span class="st st-type">{cat.short.toLowerCase()}</span>
+        <span class="st st-type">{s.type}</span>
+        <span class={`st st-${s.status}`}>{statusLabel(s)}</span>
+        {s.novelty && <span class="st st-new">новинка</span>}
+      </div>
+      <div class="buy">
+        <div><span class="price">{fmtPrice(s.priceByn)} руб</span> <span class="rub">/ {s.priceRub} рос. руб за стаканчик</span></div>
+      </div>
+      {isOrderable(s)
+        ? (
+          <div class="buy">
+            <span class="qty">
+              <button type="button" data-step="-1" aria-label="Меньше">−</button>
+              <input id="qty" type="number" min="1" value="1" inputmode="numeric" aria-label="Количество" />
+              <button type="button" data-step="1" aria-label="Больше">+</button>
+            </span>
+            <AddButton sort={s} large qtyFrom="qty" label="Добавить в корзину" />
+            <span class="incart" data-incart-for={s.slug}></span>
+          </div>
+        )
+        : <p class="warn">Сейчас этот сорт не продаётся. Позвоните, подскажем похожий: <a href={`tel:${CONTACTS.consult.tel}`}>{CONTACTS.consult.phone}</a></p>}
+
+      {d
+        ? <p class="desc">{d.description}</p>
+        : <p class="desc">{s.type === 'НСД' ? `${s.name}: ремонтантный сорт, плодоносит волнами с июня до осени.` : `${s.name}: сорт однократного плодоношения, срок созревания: ${s.term}.`} Подробное описание с фото готовим. Расскажем о сорте по телефону: <a href={`tel:${CONTACTS.consult.tel}`}>{CONTACTS.consult.phone}</a>.</p>}
+
+      <table class="specs">
+        <tbody>
+          {specs.filter(([, v]) => v).map(([k, v]) => <tr><th scope="row">{k}</th><td>{v}</td></tr>)}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="neighbors">
+    <a class="btn btn-ghost" href={url(`catalog/${cat.path}/${prev?.slug}/`)}>← {prev?.name}</a>
+    <a class="btn btn-ghost" href={url(`catalog/${cat.path}/`)}>Все {cat.short.toLowerCase()}</a>
+    <a class="btn btn-ghost" href={url(`catalog/${cat.path}/${next?.slug}/`)}>{next?.name} →</a>
+  </div>
+
+  {(more.length + moreFill.length) > 0 && (
+    <>
+      <h2 class="sec">Ещё {cat.short.toLowerCase()} сорта</h2>
+      <div class="grid">{[...more, ...moreFill].map((x) => <SortCard sort={x} />)}</div>
+    </>
+  )}
+</Layout>
+
+<script>
+  const main = document.querySelectorAll<HTMLElement>('[data-photo]');
+  const thumbs = document.querySelectorAll<HTMLElement>('[data-thumb]');
+  thumbs.forEach((t) => t.addEventListener('click', () => {
+    const i = t.dataset.thumb;
+    main.forEach((m) => { m.hidden = m.dataset.photo !== i; });
+    thumbs.forEach((x) => x.setAttribute('aria-current', String(x === t)));
+  }));
+  const qty = document.getElementById('qty');
+  document.querySelectorAll<HTMLElement>('[data-step]').forEach((b) => b.addEventListener('click', () => {
+    if (qty instanceof HTMLInputElement) qty.value = String(Math.max(1, (Number(qty.value) || 1) + Number(b.dataset.step)));
+  }));
+</script>

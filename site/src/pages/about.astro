@@ -1,0 +1,54 @@
+---
+import { Image } from 'astro:assets';
+import Layout from '../layouts/Layout.astro';
+import { CONTACTS, url } from '../lib/site';
+import plant from '../assets/photos/plant.jpg';
+import box from '../assets/photos/main-box.jpg';
+import market from '../assets/photos/market.jpg';
+import tray from '../assets/photos/sort-tray.jpg';
+---
+<Layout title="О питомнике" description="Семейный питомник клубники под Минском: своя плантация, рассада ЗКС в стаканчиках, рынок в Дзержинске, участие в «Дожинках»." active="about">
+  <nav class="crumbs" aria-label="Хлебные крошки"><a href={url()}>Главная</a> / О нас</nav>
+  <h1 class="ptitle">Мы выращиваем клубнику, которой сами гордимся</h1>
+  <p class="lead">Семейный питомник в Минском районе. Всё, что мы продаём, выращено у нас: от маточных кустов до готовой рассады в стаканчиках 0,4 л.</p>
+
+  <div class="story">
+    <section class="split">
+      <div class="photo"><Image src={plant} alt="Ряды плантации с рассадой в стаканчиках" widths={[400, 800]} sizes="(max-width:800px) 100vw, 440px" /></div>
+      <div class="panel"><h2>Это наша плантация</h2>
+        <p>Каждый сезон начинается на своей плантации. Поэтому мы знаем каждую партию рассады лично: чем она росла, чем кормилась, как зимовала.</p>
+        <p>Отбираем, поливаем и подкармливаем сами, поэтому за каждый стаканчик отвечаем лично.</p></div>
+    </section>
+
+    <section class="split rev">
+      <div class="photo"><Image src={tray} alt="Кусты клубники с ягодами в кассете" widths={[400, 800]} sizes="(max-width:800px) 100vw, 440px" /></div>
+      <div class="panel"><h2>Почему стаканчики</h2>
+        <p>Рассада с закрытой корневой системой живёт в стаканчике: корни не пересыхают и не травмируются при посадке. Приживается почти вся и быстро стартует.</p>
+        <p>Чтобы жаркое лето не подвело, часть рассады мы выращиваем из итальянской фриго-рассады: она надёжно трогается в рост.</p></div>
+    </section>
+
+    <section class="split">
+      <div class="photo"><Image src={box} alt="Ящик рассады клубники в стаканчиках" widths={[400, 800]} sizes="(max-width:800px) 100vw, 440px" /></div>
+      <div class="panel"><h2>Коробка, которую не спутаешь</h2>
+        <p>Для отправки почтой мы собираем коробку, которая доезжает: ячейки, влажные корни, фиксация каждого стаканчика.</p>
+        <p><a href={url('order/')}>Как мы доставляем</a></p></div>
+    </section>
+
+    <section class="split rev">
+      <div class="photo"><Image src={market} alt="Наш прилавок на рынке" widths={[400, 800]} sizes="(max-width:800px) 100vw, 440px" /></div>
+      <div class="panel"><h2>Мы на рынке</h2>
+        <p>Каждые выходные на рынке в Дзержинске: свежая рассада, консультации на месте, сорта с описанием. Приходите, покажем всё вживую.</p></div>
+    </section>
+
+    <section class="panel">
+      <h2>«Дожинки»</h2>
+      <p>Мы участвуем в республиканском фестивале-ярмарке «Дожинки» со своей ягодой и рассадой.</p>
+      <p class="note">Фото и видео с «Дожинок» скоро будут здесь.</p>
+    </section>
+  </div>
+
+  <div class="cta">
+    <div><b>Хотите посмотреть, как растёт рассада?</b><p>Новинки и жизнь плантации мы показываем в Instagram.</p></div>
+    <a class="phone" href={CONTACTS.instagram}>Instagram</a>
+  </div>
+</Layout>

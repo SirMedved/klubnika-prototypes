@@ -1,0 +1,98 @@
+---
+// Каталог: прайс-таблица и плитки одних и тех же сортов, фильтр «в наличии», поиск.
+// Разметка статическая (видна поисковикам и без JS), скрипт только прячет/показывает строки.
+import { CATEGORIES, categoryById, fmtPrice, statusLabel, type CategoryId, type Sort } from '../lib/sorts';
+import { url } from '../lib/site';
+import SortCard from './SortCard.astro';
+import AddButton from './AddButton.astro';
+
+interface Props { sorts: readonly Sort[]; current?: CategoryId }
+const { sorts, current } = Astro.props;
+
+const rank = (s: Sort) => ({ available: 0, season: 1, trial: 2, retired: 3 })[s.status];
+const ordered = [...sorts].sort((a, b) => rank(a) - rank(b));
+const groups = current
+  ? [{ cat: categoryById(current), items: ordered }]
+  : CATEGORIES.map((cat) => ({ cat, items: ordered.filter((s) => s.category === cat.id) }));
+---
+<div class="catbar">
+  <a class="chip" href={url('catalog/')} aria-current={!current ? 'page' : undefined}>Все</a>
+  {CATEGORIES.map((c) => <a class="chip" href={url(`catalog/${c.path}/`)} aria-current={c.id === current ? 'page' : undefined}>{c.short}</a>)}
+</div>
+<div class="catbar">
+  <button type="button" class="chip avail" aria-pressed="false" data-avail-toggle>Только в наличии</button>
+  <label class="vh" for="sortSearch">Поиск сорта</label>
+  <input id="sortSearch" class="search" type="search" placeholder="Найти сорт: от 2 букв" autocomplete="off" />
+  <span class="viewswitch" role="group" aria-label="Вид каталога">
+    <button type="button" data-view="table" aria-pressed="true">Прайс-таблица</button>
+    <button type="button" data-view="tiles" aria-pressed="false">Плитки</button>
+  </span>
+</div>
+
+<div class="tablewrap" data-pane="table">
+  <table class="ptable">
+    <thead><tr><th>Сорт</th><th class="hide-m">Срок</th><th>Цена</th><th class="hide-m">Наличие</th><th></th></tr></thead>
+    {groups.map((g) => (
+      <tbody data-group={g.cat.id}>
+        {!current && <tr class="grp"><td colspan="5"><a href={url(`catalog/${g.cat.path}/`)} style="color:inherit">{g.cat.title}</a></td></tr>}
+        {g.items.map((s) => (
+          <tr data-item data-cat={s.category} data-avail={s.status === 'available' ? 'yes' : 'no'} data-name={s.name.toLowerCase()}>
+            <td class="nm">
+              <a href={url(`catalog/${categoryById(s.category).path}/${s.slug}/`)}>{s.name}</a>
+              {s.novelty && <> <span class="st st-new">новинка</span></>}
+              <div class="incart" data-incart-for={s.slug}></div>
+            </td>
+            <td class="hide-m">{s.term}<br /><span class="note">{s.type}</span></td>
+            <td class="pr">{fmtPrice(s.priceByn)} руб<br /><span class="note">{s.priceRub} рос. руб</span></td>
+            <td class="hide-m"><span class={`st st-${s.status}`}>{statusLabel(s)}</span></td>
+            <td class="act"><AddButton sort={s} small /></td>
+          </tr>
+        ))}
+      </tbody>
+    ))}
+  </table>
+</div>
+
+<div class="grid" data-pane="tiles" hidden>
+  {ordered.map((s) => <SortCard sort={s} />)}
+</div>
+<p class="empty" data-empty hidden>Ничего не нашлось. Попробуйте другое название или позвоните нам: подскажем.</p>
+<p class="note" data-count style="margin-top:12px"></p>
+
+<script>
+  const items = [...document.querySelectorAll<HTMLElement>('[data-pane] [data-item]')];
+  const search = document.getElementById('sortSearch');
+  const availBtn = document.querySelector<HTMLButtonElement>('[data-avail-toggle]');
+  const viewBtns = [...document.querySelectorAll<HTMLButtonElement>('[data-view]')];
+  const panes = [...document.querySelectorAll<HTMLElement>('[data-pane]')];
+  const empty = document.querySelector<HTMLElement>('[data-empty]');
+  const countEl = document.querySelector<HTMLElement>('[data-count]');
+  const params = new URLSearchParams(location.search);
+  let availOnly = params.get('avail') === '1';
+  let view = params.get('view') === 'tiles' ? 'tiles' : 'table';
+
+  function apply(): void {
+    const q = search instanceof HTMLInputElement ? search.value.trim().toLowerCase() : '';
+    let shown = 0;
+    for (const el of items) {
+      const ok = (!availOnly || el.dataset.avail === 'yes') && (q.length < 2 || (el.dataset.name ?? '').includes(q));
+      el.hidden = !ok;
+      if (ok && el.closest<HTMLElement>('[data-pane]')?.dataset.pane === view) shown++;
+    }
+    document.querySelectorAll<HTMLElement>('tbody[data-group]').forEach((g) => {
+      g.hidden = !g.querySelector('tr[data-item]:not([hidden])');
+    });
+    panes.forEach((p) => { p.hidden = p.dataset.pane !== view || shown === 0; });
+    viewBtns.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.view === view)));
+    availBtn?.setAttribute('aria-pressed', String(availOnly));
+    if (empty) empty.hidden = shown > 0;
+    if (countEl) countEl.textContent = `Показано сортов: ${shown}`;
+    params.set('view', view);
+    if (availOnly) params.set('avail', '1'); else params.delete('avail');
+    history.replaceState(null, '', `${location.pathname}?${params.toString()}`);
+  }
+  search?.addEventListener('input', apply);
+  availBtn?.addEventListener('click', () => { availOnly = !availOnly; apply(); });
+  viewBtns.forEach((b) => b.addEventListener('click', () => { view = b.dataset.view === 'tiles' ? 'tiles' : 'table'; apply(); }));
+  apply();
+</script>
