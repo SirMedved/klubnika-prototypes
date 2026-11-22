@@ -27,16 +27,19 @@ const moreFill = more.length < 3
   ? siblings.filter((x) => x.slug !== s.slug && x.status === 'available' && !more.includes(x)).slice(0, 3 - more.length)
   : [];
 
-const specs: [string, string | undefined][] = [
-  ['Срок созревания', d?.ripening ?? (s.type === 'НСД' ? 'волнами с июня до осени' : s.term)],
-  ['Тип', typeLabel(s)],
-  ['Ягода', d?.berry],
-  ['Вкус и аромат', d?.taste],
-  ['Урожайность', d?.yield],
-  ['Куст', d?.plant],
-  ['Селекция', [d?.breeder, d?.origin, d?.year].filter(Boolean).join(', ') || undefined],
-  ['Рассада', 'стаканчик 0,4 л, закрытая корневая система'],
-];
+const cap = (t: string) => t.charAt(0).toUpperCase() + t.slice(1);
+// Характеристики карточками под фото: значок, заголовок, текст.
+const traits = ([
+  ['🗓', 'Созревание', d?.ripening ?? (s.type === 'НСД' ? 'волнами с июня до осени' : s.term)],
+  ['🍓', 'Ягода', d?.berry],
+  ['😋', 'Вкус и аромат', d?.taste],
+  ['🧺', 'Урожайность', d?.yield],
+  ['🌿', 'Куст', d?.plant],
+  ['🔁', 'Плодоношение', typeLabel(s)],
+  ['🧬', 'Селекция', [d?.breeder, d?.origin, d?.year].filter(Boolean).join(', ') || undefined],
+  ['🪴', 'Рассада', 'стаканчик 0,4 л, закрытая корневая система'],
+] satisfies [string, string, string | undefined][])
+  .flatMap(([icon, label, text]) => (text ? [{ icon, label, text: cap(text) }] : []));
 
 const cover = photos[0] ? await getImage({ src: photos[0].src, width: 800 }) : undefined;
 const jsonLd = {
@@ -109,13 +112,12 @@ const jsonLd = {
       {d
         ? <p class="desc">{d.description}</p>
         : <p class="desc">{s.type === 'НСД' ? `${s.name}: ремонтантный сорт, плодоносит волнами с июня до осени.` : `${s.name}: сорт однократного плодоношения, срок созревания: ${s.term}.`} Подробное описание с фото готовим. Расскажем о сорте по телефону: <a href={`tel:${CONTACTS.consult.tel}`}>{CONTACTS.consult.phone}</a>.</p>}
-
-      <table class="specs">
-        <tbody>
-          {specs.filter(([, v]) => v).map(([k, v]) => <tr><th scope="row">{k}</th><td>{v}</td></tr>)}
-        </tbody>
-      </table>
     </div>
+  </div>
+
+  <h2 class="sec">Характеристики</h2>
+  <div class="traits">
+    {traits.map((t) => <div class="trait"><span class="ic" aria-hidden="true">{t.icon}</span><div><b>{t.label}</b><p>{t.text}</p></div></div>)}
   </div>
 
   <div class="neighbors">

@@ -3,8 +3,8 @@
 import { CATEGORIES, SORTS, type CategoryId } from '../lib/sorts';
 import { CONTACTS, url } from '../lib/site';
 
-interface Props { activeCategory?: CategoryId }
-const { activeCategory } = Astro.props;
+interface Props { activeCategory?: CategoryId; hideHelp?: boolean }
+const { activeCategory, hideHelp = false } = Astro.props;
 const count = (id: CategoryId) => SORTS.filter((s) => s.category === id && s.status !== 'retired').length;
 ---
 <aside class="cats" aria-label="Разделы каталога">
@@ -17,9 +17,9 @@ const count = (id: CategoryId) => SORTS.filter((s) => s.category === id && s.sta
     </a>
   ))}
   <span class="cat stub" aria-disabled="true"><span class="n1">Голубика</span><span class="n2">скоро в питомнике</span></span>
-  <div class="help">
+  {!hideHelp && <div class="help">
     <b>Не знаете, что выбрать?</b>
     Позвоните, подскажем сорт под ваш участок.
     <a href={`tel:${CONTACTS.consult.tel}`}>{CONTACTS.consult.phone}</a>
-  </div>
+  </div>}
 </aside>

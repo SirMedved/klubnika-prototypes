@@ -212,6 +212,13 @@ figure figcaption{font-size:14px;color:var(--tx2);margin-top:6px}
 .specs tr:first-child th,.specs tr:first-child td{border-top:0}
 .specs th{color:var(--tx2);font-weight:500;width:42%}
 .desc{font-size:18px;margin-top:14px}
+.traits{columns:3 240px;column-gap:12px}
+.trait{break-inside:avoid;margin-bottom:12px;display:flex;gap:12px;align-items:flex-start;background:var(--paper);border-radius:var(--radius);padding:14px 16px;box-shadow:var(--shadow)}
+.trait .ic{font-size:26px;line-height:1;flex:0 0 auto}
+.trait b{display:block;font-size:15px;text-transform:uppercase;letter-spacing:.4px;color:var(--olive);margin-bottom:2px}
+.trait p{font-size:16px;line-height:1.45}
+.qty input::-webkit-outer-spin-button,.qty input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.qty input{-moz-appearance:textfield;appearance:textfield}
 .pending{border:2px dashed var(--blue-d);border-radius:var(--radius);padding:14px 16px;background:rgba(255,252,240,.7);font-size:16px}
 .neighbors{display:flex;justify-content:space-between;gap:12px;margin-top:26px;flex-wrap:wrap}
 
@@ -318,6 +325,7 @@ legend{font-size:19px;font-weight:700;margin-bottom:10px}
 }
 @media (max-width:800px){
   .sortcard,.split,.zks,.seasons,.cards3{grid-template-columns:1fr}
+  .traits{columns:2}
   .split.rev .photo{order:0}
 }
 
@@ -373,4 +381,5 @@ legend{font-size:19px;font-weight:700;margin-bottom:10px}
   .steps.row{grid-template-columns:1fr}
   .foot{grid-template-columns:1fr;gap:18px}
   .sortcard h1{font-size:30px}
+  .traits{columns:1}
 }

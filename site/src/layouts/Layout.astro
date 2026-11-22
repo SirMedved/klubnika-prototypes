@@ -13,8 +13,10 @@ interface Props {
   description: string;
   active?: NavId;
   activeCategory?: CategoryId;
+  /** спрятать в колонке блок «Не знаете, что выбрать?» */
+  hideHelp?: boolean;
 }
-const { title, description, active, activeCategory } = Astro.props;
+const { title, description, active, activeCategory, hideHelp = false } = Astro.props;
 const fullTitle = title.includes('Клубника-Минск') ? title : `${title} | Клубника-Минск`;
 ---
 <!doctype html>
@@ -37,7 +39,7 @@ const fullTitle = title.includes('Клубника-Минск') ? title : `${tit
     <main id="content">
       <slot />
     </main>
-    <CategoryColumn activeCategory={activeCategory} />
+    <CategoryColumn activeCategory={activeCategory} hideHelp={hideHelp} />
   </div>
   <Footer />
   <canvas id="berryField" aria-hidden="true" data-sprite={url('berry.svg')}></canvas>
