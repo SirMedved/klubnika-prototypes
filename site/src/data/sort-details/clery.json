@@ -1,0 +1,41 @@
+{
+  "name_orig": "Clery",
+  "breeder": "CIV, Consorzio Italiano Vivaisti (M. Leis, A. Martinelli, G. Castagnoli)",
+  "origin_country": "Италия",
+  "year": 2006,
+  "ripening": "Ранняя.",
+  "berry": "Правильная коническая, блестящая карминово-красная, кожица прочная; масса по разным источникам от 21 до 35 г.",
+  "taste": "Высокие вкусовые качества и отличный аромат; сахаристость около 9 Brix.",
+  "yield": "В среднем около 1 кг с куста (1017 г, данные селекционера для фриго-рассады, север Италии).",
+  "plant": "Куст выносливый, средне-сильный, прямостоячий; ягоды на уровне листвы или чуть ниже, собирать удобно. Очень высокая толерантность к болезням листьев и корней. Подходит для выращивания в горшках.",
+  "description_ru": "Клери ценят за ранний урожай и красивые ягоды: правильные конусы блестящего карминово-красного цвета с отличным ароматом. Куст выносливый и хорошо противостоит болезням листьев и корней. Кожица у ягод прочная, поэтому урожай хорошо хранится. Сорт подходит и для грядки, и для выращивания в горшках.",
+  "photos": [
+    {
+      "file": "2.jpg",
+      "credit": "CIV (селекционер), фото из техкарты",
+      "source_page": "https://civ.it/fragola/clery/",
+      "what": "ягоды крупным планом среди листьев (472x787)",
+      "license": "не указана"
+    },
+    {
+      "file": "1.jpg",
+      "credit": "4028mdk09 / Wikimedia Commons",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Clery_Gartenerdbeere.JPG",
+      "what": "ягоды Клери в лотках на рынке (Гейдельберг)",
+      "license": "CC BY-SA 3.0"
+    },
+    {
+      "file": "3.jpg",
+      "credit": "CIV (селекционер), фото из техкарты",
+      "source_page": "https://civ.it/fragola/clery/",
+      "what": "ягоды на кусте на мульче (472x675)",
+      "license": "не указана"
+    }
+  ],
+  "facts_sources": [
+    "https://civ.it/fragola/clery/",
+    "https://civ.it/wp-content/uploads/2025/02/Clery_ITA.pdf",
+    "https://pomologie.com/fraise/fraise1/clery/clery.html",
+    "https://patents.google.com/patent/USPP29793"
+  ]
+}

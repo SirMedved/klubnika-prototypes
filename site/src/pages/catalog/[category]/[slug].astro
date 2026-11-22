@@ -17,6 +17,7 @@ const { sort: s } = Astro.props;
 const cat = categoryById(s.category);
 const d = detailsFor(s);
 const photos = d?.photos ?? [];
+const credits = photos.filter((p, i) => photos.findIndex((q) => q.credit === p.credit && q.sourcePage === p.sourcePage) === i);
 const siblings = SORTS.filter((x) => x.category === s.category);
 const idx = siblings.findIndex((x) => x.slug === s.slug);
 const prev = siblings[(idx - 1 + siblings.length) % siblings.length];
@@ -74,7 +75,7 @@ const jsonLd = {
         </div>
       )}
       {photos.length > 0 && (
-        <p class="credit">Фото: {photos.map((p, i) => <>{i > 0 && ', '}{p.sourcePage ? <a href={p.sourcePage} rel="nofollow noopener" target="_blank">{p.credit ?? 'источник'}</a> : p.credit}</>)}</p>
+        <p class="credit">Фото: {credits.map((p, i) => <>{i > 0 && ', '}{p.sourcePage ? <a href={p.sourcePage} rel="nofollow noopener" target="_blank">{p.credit ?? 'источник'}</a> : p.credit}</>)}</p>
       )}
       {photos.length === 0 && <p class="credit">Фото сорта с нашей плантации добавим в сезон.</p>}
     </div>

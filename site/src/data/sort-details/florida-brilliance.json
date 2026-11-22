@@ -1,0 +1,32 @@
+{
+  "name_orig": "Florida Brilliance (FL 13.26-134)",
+  "breeder": "University of Florida, IFAS (V. Whitaker)",
+  "origin_country": "США",
+  "year": 2018,
+  "ripening": "Ранний старт плодоношения, высокий первый урожай.",
+  "berry": "Коническая, очень ровной формы, глянцевая (семянки утоплены, ягода блестит); около 20 г; плотная, сочная, отлично хранится.",
+  "taste": "Сочная, сладкая, с невысокой кислотностью.",
+  "yield": "Высокий ранний урожай (данные Университета Флориды).",
+  "plant": "Куст открытый и крепкий, плодоножки длинные, ягоды легко собирать. Хорошо переносит жару.",
+  "description_ru": "Флорида Бриллианс получила название за глянцевые ягоды, которые буквально блестят на солнце. Ягоды ровные, конические, плотные и сочные, хорошо хранятся после сбора. Сорт рано начинает плодоносить и щедро отдаёт первый урожай, а длинные плодоножки делают сбор удобным.",
+  "photos": [
+    {
+      "file": "1.jpg",
+      "credit": "Vance M. Whitaker, UF/IFAS (рис. 1 публикации HS1322)",
+      "source_page": "https://edis.ifas.ufl.edu/publication/HS1322",
+      "what": "куст с гроздью зрелых и зелёных ягод на мульче",
+      "license": "не указана (публикация UF/IFAS Extension)"
+    },
+    {
+      "file": "2.jpg",
+      "credit": "Vance M. Whitaker, UF/IFAS (рис. 2 публикации HS1322)",
+      "source_page": "https://edis.ifas.ufl.edu/publication/HS1322",
+      "what": "кусты с ягодами на опытном поле",
+      "license": "не указана (публикация UF/IFAS Extension)"
+    }
+  ],
+  "facts_sources": [
+    "https://edis.ifas.ufl.edu/publication/HS1322/pdf",
+    "https://blogs.ifas.ufl.edu/news/2019/01/15/uf-ifas-developed-florida-brilliance-shines-on-states-strawberry-industry/"
+  ]
+}

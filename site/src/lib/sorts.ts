@@ -156,7 +156,7 @@ export const detailsFor = (s: Sort): SortDetails | undefined => {
     photos.push({ src, alt: `Клубника ${s.name}${p.what ? `: ${p.what}` : ''}`, credit: p.credit, sourcePage: p.source_page });
   }
   return {
-    nameOrig: d.name_orig, breeder: d.breeder, origin: d.origin_country, year: d.year,
+    nameOrig: d.name_orig, breeder: d.breeder?.replace(/\s*\([^)]*\)/g, ''), origin: d.origin_country, year: d.year,
     ripening: d.ripening, berry: d.berry, taste: d.taste, yield: d.yield, plant: d.plant,
     description: d.description_ru, photos,
   };
